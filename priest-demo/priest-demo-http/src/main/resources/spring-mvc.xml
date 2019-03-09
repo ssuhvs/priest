@@ -1,0 +1,178 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+
+
+    <bean id="messageSource" class="com.little.g.common.web.utils.ReloadableResourceBundleMessageSource">
+        <property name="basenames" value="classpath*:i18n/messages,classpath*:i18n/result_json"/>
+        <property name="defaultEncoding" value="UTF-8"/>
+        <property name="useCodeAsDefaultMessage" value="true"/>
+        <property name="cacheSeconds" value="600"/>
+    </bean>
+
+    <bean class="com.kinstalk.common.exception.BaseHandlerExceptionResolver" />
+
+
+
+    <context:component-scan base-package="com.kinstalk.f2.**.web,com.kinstalk.common.controller">
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+        <context:include-filter type="annotation" expression="org.springframework.web.bind.annotation.RestController"/>
+        <context:include-filter type="annotation" expression="org.springframework.web.bind.annotation.ControllerAdvice"/>
+    </context:component-scan>
+
+    <mvc:annotation-driven>
+        <mvc:message-converters>
+            <bean class="org.springframework.http.converter.StringHttpMessageConverter">
+                <constructor-arg name="defaultCharset" value="UTF-8"/>
+                <property name="writeAcceptCharset" value="false"/>
+                <property name="supportedMediaTypes">
+                    <list>
+                        <value>text/html;charset=UTF-8</value>
+                        <value>text/plain;charset=UTF-8</value>
+                    </list>
+                </property>
+            </bean>
+
+            <bean class="com.kinstalk.common.http.converter.json.QinMappingJackson2HttpMessageConverter"/>
+        </mvc:message-converters>
+    </mvc:annotation-driven>
+
+
+    <bean id="restTemplate" class="org.springframework.web.client.RestTemplate">
+        <property name="messageConverters">
+            <list>
+                <bean class="org.springframework.http.converter.StringHttpMessageConverter">
+                    <constructor-arg value="UTF-8"/>
+                </bean>
+                <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter" />
+            </list>
+        </property>
+    </bean>
+
+
+    <bean id="localeResolver" class="org.springframework.web.servlet.i18n.SessionLocaleResolver" />
+
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/wechat/**/*"/>
+            <mvc:exclude-mapping path="/wechat/callback" />
+            <mvc:exclude-mapping path="/wechat/portal" />
+            <mvc:exclude-mapping path="/wechat/menu/**" />
+            <mvc:exclude-mapping path="/wechat/charge/state" />
+            <mvc:exclude-mapping path="/wechat/charge/login_desc" />
+            <mvc:exclude-mapping path="/wechat/charge/withdrawState" />
+            <mvc:exclude-mapping path="/wechat/wechat_login" />
+            <bean class="com.kinstalk.f2.wechat.interceptor.WechatLoginInterceptor" />
+        </mvc:interceptor>
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <mvc:exclude-mapping path="/search/**"/>
+            <mvc:exclude-mapping path="/config/**"/>
+            <mvc:exclude-mapping path="/static/**"/>
+            <mvc:exclude-mapping path="/feed/recommend" />
+            <mvc:exclude-mapping path="/feed/related" />
+            <mvc:exclude-mapping path="/feed/tags_related" />
+            <mvc:exclude-mapping path="/feed/topic_related" />
+            <mvc:exclude-mapping path="/feed/topic_related2" />
+            <mvc:exclude-mapping path="/feed/rankings_related" />
+            <mvc:exclude-mapping path="/feed/topic_recommend" />
+            <mvc:exclude-mapping path="/feed/dislike" />
+            <mvc:exclude-mapping path="/feed/topic_info" />
+            <mvc:exclude-mapping path="/avatar/list" />
+            <mvc:exclude-mapping path="/feed/tags" />
+            <mvc:exclude-mapping path="/feed/home" />
+            <mvc:exclude-mapping path="/feed/topic_rankings" />
+            <mvc:exclude-mapping path="/share/**" />
+            <mvc:exclude-mapping path="/wechat/**" />
+            <mvc:exclude-mapping path="/feed/share" />
+            <mvc:exclude-mapping path="/invite/**" />
+            <mvc:exclude-mapping path="/upgrade/check" />
+            <mvc:exclude-mapping path="/account/weixin/notify" />
+            <mvc:exclude-mapping path="/upload/notify/**" />
+            <mvc:exclude-mapping path="/feed/rank_top/**" />
+            <mvc:exclude-mapping path="/*.txt"/>
+            <mvc:exclude-mapping path="/favicon.ico"/>
+            <mvc:exclude-mapping path="/error" />
+            <mvc:exclude-mapping path="/vip/iapCallback"/>
+
+            <bean class="com.kinstalk.interceptor.TokenVerifyInterceptor"/>
+        </mvc:interceptor>
+
+        <mvc:interceptor>
+            <mvc:mapping path="/feed/recommend" />
+            <mvc:mapping path="/feed/dislike" />
+            <mvc:mapping path="/feed/related" />
+            <mvc:mapping path="/feed/tags_related" />
+            <mvc:mapping path="/feed/home" />
+            <mvc:mapping path="/search/user"/>
+            <bean class="com.kinstalk.interceptor.TokenVerifyByAclInterceptor" />
+        </mvc:interceptor>
+        <mvc:interceptor>
+            <mvc:mapping path="/feed/publish"/>
+            <mvc:mapping path="/account/f2pay/reward"/>
+            <mvc:mapping path="/fans/follow"/>
+            <mvc:mapping path="/account/f2pay/draw"/>
+            <bean class="com.kinstalk.interceptor.BannedInterceptor" />
+        </mvc:interceptor>
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <mvc:exclude-mapping path="/static/**"/>
+            <bean class="com.kinstalk.interceptor.HeaderInterceptor"/>
+        </mvc:interceptor>
+        <!--<mvc:interceptor>-->
+        <!--<mvc:mapping path="/account/kinspay/pay" />-->
+        <!--<bean class="com.kinstalk.f2.account.web.interceptor.SignCheckInterceptor" />-->
+        <!--</mvc:interceptor>-->
+        <bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor" />
+    </mvc:interceptors>
+    <mvc:resources mapping="/*.txt" location="/" />
+    <mvc:resources mapping="/static/images/**" location="/static/images/" />
+    <mvc:resources mapping="/static/js/**" location="/static/js/" />
+    <mvc:resources mapping="/static/css/**" location="/static/css/" />
+
+    <mvc:default-servlet-handler/>
+
+    <bean id="viewResolver"
+          class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+        <property name="viewClass"
+                  value="org.springframework.web.servlet.view.JstlView" />
+        <property name="prefix" value="/WEB-INF/pages/" />
+        <property name="suffix" value=".jsp" />
+    </bean>
+
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="maxUploadSize" value="10485760" />
+        <property name="maxInMemorySize" value="104857600" />
+    </bean>
+
+    <aop:aspectj-autoproxy proxy-target-class="true">
+        <aop:include name="resultCodeI18NAspect" />
+    </aop:aspectj-autoproxy>
+    <bean id="resultCodeI18NAspect" class="com.kinstalk.interceptor.ResultCodeI18NAspect" />
+
+
+    <!-- 异步线程池 -->
+    <bean id="threadPoolTaskExecutor" class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
+        <!-- 核心线程数  -->
+        <property name="corePoolSize" value="10" />
+        <!-- 最大线程数 -->
+        <property name="maxPoolSize" value="50" />
+        <!-- 队列最大长度 >=mainExecutor.maxSize -->
+        <property name="queueCapacity" value="1000" />
+        <!-- 线程池维护线程所允许的空闲时间 -->
+        <property name="keepAliveSeconds" value="300" />
+        <!-- 线程池对拒绝任务(无线程可用)的处理策略 -->
+        <property name="rejectedExecutionHandler">
+            <bean class="java.util.concurrent.ThreadPoolExecutor$CallerRunsPolicy" />
+        </property>
+    </bean>
+
+
+
+
+</beans>
