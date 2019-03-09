@@ -1,0 +1,80 @@
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <groupId>com.little.g</groupId>
+        <artifactId>priest-demo</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>priest-demo-service</artifactId>
+    <packaging>jar</packaging>
+
+    <name>priest-demo-service</name>
+    <url>http://maven.apache.org</url>
+
+
+
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+    <profiles>
+        <profile>
+            <!-- 开发环境 -->
+            <id>develop</id>
+            <!-- 默认 -->
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <priest.wxpay.notifyurl>http://webchat.shuzijiayuan.com/account/weixin/notify</priest.wxpay.notifyurl>
+                <priest.alipay.notifyurl>https://dev-api.withugroup.com/account/alipay/notify</priest.alipay.notifyurl>
+                <priest.pay.productions.notifyurl>https://dev-api.withugroup.com/account/pay/productions/notify</priest.pay.productions.notifyurl>
+                <priest.f2.recommend.eventserver>http://192.168.3.220:7070/events.json?accessKey=LOeCdHH0OiUHEmlWETPRiYug_9CZFKLlha03BardHrDPwW3lBK1Otc_MeV7jJ9z7</priest.f2.recommend.eventserver>
+                <priest.f2.recommend.recommendengine>http://192.168.3.220:8000/queries.json</priest.f2.recommend.recommendengine>
+            </properties>
+        </profile>
+
+        <profile>
+            <!-- 线上环境  -->
+            <id>online</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <priest.wxpay.notifyurl>https://api-f2.kinstalk.com/account/weixin/notify</priest.wxpay.notifyurl>
+                <priest.alipay.notifyurl>https://api.withugroup.com/account/alipay/notify</priest.alipay.notifyurl>
+                <priest.pay.productions.notifyurl>https://api.withugroup.com/account/pay/productions/notify</priest.pay.productions.notifyurl>
+                <priest.f2.recommend.eventserver>http://192.168.1.216:7070/events.json?accessKey=We0rmgqKs3bn8XWrXA4UguJtTBzgEoiOxpaepPN2iRJM0rywnr2s1H5nsBL8-Tb1</priest.f2.recommend.eventserver>
+                <priest.f2.recommend.recommendengine>http://192.168.1.217:8000/queries.json</priest.f2.recommend.recommendengine>
+            </properties>
+        </profile>
+    </profiles>
+
+    <dependencies>
+
+
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <configuration>
+                    <finalName>${project.name}</finalName>
+                    <descriptor>${project.parent.parent.basedir}/dubbo/assembly/assembly.xml</descriptor>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>make-assembly</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>

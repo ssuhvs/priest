@@ -1,0 +1,97 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <groupId>com.little.g</groupId>
+        <artifactId>priest-demo</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>priest-demo-dao</artifactId>
+    <packaging>jar</packaging>
+
+    <name>priest-demo-dao</name>
+    <url>http://maven.apache.org</url>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.basedir>${project.basedir}</project.basedir>
+    </properties>
+
+    <profiles>
+        <profile>
+            <!-- 开发环境 -->
+            <id>develop</id>
+            <!-- 默认 -->
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <!-- 数据库 -->
+                <priest.jdbc.driver>com.mysql.jdbc.Driver</priest.jdbc.driver>
+                <priest.jdbc.url>jdbc:mysql://192.168.0.195:3306/bat?useUnicode=true&amp;characterEncoding=utf-8</priest.jdbc.url>
+                <priest.jdbc.username>bat</priest.jdbc.username>
+                <priest.jdbc.password>bat</priest.jdbc.password>
+            </properties>
+        </profile>
+
+
+        <profile>
+            <!-- 线上环境  TODO -->
+            <id>online</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <!--是否使用线上环境下发短信-->
+                <priest.env.sms.online>true</priest.env.sms.online>
+
+                <!-- 数据库 -->
+                <priest.jdbc.driver>com.mysql.jdbc.Driver</priest.jdbc.driver>
+                <priest.jdbc.url>jdbc:mysql://rm-bp197bn9vh8gl4edl.mysql.rds.aliyuncs.com:3306/popo</priest.jdbc.url>
+                <priest.jdbc.username>root1</priest.jdbc.username>
+                <priest.jdbc.password>Bat@123456</priest.jdbc.password>
+            </properties>
+        </profile>
+    </profiles>
+
+    <dependencies>
+
+        <dependency>
+            <groupId>tk.mybatis</groupId>
+            <artifactId>mapper-spring-boot-starter</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-aspects</artifactId>
+        </dependency>
+
+
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.mybatis.generator</groupId>
+                <artifactId>mybatis-generator-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+</project>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+
+    <properties resource="jdbc.properties"/>
+    <context id="Mysql" targetRuntime="MyBatis3Simple" defaultModelType="flat">
+
+        <!-- 自动识别数据库关键字，默认false -->
+        <property name="autoDelimitKeywords" value="true" />
+        <!--可以使用``包括字段名，避免字段名与sql保留字冲突报错 -->
+        <property name="beginningDelimiter" value="`" />
+        <property name="endingDelimiter" value="`" />
+
+
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"></plugin>
+        <plugin type="org.mybatis.generator.plugins.CaseInsensitiveLikePlugin"></plugin>
+        <!-- caseSensitive默认false，当数据库表名区分大小写时，可以将该属性设置为true -->
+        <!--  支持该模式
+        <plugin type="tk.mybatis.mapper.generator.MapperPlugin">
+            <property name="mappers" value="tk.mybatis.mapper.common.Mapper"/>
+            <property name="caseSensitive" value="true"/>
+        </plugin>
+        -->
+        <commentGenerator>
+            <property name="suppressDate" value="true" />
+            <property name="suppressAllComments" value="true" />
+        </commentGenerator>
+        <jdbcConnection driverClass="${jdbc.driverClass}"
+                        connectionURL="${jdbc.url}"
+                        userId="${jdbc.user}"
+                        password="${jdbc.password}">
+            <property name="nullCatalogMeansCurrent" value="true" />
+        </jdbcConnection>
+
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false" />
+        </javaTypeResolver>
+
+        <javaModelGenerator targetPackage="com.little.g.demo.model"
+                            targetProject="${project.basedir}/src/main/java">
+            <property name="enableSubPackages" value="true" />
+            <property name="trimStrings" value="true" />
+        </javaModelGenerator>
+
+        <sqlMapGenerator targetPackage="com.little.g.demo.mapper"
+                         targetProject="${project.basedir}/src/main/resources">
+            <property name="enableSubPackages" value="true" />
+        </sqlMapGenerator>
+
+        <javaClientGenerator type="XMLMAPPER"
+                             targetPackage="com.little.g.demo.mapper" targetProject="${project.basedir}/src/main/java">
+            <property name="enableSubPackages" value="true" />
+        </javaClientGenerator>
+        <!-- table example
+
+            <table tableName="user" domainObjectName="User" enableSelectByExample="true" enableDeleteByExample="true"
+                   enableUpdateByExample="true" enableCountByExample="true"
+                   enableSelectByPrimaryKey="true" enableUpdateByPrimaryKey="true"
+                   enableDeleteByPrimaryKey="true"  >
+                <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+            </table>
+        -->
+
+        <table tableName="user">
+            <generatedKey column="id"  sqlStatement="JDBC"/>
+        </table>
+
+    </context>
+</generatorConfiguration>
