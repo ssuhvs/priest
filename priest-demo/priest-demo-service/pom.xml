@@ -28,11 +28,7 @@
                 <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
-                <priest.wxpay.notifyurl>http://webchat.shuzijiayuan.com/account/weixin/notify</priest.wxpay.notifyurl>
-                <priest.alipay.notifyurl>https://dev-api.withugroup.com/account/alipay/notify</priest.alipay.notifyurl>
-                <priest.pay.productions.notifyurl>https://dev-api.withugroup.com/account/pay/productions/notify</priest.pay.productions.notifyurl>
-                <priest.f2.recommend.eventserver>http://192.168.3.220:7070/events.json?accessKey=LOeCdHH0OiUHEmlWETPRiYug_9CZFKLlha03BardHrDPwW3lBK1Otc_MeV7jJ9z7</priest.f2.recommend.eventserver>
-                <priest.f2.recommend.recommendengine>http://192.168.3.220:8000/queries.json</priest.f2.recommend.recommendengine>
+
             </properties>
         </profile>
 
@@ -43,17 +39,67 @@
                 <activeByDefault>false</activeByDefault>
             </activation>
             <properties>
-                <priest.wxpay.notifyurl>https://api-f2.kinstalk.com/account/weixin/notify</priest.wxpay.notifyurl>
-                <priest.alipay.notifyurl>https://api.withugroup.com/account/alipay/notify</priest.alipay.notifyurl>
-                <priest.pay.productions.notifyurl>https://api.withugroup.com/account/pay/productions/notify</priest.pay.productions.notifyurl>
-                <priest.f2.recommend.eventserver>http://192.168.1.216:7070/events.json?accessKey=We0rmgqKs3bn8XWrXA4UguJtTBzgEoiOxpaepPN2iRJM0rywnr2s1H5nsBL8-Tb1</priest.f2.recommend.eventserver>
-                <priest.f2.recommend.recommendengine>http://192.168.1.217:8000/queries.json</priest.f2.recommend.recommendengine>
+
             </properties>
         </profile>
     </profiles>
 
     <dependencies>
 
+        <dependency>
+            <groupId>org.mybatis.spring.boot</groupId>
+            <artifactId>mybatis-spring-boot-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+            <version>4.3.16.RELEASE</version>
+        </dependency>
+
+        <!-- dubbo 依赖 -->
+        <dependency>
+            <groupId>org.apache.dubbo</groupId>
+            <artifactId>dubbo</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.netty</groupId>
+            <artifactId>netty-all</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.curator</groupId>
+            <artifactId>curator-framework</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.curator</groupId>
+            <artifactId>curator-recipes</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.zookeeper</groupId>
+            <artifactId>zookeeper</artifactId>
+        </dependency>
+        <!-- dubbo 依赖 -->
+
+
+        <dependency>
+            <groupId>com.little.g</groupId>
+            <artifactId>priest-demo-api</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.little.g</groupId>
+            <artifactId>priest-demo-dao</artifactId>
+        </dependency>
 
     </dependencies>
 

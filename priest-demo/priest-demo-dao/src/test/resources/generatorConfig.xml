@@ -6,7 +6,10 @@
 <generatorConfiguration>
 
     <properties resource="jdbc.properties"/>
-    <context id="Mysql" targetRuntime="MyBatis3Simple" defaultModelType="flat">
+
+    <!--<context id="Mysql" targetRuntime="MyBatis3Simple" defaultModelType="flat">-->
+
+    <context id="DB2Tables" targetRuntime="MyBatis3">
 
         <!-- 自动识别数据库关键字，默认false -->
         <property name="autoDelimitKeywords" value="true" />

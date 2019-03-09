@@ -22,10 +22,12 @@
         <module>priest-common</module>
     </modules>
     <properties>
+        <resource.delimiter>${}</resource.delimiter>
         <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <mysql-connector-java.version>8.0.13</mysql-connector-java.version>
         <tk.mapper.version>4.1.5</tk.mapper.version>
+        <dubbo.version>2.7.0</dubbo.version>
     </properties>
     <!-- 打包配置信息 -->
     <profiles>
@@ -51,7 +53,7 @@
                 <priest.log.path>/data/logs</priest.log.path>
                 <!--打包编码 -->
                 <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-                <priest.dubbo.zk.url>zookeeper://192.168.0.195:2181</priest.dubbo.zk.url>
+                <priest.dubbo.zk.url>zookeeper://127.0.0.1:2181</priest.dubbo.zk.url>
             </properties>
         </profile>
 
@@ -117,8 +119,39 @@
                 <artifactId>priest-common</artifactId>
                 <version>0.0.1-SNAPSHOT</version>
             </dependency>
+
+            <dependency>
+                <groupId>com.little.g</groupId>
+                <artifactId>priest-demo-api</artifactId>
+                <version>0.0.1-SNAPSHOT</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.little.g</groupId>
+                <artifactId>priest-demo-dao</artifactId>
+                <version>0.0.1-SNAPSHOT</version>
+            </dependency>
             <!--本系统依赖管理 end-->
 
+            <dependency>
+                <groupId>org.apache.dubbo</groupId>
+                <artifactId>dubbo-dependencies-bom</artifactId>
+                <version>${dubbo.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.dubbo</groupId>
+                <artifactId>dubbo</artifactId>
+                <version>${dubbo.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.springframework</groupId>
+                        <artifactId>spring-context</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
 
             <dependency>
                 <groupId>com.google.guava</groupId>
