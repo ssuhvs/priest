@@ -17,6 +17,16 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>commons-fileupload</groupId>
+            <artifactId>commons-fileupload</artifactId>
+        </dependency>
+
         <!-- dubbo 依赖 -->
 
         <dependency>
@@ -52,6 +62,11 @@
             <artifactId>priest-common-web</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>com.little.g</groupId>
+            <artifactId>priest-demo-api</artifactId>
+        </dependency>
+
 
 
 
@@ -64,7 +79,7 @@
             <plugin>
                 <groupId>org.eclipse.jetty</groupId>
                 <artifactId>jetty-maven-plugin</artifactId>
-                <version>9.0.2.v20130417</version>
+                <version>9.4.15.v20190215</version>
 
                 <configuration>
                     <scanIntervalSeconds>10</scanIntervalSeconds>
@@ -76,27 +91,6 @@
                 </configuration>
             </plugin>
 
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
-                <version>2.4</version>
-                <configuration>
-                    <includes>
-                        <include>dubbo/**/*.xml</include>
-                        <include>spring/**/*.xml</include>
-                        <include>**/*.class</include>
-                        <include>i18n/*</include>
-                    </includes>
-                </configuration>
-                <executions>
-                    <execution>
-                        <phase>install</phase>
-                        <goals>
-                            <goal>jar</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
         </plugins>
     </build>
 </project>

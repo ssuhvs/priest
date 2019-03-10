@@ -1,4 +1,4 @@
-package com.little.g.demo;
+package com.little.g.common.web;
 
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;

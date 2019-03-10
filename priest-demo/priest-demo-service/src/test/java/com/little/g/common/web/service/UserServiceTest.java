@@ -1,6 +1,6 @@
-package com.little.g.demo.service;
+package com.little.g.common.web.service;
 
-import com.little.g.demo.BaseTest;
+import com.little.g.common.web.BaseTest;
 import com.little.g.demo.api.UserService;
 import com.little.g.demo.dto.UserDTO;
 import org.junit.Assert;

@@ -1,7 +1,7 @@
-package com.little.g.demo.mapper;
+package com.little.g.common.web.mapper;
 
-import com.little.g.demo.model.User;
-import com.little.g.demo.model.UserExample;
+import com.little.g.common.web.model.User;
+import com.little.g.common.web.model.UserExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
