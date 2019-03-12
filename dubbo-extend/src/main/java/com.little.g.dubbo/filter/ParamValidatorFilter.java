@@ -1,0 +1,83 @@
+package com.little.g.dubbo.filter;
+
+import com.little.g.dubbo.utils.JSR303Util;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.dubbo.common.Constants;
+import org.apache.dubbo.common.extension.Activate;
+import org.apache.dubbo.rpc.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.lang.annotation.Annotation;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+
+
+/**
+ * 增加方法参数输出,方便定位问题
+ * modify by wangzhen on 2016-02-04
+ * Created by mayan on 15-3-28.
+ */
+@Activate(group = Constants.PROVIDER)
+public class ParamValidatorFilter implements Filter {
+    private static final Logger logger = LoggerFactory.getLogger(ParamValidatorFilter.class);
+
+
+    @Override
+    public Result invoke(Invoker<?> invoker, Invocation invocation) throws RpcException {
+
+        try {
+            // metadata
+            Class<?> clazz = invoker.getInterface();
+            String methodName = invocation.getMethodName();
+            Class<?>[] pts = invocation.getParameterTypes();
+            Method invokeMethod = clazz.getDeclaredMethod(methodName, pts);
+
+            // runtime
+            Annotation[][] annoss = invokeMethod.getParameterAnnotations();
+            Object[] args = invocation.getArguments();
+//            String[] parameterNames = parameterNameDiscoverer.getParameterNames(invokeMethod);
+
+            int idx = 0;
+            if (annoss != null && annoss.length > 0) {
+                for (Annotation[] annos : annoss) {
+                    Object arg = args[idx];
+                    if (annos != null && annos.length > 0) {
+                        for (Annotation annotation : annos) {
+                            String simpleName = annotation.annotationType().getName();
+
+                                if (simpleName.indexOf("javax.validation")>0) {
+
+                                    boolean flag= StringUtils.isEmpty(JSR303Util.validateParams(arg,annotation.getClass()));
+
+                                    logger.debug(String.format("访问注解[%s] 方法[%s] 验证结果[%s]", annotation, methodName, flag));
+
+                                    if (!flag) {
+                                        Method method = annotation.getClass().getDeclaredMethod("code");
+
+                                        logger.debug("调用annotation:{}方法:{}", annotation, method);
+
+                                        Object result = method.invoke(annotation);
+
+                                        int code = (Integer) result;
+
+                                        logger.error(String.format("方法[%s]第[%d]个参数遇到问题", methodName, idx));
+
+                                        throw new RpcException(code, String.format("方法[%s]第[%d]个参数遇到问题", methodName, idx));
+                                    }
+                                } else {
+                                    logger.warn("plz config validator in validator-config.xml!");
+                                }
+                            }
+                        }
+                    }
+                    idx++;
+                }
+
+        } catch (NoSuchMethodException | InvocationTargetException | IllegalAccessException e) {
+            logger.error(e.getMessage(), e);
+        }
+
+        return invoker.invoke(invocation);
+    }
+}

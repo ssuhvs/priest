@@ -15,6 +15,7 @@ public class ResultJson implements Serializable {
     public static final Integer SUCCESSFUL = 0; // 成功
 
     public static final Integer SYSTEM_UNKNOWN_EXCEPTION = 20000;
+    public static final Integer INVALID_PARAM = 20001;
     public static final Map<Integer, String> msg = new HashMap<Integer, String>();
 
     private Integer c = SUCCESSFUL;  //code
