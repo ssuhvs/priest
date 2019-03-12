@@ -1,96 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-    <parent>
-        <groupId>com.little.g</groupId>
-        <artifactId>priest-demo</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
-    </parent>
-    <modelVersion>4.0.0</modelVersion>
-    <artifactId>priest-demo-http</artifactId>
-    <packaging>war</packaging>
-    <name>priest-demo-http Maven Webapp</name>
-    <url>http://maven.apache.org</url>
-    <dependencies>
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.little.g</groupId>
+		<artifactId>priest-demo</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	<groupId>com.little.g.demo</groupId>
+	<artifactId>priest-demo-http</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>war</packaging>
+	<name>priest-demo-http</name>
+	<description>Demo project for Spring Boot</description>
 
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
+	<properties>
+		<java.version>1.8</java.version>
+	</properties>
 
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-aop</artifactId>
-        </dependency>
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
 
-        <dependency>
-            <groupId>commons-fileupload</groupId>
-            <artifactId>commons-fileupload</artifactId>
-        </dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-tomcat</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
 
-        <!-- dubbo 依赖 -->
+		<dependency>
+		<groupId>org.apache.dubbo</groupId>
+		<artifactId>dubbo</artifactId>
+		</dependency>
 
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-core</artifactId>
-            <version>4.3.16.RELEASE</version>
-        </dependency>
+		<dependency>
+		<groupId>io.netty</groupId>
+		<artifactId>netty-all</artifactId>
+		</dependency>
+		<dependency>
+		<groupId>org.apache.curator</groupId>
+		<artifactId>curator-framework</artifactId>
+		</dependency>
+		<dependency>
+		<groupId>org.apache.curator</groupId>
+		<artifactId>curator-recipes</artifactId>
+		</dependency>
+		<dependency>
+		<groupId>org.apache.zookeeper</groupId>
+		<artifactId>zookeeper</artifactId>
+		</dependency>
 
-        <dependency>
-            <groupId>org.apache.dubbo</groupId>
-            <artifactId>dubbo</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>io.netty</groupId>
-            <artifactId>netty-all</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.curator</groupId>
-            <artifactId>curator-framework</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.curator</groupId>
-            <artifactId>curator-recipes</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.zookeeper</groupId>
-            <artifactId>zookeeper</artifactId>
-        </dependency>
-        <!-- dubbo 依赖 -->
+		<dependency>
+			<groupId>com.little.g</groupId>
+			<artifactId>priest-common</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.little.g</groupId>
+			<artifactId>priest-demo-api</artifactId>
+		</dependency>
+	</dependencies>
 
-        <dependency>
-            <groupId>com.little.g</groupId>
-            <artifactId>priest-common-web</artifactId>
-        </dependency>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<goals>
+							<goal>repackage</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
 
-        <dependency>
-            <groupId>com.little.g</groupId>
-            <artifactId>priest-demo-api</artifactId>
-        </dependency>
-
-
-
-
-    </dependencies>
-
-    <build>
-        <finalName>priest-demo-http</finalName>
-
-        <plugins>
-            <plugin>
-                <groupId>org.eclipse.jetty</groupId>
-                <artifactId>jetty-maven-plugin</artifactId>
-                <version>9.4.15.v20190215</version>
-
-                <configuration>
-                    <scanIntervalSeconds>10</scanIntervalSeconds>
-                    <stopKey>foo</stopKey>
-                    <stopPort>9999</stopPort>
-                    <httpConnector>
-                        <port>8080</port>
-                    </httpConnector>
-                </configuration>
-            </plugin>
-
-        </plugins>
-    </build>
 </project>
