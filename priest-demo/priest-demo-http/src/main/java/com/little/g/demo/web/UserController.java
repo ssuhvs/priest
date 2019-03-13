@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import javax.validation.Valid;
 
 /**
  * Created by lengligang on 2019/3/12.
@@ -17,6 +18,8 @@ import javax.annotation.Resource;
 public class UserController {
     @Resource
     private UserService userService;
+    @Resource
+    private MessageSourceUtil messageSourceUtil;
 
     @RequestMapping("/test")
     public ResultJson test(){
@@ -27,12 +30,15 @@ public class UserController {
         return r;
     }
     @RequestMapping("/add")
-    public ResultJson testAdd(){
+    public ResultJson testAdd(@Valid UserDTO user){
         ResultJson r=new ResultJson();
-        UserDTO user=new UserDTO();
-        user.setCreateTime(System.currentTimeMillis());
-        user.setAge(2);
-        userService.add(user);
+//        UserDTO user=new UserDTO();
+//        user.setCreateTime(System.currentTimeMillis());
+//        user.setAge(2);
+//        userService.add(user);
+
+        r.putD("test",messageSourceUtil.getMessage("test",null));
+
         return r;
     }
 

@@ -59,7 +59,7 @@
 
 		<dependency>
 			<groupId>com.little.g</groupId>
-			<artifactId>priest-common</artifactId>
+			<artifactId>priest-common-web</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>com.little.g</groupId>

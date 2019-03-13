@@ -12,9 +12,8 @@ import java.util.Set;
  */
 public class JSR303Util {
 
+
     private static Validator validator = Validation.buildDefaultValidatorFactory().getValidator();
-
-
     /**
      * API请求参数校验
      *

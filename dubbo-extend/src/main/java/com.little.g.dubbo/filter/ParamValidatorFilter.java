@@ -75,9 +75,6 @@ public class ParamValidatorFilter implements Filter {
                                             result = (String) method.invoke(annotation);
                                         }
 
-
-
-
                                         logger.error(String.format("方法[%s]第[%d]个参数遇到问题", methodName, idx));
 
                                         throw new RpcException(ResultJson.INVALID_PARAM, String.format("方法[%s]第[%d]个参数遇到问题", methodName, idx));

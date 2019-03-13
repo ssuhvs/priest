@@ -6,7 +6,7 @@ import java.io.Serializable;
 
 public class UserDTO implements Serializable {
     private Integer id;
-    @NotEmpty
+    @NotEmpty(message = "name{test}")
     @Size(max = 20)
     private String myName;
 

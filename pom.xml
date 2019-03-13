@@ -15,7 +15,11 @@
         <module>priest-demo</module>
         <module>priest-common</module>
         <module>priest-common-web</module>
+        <module>priest-generator</module>
+        <module>plugin-test</module>
     </modules>
+
+
     <properties>
         <failOnMissingWebXml>false</failOnMissingWebXml>
         <resource.delimiter>${}</resource.delimiter>
@@ -52,6 +56,7 @@
                 <priest.dubbo.zk.url>zookeeper://127.0.0.1:2181</priest.dubbo.zk.url>
             </properties>
         </profile>
+
 
 
         <profile>
@@ -318,7 +323,6 @@
     </dependencyManagement>
 
 
-
     <build>
         <resources>
             <resource>
@@ -331,6 +335,7 @@
                 <targetPath>conf</targetPath>
             </resource>
         </resources>
+
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -458,4 +463,5 @@
             </plugins>
         </pluginManagement>
     </build>
+
 </project>
