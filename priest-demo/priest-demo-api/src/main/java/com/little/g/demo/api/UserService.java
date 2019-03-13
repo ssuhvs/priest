@@ -2,7 +2,6 @@ package com.little.g.demo.api;
 
 import com.little.g.common.dto.ListResultDTO;
 import com.little.g.common.params.TimeQueryParam;
-import com.little.g.common.validate.BeanValid;
 import com.little.g.demo.dto.UserDTO;
 
 import javax.validation.Valid;

@@ -51,20 +51,32 @@ public class ParamValidatorFilter implements Filter {
                                     if("javax.validation.Valid".equals(simpleName)){
                                         error = JSR303Util.validateParams(arg);
                                     }else {
-                                        error = JSR303Util.validateParams(arg, annotation.getClass());
+                                        try {
+                                            error = JSR303Util.validateParams(arg, annotation.getClass());
+                                        }catch (IllegalArgumentException e){
+                                            error=e.getMessage();
+                                        }
+
                                     }
                                     boolean flag= StringUtils.isEmpty(error);
 
                                     logger.debug(String.format("访问注解[%s] 方法[%s] 验证结果[%s]", annotation, methodName, error));
 
                                     if (!flag) {
-                                        Method method = annotation.getClass().getDeclaredMethod("message");
 
-                                        logger.debug("调用annotation:{}方法:{}", annotation, method);
+                                        String result;
+                                        if("javax.validation.Valid".equals(simpleName)){
+                                            result=error;
+                                        }else {
+                                            Method method = annotation.getClass().getDeclaredMethod("message");
 
-                                        Object result = method.invoke(annotation);
+                                            logger.debug("调用annotation:{}方法:{}", annotation, method);
 
-                                        String code = (String) result;
+                                            result = (String) method.invoke(annotation);
+                                        }
+
+
+
 
                                         logger.error(String.format("方法[%s]第[%d]个参数遇到问题", methodName, idx));
 
@@ -80,6 +92,9 @@ public class ParamValidatorFilter implements Filter {
                 }
 
         } catch (Exception e) {
+            if(e instanceof  RpcException){
+                throw new RpcException(e);
+            }
             logger.error(e.getMessage(), e);
         }
 

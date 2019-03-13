@@ -35,4 +35,11 @@ public class UserController {
         userService.add(user);
         return r;
     }
+
+    @RequestMapping("/del")
+    public ResultJson testDel(){
+        ResultJson r=new ResultJson();
+        userService.delete(null);
+        return r;
+    }
 }
