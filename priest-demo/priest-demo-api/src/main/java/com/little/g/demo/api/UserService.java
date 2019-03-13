@@ -5,6 +5,7 @@ import com.little.g.common.params.TimeQueryParam;
 import com.little.g.common.validate.BeanValid;
 import com.little.g.demo.dto.UserDTO;
 
+import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 
 /**
@@ -16,7 +17,7 @@ public interface UserService {
      * @param entity
      * @return
      */
-    boolean add(@BeanValid(type = UserDTO.class) UserDTO entity);
+    boolean add(@Valid UserDTO entity);
 
     /**
      * 根据id获取
@@ -30,7 +31,7 @@ public interface UserService {
      * @param entity
      * @return
      */
-    boolean update(@BeanValid(type = UserDTO.class) UserDTO entity);
+    boolean update(@Valid UserDTO entity);
 
     /**
      * 删除

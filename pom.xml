@@ -11,6 +11,7 @@
     <name>priest</name>
     <url>http://maven.apache.org</url>
     <modules>
+        <module>dubbo-extend</module>
         <module>priest-demo</module>
         <module>priest-common</module>
         <module>priest-common-web</module>
@@ -136,6 +137,12 @@
             <dependency>
                 <groupId>com.little.g</groupId>
                 <artifactId>priest-common</artifactId>
+                <version>0.0.1-SNAPSHOT</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.little.g</groupId>
+                <artifactId>dubbo-extend</artifactId>
                 <version>0.0.1-SNAPSHOT</version>
             </dependency>
 

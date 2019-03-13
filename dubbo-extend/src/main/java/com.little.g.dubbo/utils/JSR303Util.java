@@ -23,7 +23,6 @@ public class JSR303Util {
      * @return
      */
     public static <T> String validateParams(T requestParams) {
-
         return validateParams(requestParams,null);
     }
 
@@ -38,7 +37,12 @@ public class JSR303Util {
 
         StringBuilder sb = new StringBuilder();
 
-        Set<ConstraintViolation<T>> constraintViolations = validator.validate(requestParams,groups);
+        Set<ConstraintViolation<T>> constraintViolations =null;
+        if(groups == null) {
+            constraintViolations=validator.validate(requestParams);
+        }else {
+            constraintViolations=validator.validate(requestParams,groups);
+        }
         for (ConstraintViolation<T> constraintViolation : constraintViolations) {
             sb.append(constraintViolation.getPropertyPath()).append(constraintViolation.getMessage()).append("|");
         }
@@ -52,7 +56,7 @@ public class JSR303Util {
     }
 
     public static void main(String[] args) {
-        String r=validateParams(null, NotBlank.class);
+        String r=validateParams("xxxx", NotBlank.class);
         System.out.print(r);
     }
 }

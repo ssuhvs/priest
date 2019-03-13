@@ -1,5 +1,6 @@
 package com.little.g.dubbo.filter;
 
+import com.little.g.common.ResultJson;
 import com.little.g.dubbo.utils.JSR303Util;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.dubbo.common.Constants;
@@ -45,25 +46,29 @@ public class ParamValidatorFilter implements Filter {
                     if (annos != null && annos.length > 0) {
                         for (Annotation annotation : annos) {
                             String simpleName = annotation.annotationType().getName();
+                            String error=null;
+                                if (simpleName.indexOf("javax.validation")>=0) {
+                                    if("javax.validation.Valid".equals(simpleName)){
+                                        error = JSR303Util.validateParams(arg);
+                                    }else {
+                                        error = JSR303Util.validateParams(arg, annotation.getClass());
+                                    }
+                                    boolean flag= StringUtils.isEmpty(error);
 
-                                if (simpleName.indexOf("javax.validation")>0) {
-
-                                    boolean flag= StringUtils.isEmpty(JSR303Util.validateParams(arg,annotation.getClass()));
-
-                                    logger.debug(String.format("访问注解[%s] 方法[%s] 验证结果[%s]", annotation, methodName, flag));
+                                    logger.debug(String.format("访问注解[%s] 方法[%s] 验证结果[%s]", annotation, methodName, error));
 
                                     if (!flag) {
-                                        Method method = annotation.getClass().getDeclaredMethod("code");
+                                        Method method = annotation.getClass().getDeclaredMethod("message");
 
                                         logger.debug("调用annotation:{}方法:{}", annotation, method);
 
                                         Object result = method.invoke(annotation);
 
-                                        int code = (Integer) result;
+                                        String code = (String) result;
 
                                         logger.error(String.format("方法[%s]第[%d]个参数遇到问题", methodName, idx));
 
-                                        throw new RpcException(code, String.format("方法[%s]第[%d]个参数遇到问题", methodName, idx));
+                                        throw new RpcException(ResultJson.INVALID_PARAM, String.format("方法[%s]第[%d]个参数遇到问题", methodName, idx));
                                     }
                                 } else {
                                     logger.warn("plz config validator in validator-config.xml!");
@@ -74,7 +79,7 @@ public class ParamValidatorFilter implements Filter {
                     idx++;
                 }
 
-        } catch (NoSuchMethodException | InvocationTargetException | IllegalAccessException e) {
+        } catch (Exception e) {
             logger.error(e.getMessage(), e);
         }
 
