@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<generatorConfiguration>
+    <!--全局属性-->
+    <properties>
+        <property name="servicePackage" value="com.little.g.test" />
+        <property name="author" value="lengligang" />
+    </properties>
+    <!--全局属性-->
+    <generateFile packagePath="/com/little/g/test" templateName="Service.tpl" fileName="TestService.java">
+        <property name="topLevel" value="com.little.g" />
+        <property name="tablecomment" value="这是测试" />
+        <property name="classObjectName" value="哈哈" />
+        <property name="className" value="className" />
+    </generateFile>
+
+</generatorConfiguration>

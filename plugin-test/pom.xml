@@ -24,7 +24,7 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.11</version>
+            <version>4.12</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -34,7 +34,6 @@
             <plugin>
                 <groupId>com.little.g</groupId>
                 <artifactId>generator-maven-plugin</artifactId>
-                <version>0.0.1-SNAPSHOT</version>
             </plugin>
         </plugins>
     </build>

@@ -26,4 +26,18 @@
         </dependency>
 
     </dependencies>
+
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>com.little.g</groupId>
+                <artifactId>generator-maven-plugin</artifactId>
+                <configuration>
+                    <packagePath>/com/little/g/demo</packagePath>
+                    <configurationFile>${project.basedir}/src/main/conf/GenerateConfig.xml</configurationFile>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>

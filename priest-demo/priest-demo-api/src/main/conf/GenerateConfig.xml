@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<generatorConfiguration>
+    <!--全局属性-->
+    <properties>
+        <property name="packageName" value="com.little.g.demo" />
+        <property name="author" value="lengligang" />
+    </properties>
+    <!--全局属性-->
+    <generateFile packagePath="/com/little/g/demo/api" templateName="Service.tpl" fileName="OrderService.java">
+        <property name="entityName" value="Order" />
+    </generateFile>
+
+    <copyClass class="com.little.g.common.web.model.User"  dest="/com/little/g/demo/dto/UserDTO"  />
+
+
+</generatorConfiguration>

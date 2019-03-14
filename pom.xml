@@ -460,6 +460,16 @@
 
                     </dependencies>
                 </plugin>
+
+                <plugin>
+                    <groupId>com.little.g</groupId>
+                    <artifactId>generator-maven-plugin</artifactId>
+                    <version>0.0.1-SNAPSHOT</version>
+                    <configuration>
+                        <configurationFile>${project.basedir}/src/main/conf/GenerateConfig.xml</configurationFile>
+                        <overwrite>false</overwrite>
+                    </configuration>
+                </plugin>
             </plugins>
         </pluginManagement>
     </build>
