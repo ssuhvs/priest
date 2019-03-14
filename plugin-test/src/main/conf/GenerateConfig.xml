@@ -1,4 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration[
+        <!ELEMENT generatorConfiguration (properties,generateFile+) >
+        <!ELEMENT properties (property*) >
+        <!ELEMENT property  EMPTY>
+        <!ELEMENT generateFile (property*)>
+        <!ATTLIST property
+                name    CDATA #REQUIRED
+                value   CDATA #REQUIRED >
+        <!ATTLIST generateFile
+                packagePath    CDATA #IMPLIED
+                templateName   CDATA #REQUIRED
+                fileName   CDATA #REQUIRED>]>
+
 <generatorConfiguration>
     <!--全局属性-->
     <properties>
