@@ -42,19 +42,19 @@
             <property name="forceBigDecimals" value="false" />
         </javaTypeResolver>
 
-        <javaModelGenerator targetPackage="com.little.g.common.web.model"
+        <javaModelGenerator targetPackage="com.little.g.demo.model"
                             targetProject="${project.basedir}/src/main/java">
             <property name="enableSubPackages" value="true" />
             <property name="trimStrings" value="true" />
         </javaModelGenerator>
 
-        <sqlMapGenerator targetPackage="com.little.g.common.web.mapper"
+        <sqlMapGenerator targetPackage="com.little.g.demo.mapper"
                          targetProject="${project.basedir}/src/main/resources">
             <property name="enableSubPackages" value="true" />
         </sqlMapGenerator>
 
         <javaClientGenerator type="XMLMAPPER"
-                             targetPackage="com.little.g.common.web.mapper" targetProject="${project.basedir}/src/main/java">
+                             targetPackage="com.little.g.demo.mapper" targetProject="${project.basedir}/src/main/java">
             <property name="enableSubPackages" value="true" />
         </javaClientGenerator>
         <!-- table example

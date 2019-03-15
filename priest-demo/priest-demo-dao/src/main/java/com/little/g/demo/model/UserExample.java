@@ -1,4 +1,4 @@
-package com.little.g.common.web.model;
+package com.little.g.demo.model;
 
 import java.util.ArrayList;
 import java.util.List;

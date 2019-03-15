@@ -1,7 +1,7 @@
 package com.little.g.common.web;
 
-import com.little.g.common.web.mapper.UserMapper;
-import com.little.g.common.web.model.User;
+import com.little.g.demo.mapper.UserMapper;
+import com.little.g.demo.model.User;
 import org.junit.Assert;
 import org.junit.Test;
 
