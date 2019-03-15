@@ -44,7 +44,14 @@
 ### 项目编译
 
 1. 进入项目根目录
-2. `mvn clean install -Pdevelop`
+2. 打开项目 priest-demo/priest-demo-dao/src/main/resources/demo.sql 建立创建测试数据库及表
+3. 修改 priest/priest-demo/priest-demo-dao/pom.xml develop profile 关于jdbc的配置见下图
+
+	![](wiki_images/pom_mysql_conf.png)
+	
+
+2. 进入项目根目录
+3. `mvn clean install -Pdevelop`
 
 
 ### 关键配置
