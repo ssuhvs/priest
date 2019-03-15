@@ -8,7 +8,7 @@
     <dubbo:application name="com.little.g.demo.web" logger="slf4j"/>
 
     <dubbo:protocol name="dubbo"/>
-    <dubbo:registry address="zookeeper://127.0.0.1:2181"/>
+    <dubbo:registry address="${zookeeper.url}"/>
 
 
     <dubbo:reference id="userService" interface="com.little.g.demo.api.UserService" />

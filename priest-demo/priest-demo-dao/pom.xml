@@ -28,9 +28,9 @@
             <properties>
                 <!-- 数据库 -->
                 <priest.jdbc.driver>com.mysql.jdbc.Driver</priest.jdbc.driver>
-                <priest.jdbc.url>jdbc:mysql://192.168.0.195:3306/bat?useUnicode=true&amp;characterEncoding=utf-8</priest.jdbc.url>
-                <priest.jdbc.username>bat</priest.jdbc.username>
-                <priest.jdbc.password>bat</priest.jdbc.password>
+                <priest.jdbc.url>jdbc:mysql://192.168.2.101:3306/little_g?useUnicode=true&amp;characterEncoding=UTF-8&amp;autoReconnect=true</priest.jdbc.url>
+                <priest.jdbc.username>priest</priest.jdbc.username>
+                <priest.jdbc.password>priest</priest.jdbc.password>
             </properties>
         </profile>
 
@@ -42,14 +42,11 @@
                 <activeByDefault>false</activeByDefault>
             </activation>
             <properties>
-                <!--是否使用线上环境下发短信-->
-                <priest.env.sms.online>true</priest.env.sms.online>
-
                 <!-- 数据库 -->
                 <priest.jdbc.driver>com.mysql.jdbc.Driver</priest.jdbc.driver>
-                <priest.jdbc.url>jdbc:mysql://rm-bp197bn9vh8gl4edl.mysql.rds.aliyuncs.com:3306/popo</priest.jdbc.url>
-                <priest.jdbc.username>root1</priest.jdbc.username>
-                <priest.jdbc.password>Bat@123456</priest.jdbc.password>
+                <priest.jdbc.url>jdbc:mysql://192.168.2.101:3306/little_g?useUnicode=true&amp;characterEncoding=UTF-8&amp;autoReconnect=true</priest.jdbc.url>
+                <priest.jdbc.username>priest</priest.jdbc.username>
+                <priest.jdbc.password>priest</priest.jdbc.password>
             </properties>
         </profile>
     </profiles>

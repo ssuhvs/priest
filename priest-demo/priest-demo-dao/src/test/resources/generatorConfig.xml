@@ -5,7 +5,7 @@
 
 <generatorConfiguration>
 
-    <properties resource="jdbc.properties"/>
+    <properties url="file://${project.basedir}/target/classes/jdbc.properties"/>
 
     <!--<context id="Mysql" targetRuntime="MyBatis3Simple" defaultModelType="flat">-->
 
