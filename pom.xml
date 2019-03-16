@@ -39,15 +39,6 @@
                 <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
-            
-                <priest.c3p0.acquireIncrement>2</priest.c3p0.acquireIncrement>
-                <priest.c3p0.idleConnectionTestPeriod>50</priest.c3p0.idleConnectionTestPeriod>
-                <priest.c3p0.initialPoolSize>5</priest.c3p0.initialPoolSize>
-                <priest.c3p0.maxIdleTime>90</priest.c3p0.maxIdleTime>
-                <priest.c3p0.maxPoolSize>20</priest.c3p0.maxPoolSize>
-                <priest.c3p0.minPoolSize>5</priest.c3p0.minPoolSize>
-
-
                 <!-- 日志 -->
                 <priest.log.level>DEBUG</priest.log.level>
                 <priest.log.path>/data/logs</priest.log.path>
@@ -67,13 +58,6 @@
             </activation>
 
             <properties>
-                <priest.c3p0.acquireIncrement>2</priest.c3p0.acquireIncrement>
-                <priest.c3p0.idleConnectionTestPeriod>50</priest.c3p0.idleConnectionTestPeriod>
-                <priest.c3p0.initialPoolSize>5</priest.c3p0.initialPoolSize>
-                <priest.c3p0.maxIdleTime>90</priest.c3p0.maxIdleTime>
-                <priest.c3p0.maxPoolSize>20</priest.c3p0.maxPoolSize>
-                <priest.c3p0.minPoolSize>5</priest.c3p0.minPoolSize>
-
 
                 <!-- 日志 -->
                 <priest.log.level>DEBUG</priest.log.level>
