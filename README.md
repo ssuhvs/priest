@@ -149,7 +149,7 @@ CREATE TABLE `order` (
 
 	`<dubbo:service interface="com.little.g.demo.api.OrderService" ref="orderService"/>`
 
-4. 关于generator 插件的详细配置和文档可参见
+4. 关于generator 插件的详细配置和文档可参见 [priest generator](https://github.com/G-little/priest/tree/master/priest-generator)
 
 
 #### http 生成
@@ -170,7 +170,7 @@ CREATE TABLE `order` (
 
 	`<dubbo:reference id="orderService" interface="com.little.g.demo.api.OrderService" />`
 
-4. 关于generator 插件的详细配置和文档可参见
+4. 关于generator 插件的详细配置和文档可参见 [priest generator](https://github.com/G-little/priest/tree/master/priest-generator)
 
 
 #### 最后项目重新编译运行，新开发的接口就可以测试了
