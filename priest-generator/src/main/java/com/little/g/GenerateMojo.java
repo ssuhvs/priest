@@ -56,7 +56,9 @@ public class GenerateMojo
      */
     @Parameter(required = true)
     private  File configurationFile;
-
+    /**
+     * @parameter alias="overwrite"
+     */
     @Parameter
     private boolean overwrite;
 
