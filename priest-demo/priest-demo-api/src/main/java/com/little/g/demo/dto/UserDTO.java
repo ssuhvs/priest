@@ -1,13 +1,11 @@
 package com.little.g.demo.dto;
 
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 
 public class UserDTO implements Serializable {
     private Integer id;
-    @NotEmpty(message = "name{test}")
-    @Size(max = 20)
+    @Size(max = 20,message = "myName{test}")
     private String myName;
 
     private Integer age;

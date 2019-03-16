@@ -1,10 +1,10 @@
-package com.little.g.demo.web;
+package ${packageName}.web;
 
 import com.little.g.common.ResultJson;
 import com.little.g.common.dto.ListResultDTO;
 import com.little.g.common.params.TimeQueryParam;
-import com.little.g.demo.api.UserService;
-import com.little.g.demo.dto.UserDTO;
+import ${packageName}.api.${entityName}Service;
+import ${packageName}.dto.${entityName}DTO;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -14,19 +14,19 @@ import javax.annotation.Resource;
 import javax.validation.Valid;
 
 /**
- * Created by lengligang on 2019/3/12.
- */
-@RequestMapping("/user")
+* Created by ${author} on 2019/3/12.
+*/
+@RequestMapping("/${entityName?uncap_first}")
 @RestController
-public class UserController {
+public class ${entityName}Controller {
     @Resource
-    private UserService userService;
+    private ${entityName}Service ${entityName?uncap_first}Service;
 
     @RequestMapping(value = "/add",method = RequestMethod.POST)
-    public ResultJson add(@Valid UserDTO params){
+    public ResultJson add(@Valid ${entityName}DTO params){
         ResultJson r=new ResultJson();
 
-        if(userService.add(params)){
+        if(${entityName?uncap_first}Service.add(params)){
             return r;
         }
         r.setC(ResultJson.SYSTEM_UNKNOWN_EXCEPTION);
@@ -36,7 +36,7 @@ public class UserController {
     @RequestMapping(value = "/del",method = RequestMethod.GET)
     public ResultJson del(@RequestParam Integer id){
         ResultJson r=new ResultJson();
-        if(userService.delete(id)){
+        if(${entityName?uncap_first}Service.delete(id)){
             return r;
         }
         r.setC(ResultJson.SYSTEM_UNKNOWN_EXCEPTION);
@@ -44,9 +44,9 @@ public class UserController {
     }
 
     @RequestMapping(value = "/update",method = RequestMethod.POST)
-    public ResultJson update(@Valid UserDTO params){
+    public ResultJson update(@Valid ${entityName}DTO params){
         ResultJson r=new ResultJson();
-        if(userService.update(params)){
+        if(${entityName?uncap_first}Service.update(params)){
             return r;
         }
         r.setC(ResultJson.SYSTEM_UNKNOWN_EXCEPTION);
@@ -57,7 +57,7 @@ public class UserController {
     @RequestMapping(value = "/list",method = RequestMethod.GET)
     public ResultJson list(@Valid TimeQueryParam params){
         ResultJson r=new ResultJson();
-        ListResultDTO<UserDTO> list= userService.list(params);
+        ListResultDTO<${entityName}DTO> list= ${entityName?uncap_first}Service.list(params);
         r.setData(list);
         return r;
     }

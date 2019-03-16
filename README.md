@@ -78,22 +78,101 @@
 
   `curl http://127.0.0.1:8888/user/test`
 
- 
 
-
-
-
-### 关键配置
 
 ### 开发流程
 
+#### 数据库建表
+本例以order表为例子建表语句如下:
+
+```sql
+	
+CREATE TABLE `order` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `uid` int(11) DEFAULT NULL COMMENT '用户ID',
+  `money` bigint(15) DEFAULT NULL COMMENT '金额',
+  `create_time` bigint(15) DEFAULT NULL COMMENT '创建时间',
+  `status` tinyint(4) DEFAULT NULL COMMENT '状态',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+	
+```
+
+
 #### dao 生成
+
+1. 打开priest-demo/priest-demo-dao/src/test/resources/generatorConfig.xml追加如下配置
+
+```
+<table tableName="order">
+        <generatedKey column="id"  sqlStatement="JDBC"/>
+</table>     
+```
+
+2.  调用priest-demo-dao的 mybatis-generator插件的  mybatis-generator:generate 任务,执行结果如下:
+![](wiki_images/mybatis_generate_log.png) 
+
+3. 关于mybatis-generator的详细配置和文档可参见 [MyBatis Generator](http://www.mybatis.org/generator/index.html)
 
 #### api 生成
 
+1. 拷贝 `com.little.g.demo.model.Order` 至 priest-demo-api 项目的 `com.little.g.demo.api.dto` 重命名为 OrderDTO
+2. 打开priest-demo/priest-demo-api/src/main/conf/GenerateConfig.xml 追加如下配置
+
+```
+<generateFile packagePath="/com/little/g/demo/api" templateName="Service.tpl" fileName="OrderService.java">
+        <property name="entityName" value="Order" />
+</generateFile>
+
+```
+
+3.  调用priest-demo-api的 generator插件的 generator:generate 任务,执行结果如下:
+![](wiki_images/generator_generate_log.png) 
+
+4. 关于generator 插件的详细配置和文档可参见
+
 #### service 生成
 
+1. 打开priest-demo/priest-demo-service/src/main/conf/GenerateConfig.xml 追加如下配置
+
+```
+<generateFile packagePath="/com/little/g/demo/service" templateName="ServiceImpl.tpl" fileName="OrderServiceImpl.java">
+        <property name="entityName" value="Order" />
+</generateFile>
+
+```
+
+2.  调用priest-demo-service的 generator插件的 generator:generate 任务,执行结果如下:
+![](wiki_images/service_generate.png) 
+
+3. priest-demo-service dubbo-config.xml 追加dubbo service 接口暴露
+
+	`<dubbo:service interface="com.little.g.demo.api.OrderService" ref="orderService"/>`
+
+4. 关于generator 插件的详细配置和文档可参见
+
+
 #### http 生成
+
+1. 打开priest-demo/priest-demo-http/src/main/conf/GenerateConfig.xml 追加如下配置
+
+```
+<generateFile packagePath="/com/little/g/demo/web" templateName="Controller.tpl" fileName="OrderController.java">
+        <property name="entityName" value="Order" />
+</generateFile>
+
+```
+
+2.  调用priest-demo-http的 generator插件的 generator:generate 任务,执行结果如下:
+![](wiki_images/controller_generate.png) 
+
+3. priest-demo-http dubbo-consume.xml 追加dubbo service 引用
+
+	`<dubbo:reference id="orderService" interface="com.little.g.demo.api.OrderService" />`
+
+4. 关于generator 插件的详细配置和文档可参见
+
+
 
 
 

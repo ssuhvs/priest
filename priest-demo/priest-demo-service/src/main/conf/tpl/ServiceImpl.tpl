@@ -61,7 +61,7 @@ public class ${entityName}ServiceImpl implements ${entityName}Service {
             ${entityName}Example example = new ${entityName}Example();
             example.or().andCreateTimeLessThan(param.getLast());
             example.setOrderByClause(String.format("create_time desc limit %d",result.getLimit()));
-            List<${entityName}> list= ${entityName}Mapper.selectByExample(example);
+            List<${entityName}> list= ${entityName?uncap_first}Mapper.selectByExample(example);
             if(CollectionUtils.isEmpty(list)){
                 return result;
             }
