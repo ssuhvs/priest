@@ -66,8 +66,8 @@
  
 2. http 启动
 	
- 1. 进入priest-demo/priest-demo-http 项目目录 
- 2. 执行 `mvn spring-boot:run`  ，观察控制台日志输出，出现如下日志，便是启动成功了。
+   * 进入priest-demo/priest-demo-http 项目目录 
+   * 执行 `mvn spring-boot:run`  ，观察控制台日志输出，出现如下日志，便是启动成功了。
 
 	![](wiki_images/tomcat_start_log.png) 
 
