@@ -44,6 +44,8 @@
 ### 项目依赖
 1. mysql 数据库
 2. zookeeper 注册服务
+3. maven
+4. jdk 1.8+
 
 ### 项目编译
 
@@ -71,6 +73,10 @@
    * 执行 `mvn spring-boot:run`  ，观察控制台日志输出，出现如下日志，便是启动成功了。
 
 	![](wiki_images/tomcat_start_log.png) 
+
+3. 接口访问测试
+
+  `curl http://127.0.0.1:8888/user/test`
 
  
 
