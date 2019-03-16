@@ -19,7 +19,7 @@
         <property name="packageName" value="com.little.g.demo" />
         <property name="author" value="lengligang" />
     </properties>
-    <!--全局属性-->
+    <!--文件生成配置-->
     <generateFile packagePath="/com/little/g/demo/service" templateName="ServiceImpl.tpl" fileName="OrderServiceImpl.java">
         <property name="entityName" value="Order" />
     </generateFile>
