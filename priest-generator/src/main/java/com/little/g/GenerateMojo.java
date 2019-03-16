@@ -49,17 +49,15 @@ public class GenerateMojo
     @Parameter(defaultValue = "/src/main/conf")
     private String config;
 
-    @Parameter(defaultValue = "/tpl")
+    @Parameter(alias = "tplPath",defaultValue = "/tpl")
     private String tplPath;
     /**
      *
      */
     @Parameter(required = true)
     private  File configurationFile;
-    /**
-     * @parameter alias="overwrite"
-     */
-    @Parameter
+
+    @Parameter(alias = "overwrite")
     private boolean overwrite;
 
 
