@@ -1,4 +1,4 @@
-package com.little.g.common.web;
+package com.little.g.demo;
 
 import org.apache.dubbo.container.Main;
 

@@ -5,7 +5,7 @@
 ## 前言
 
 
-   `priest`项目是一个以 **incubator-dubbo** - **Spring Boot** - **Mybatis3** 为基础的SOA开源开发框架。
+   `priest`项目是一个以 **incubator-dubbo** - **Spring Boot** - **Mybatis3** 为基础的SOA开源开发框架
    
 ## 项目介绍
    
@@ -40,18 +40,40 @@
 ##Getting Started
 -------
 
+### 项目依赖
+1. mysql 数据库
+2. zookeeper 注册服务
 
 ### 项目编译
 
 1. 进入项目根目录
 2. 打开项目 priest-demo/priest-demo-dao/src/main/resources/demo.sql 建立创建测试数据库及表
-3. 修改 priest/priest-demo/priest-demo-dao/pom.xml develop profile 关于jdbc的配置见下图
-
+3. 修改 priest-demo/priest-demo-dao/pom.xml develop profile 关于jdbc的配置见下图
+	
 	![](wiki_images/pom_mysql_conf.png)
 	
+4. 修改 根目录pom.xml develop profile 关于zookeeper配置见下图  
+	![](wiki_images/pom_zookeeper_conf.png) 
+	
+5. 进入项目根目录
+6. `mvn clean install -Pdevelop`
 
-2. 进入项目根目录
-3. `mvn clean install -Pdevelop`
+### 项目运行
+
+1. dubbo service 启动
+
+ 运行  `priest-demo/priest-demo-service/src/test/java/com/little/g/demo/TestDubbo.java main`
+ 
+2. http 启动
+	
+ 1. 进入priest-demo/priest-demo-http 项目目录 
+ 2. 执行 `mvn spring-boot:run`  ，观察控制台日志输出，出现如下日志，便是启动成功了。
+
+	![](wiki_images/tomcat_start_log.png) 
+
+ 
+
+
 
 
 ### 关键配置
