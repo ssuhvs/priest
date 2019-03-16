@@ -173,6 +173,17 @@ CREATE TABLE `order` (
 4. 关于generator 插件的详细配置和文档可参见 [priest generator](https://github.com/G-little/priest/tree/master/priest-generator)
 
 
+#### 批量生成脚本
+
+您也可以在配置完成后，直接执行批量生成脚本，完成上述所有步骤
+脚本位于 priest-demo 根目录
+
+```shell
+
+	sh	code_generate.sh
+	
+```
+
 #### 最后项目重新编译运行，新开发的接口就可以测试了
 
 
