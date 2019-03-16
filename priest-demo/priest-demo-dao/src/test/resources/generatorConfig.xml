@@ -65,11 +65,18 @@
                    enableDeleteByPrimaryKey="true"  >
                 <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
             </table>
-        -->
 
         <table tableName="user">
             <generatedKey column="id"  sqlStatement="JDBC"/>
         </table>
+        -->
+
+
+        <table tableName="order" delimitIdentifiers="true" >
+            <generatedKey column="id"  sqlStatement="JDBC" />
+        </table>
+
+
 
     </context>
 </generatorConfiguration>

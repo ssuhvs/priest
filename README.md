@@ -104,8 +104,8 @@ CREATE TABLE `order` (
 1. 打开priest-demo/priest-demo-dao/src/test/resources/generatorConfig.xml追加如下配置
 
 ```
-<table tableName="order">
-        <generatedKey column="id"  sqlStatement="JDBC"/>
+<table tableName="order" delimitIdentifiers="true" >
+            <generatedKey column="id"  sqlStatement="JDBC" />
 </table>     
 ```
 
