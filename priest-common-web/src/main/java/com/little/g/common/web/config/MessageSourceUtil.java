@@ -1,4 +1,4 @@
-package com.little.g.demo.web;
+package com.little.g.common.web.config;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,7 +12,6 @@ import java.util.Locale;
 /**
  * Created by lengligang on 2019/3/13.
  */
-@Component
 public class MessageSourceUtil {
 
     private static final Logger log = LoggerFactory.getLogger(MessageSourceUtil.class);
