@@ -10,7 +10,7 @@
 	<groupId>com.little.g.user</groupId>
 	<artifactId>priest-user-http</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 	<name>priest-user-http</name>
 	<description>Demo project for Spring Boot</description>
 
@@ -33,19 +33,6 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-security</artifactId>
-		</dependency>
-
-
-
-		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-oauth2</artifactId>
-			<version>RELEASE</version>
 		</dependency>
 
 		<dependency>
@@ -76,7 +63,7 @@
 		</dependency>
 		<dependency>
 			<groupId>com.little.g</groupId>
-			<artifactId>priest-demo-api</artifactId>
+			<artifactId>priest-user-api</artifactId>
 		</dependency>
 
 		<dependency>

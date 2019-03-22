@@ -1,7 +1,7 @@
-package com.little.g.demo.mapper;
+package com.little.g.user.mapper;
 
-import com.little.g.demo.model.User;
-import com.little.g.demo.model.UserExample;
+import com.little.g.user.model.User;
+import com.little.g.user.model.UserExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
@@ -10,7 +10,7 @@ public interface UserMapper {
 
     int deleteByExample(UserExample example);
 
-    int deleteByPrimaryKey(Integer id);
+    int deleteByPrimaryKey(Long uid);
 
     int insert(User record);
 
@@ -18,7 +18,7 @@ public interface UserMapper {
 
     List<User> selectByExample(UserExample example);
 
-    User selectByPrimaryKey(Integer id);
+    User selectByPrimaryKey(Long uid);
 
     int updateByExampleSelective(@Param("record") User record, @Param("example") UserExample example);
 

@@ -1,42 +1,74 @@
-package com.little.g.demo.model;
+package com.little.g.user.model;
 
 import java.io.Serializable;
 
 public class User implements Serializable {
-    private Integer id;
+    private Long uid;
 
-    private String myName;
+    private String avatar;
 
-    private Integer age;
+    private String name;
+
+    private Byte gender;
+
+    private Long birthday;
+
+    private Byte status;
 
     private String mobile;
 
     private Long createTime;
 
+    private Long updateTime;
+
     private static final long serialVersionUID = 1L;
 
-    public Integer getId() {
-        return id;
+    public Long getUid() {
+        return uid;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setUid(Long uid) {
+        this.uid = uid;
     }
 
-    public String getMyName() {
-        return myName;
+    public String getAvatar() {
+        return avatar;
     }
 
-    public void setMyName(String myName) {
-        this.myName = myName == null ? null : myName.trim();
+    public void setAvatar(String avatar) {
+        this.avatar = avatar == null ? null : avatar.trim();
     }
 
-    public Integer getAge() {
-        return age;
+    public String getName() {
+        return name;
     }
 
-    public void setAge(Integer age) {
-        this.age = age;
+    public void setName(String name) {
+        this.name = name == null ? null : name.trim();
+    }
+
+    public Byte getGender() {
+        return gender;
+    }
+
+    public void setGender(Byte gender) {
+        this.gender = gender;
+    }
+
+    public Long getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(Long birthday) {
+        this.birthday = birthday;
+    }
+
+    public Byte getStatus() {
+        return status;
+    }
+
+    public void setStatus(Byte status) {
+        this.status = status;
     }
 
     public String getMobile() {
@@ -53,5 +85,13 @@ public class User implements Serializable {
 
     public void setCreateTime(Long createTime) {
         this.createTime = createTime;
+    }
+
+    public Long getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(Long updateTime) {
+        this.updateTime = updateTime;
     }
 }
