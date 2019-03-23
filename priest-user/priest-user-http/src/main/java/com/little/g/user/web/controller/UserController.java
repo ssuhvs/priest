@@ -38,7 +38,8 @@ public class UserController {
         String countryCode=mobileSendParams.getCountryCode();
         String mobile=mobileSendParams.getMobile();
         String deviceId=mobileSendParams.getDeviceId();
-
+        Integer smsType=mobileSendParams.getSmsType();
+        Integer interType=mobileSendParams.getInterfaceType();
 
         String originalCode = mobileSendParams.getCode();
         Long ct = mobileSendParams.getCt();
@@ -51,10 +52,7 @@ public class UserController {
             return result;
         }
 
-
-
-
-        return sendSms(smsService);
+        return smsService.sendSms(countryCode, mobile, deviceId, smsType, interType);
     }
 
 }
