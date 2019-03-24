@@ -1,4 +1,4 @@
-package com.little.g.demo;
+package com.little.g.user;
 
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
