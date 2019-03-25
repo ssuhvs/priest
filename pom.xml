@@ -45,6 +45,8 @@
                 <!--打包编码 -->
                 <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
                 <priest.dubbo.zk.url>zookeeper://127.0.0.1:2181</priest.dubbo.zk.url>
+                <priest.redis.nodes>127.0.0.1:6379</priest.redis.nodes>
+                <priest.redis.password>123456</priest.redis.password>
             </properties>
         </profile>
 
