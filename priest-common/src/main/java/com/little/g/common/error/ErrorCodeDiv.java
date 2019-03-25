@@ -13,6 +13,7 @@ public class ErrorCodeDiv {
      * DEMO相关错误码
      */
     public static  CodeBorder DEMO = new CodeBorder(20000,25000);
+    public static  CodeBorder USER = new CodeBorder(30000,35000);
 
     public static class CodeBorder{
 

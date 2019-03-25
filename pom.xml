@@ -45,6 +45,8 @@
                 <!--打包编码 -->
                 <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
                 <priest.dubbo.zk.url>zookeeper://127.0.0.1:2181</priest.dubbo.zk.url>
+                <priest.redis.nodes>127.0.0.1:6379</priest.redis.nodes>
+                <priest.redis.password>123456</priest.redis.password>
             </properties>
         </profile>
 
@@ -126,6 +128,18 @@
             <dependency>
                 <groupId>com.little.g</groupId>
                 <artifactId>priest-common</artifactId>
+                <version>0.0.1-SNAPSHOT</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.little.g</groupId>
+                <artifactId>priest-user-api</artifactId>
+                <version>0.0.1-SNAPSHOT</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.little.g</groupId>
+                <artifactId>priest-user-dao</artifactId>
                 <version>0.0.1-SNAPSHOT</version>
             </dependency>
 
@@ -302,6 +316,12 @@
                 <groupId>com.alibaba</groupId>
                 <artifactId>druid</artifactId>
                 <version>1.1.10</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.googlecode.libphonenumber</groupId>
+                <artifactId>libphonenumber</artifactId>
+                <version>7.0.6</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

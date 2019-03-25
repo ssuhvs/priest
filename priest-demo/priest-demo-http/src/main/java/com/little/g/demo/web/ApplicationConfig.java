@@ -1,0 +1,15 @@
+package com.little.g.demo.web;
+
+import com.little.g.common.web.config.AppConfig;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
+import org.springframework.web.bind.annotation.ControllerAdvice;
+
+/**
+ * Created by lengligang on 2019/3/18.
+ */
+@Configuration
+@Import(AppConfig.class)
+@ControllerAdvice(basePackages = {"com.little.g.common.web.exception"})
+public class ApplicationConfig {
+}

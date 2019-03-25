@@ -1,4 +1,4 @@
-package com.little.g.demo.web;
+package com.little.g.common.web.exception;
 
 import com.little.g.common.ResultJson;
 import com.little.g.common.exception.ServiceDataException;

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.little.g.demo.web;
+package com.little.g.common.web.config;
 
 import org.springframework.boot.web.servlet.error.ErrorAttributes;
 import org.springframework.core.Ordered;

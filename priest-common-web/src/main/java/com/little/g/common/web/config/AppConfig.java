@@ -1,13 +1,13 @@
-package com.little.g.demo.web;
+package com.little.g.common.web.config;
 
 
 import com.little.g.common.web.utils.ReloadableResourceBundleMessageSource;
-import org.hibernate.validator.messageinterpolation.ResourceBundleMessageInterpolator;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.servlet.error.ErrorAttributes;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 import org.springframework.context.annotation.ImportResource;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 import org.springframework.web.servlet.LocaleResolver;
@@ -16,8 +16,6 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 
-import javax.validation.Validation;
-import javax.xml.validation.Validator;
 import java.util.Locale;
 
 /**
@@ -75,6 +73,10 @@ public class AppConfig {
         LocalValidatorFactoryBean bean = new LocalValidatorFactoryBean();
         bean.setValidationMessageSource(messageSource());
         return bean;
+    }
+    @Bean
+    public MessageSourceUtil messageSourceUtil(){
+        return new MessageSourceUtil();
     }
 
 

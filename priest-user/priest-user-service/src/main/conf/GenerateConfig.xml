@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration[
+        <!ELEMENT generatorConfiguration (properties,generateFile+) >
+        <!ELEMENT properties (property*) >
+        <!ELEMENT property  EMPTY>
+        <!ELEMENT generateFile (property)>
+        <!ATTLIST property
+        name    CDATA #REQUIRED
+        value   CDATA #REQUIRED >
+        <!ATTLIST generateFile
+        packagePath    CDATA #IMPLIED
+        templateName   CDATA #REQUIRED
+        fileName   CDATA #REQUIRED>
+]>
+
+<generatorConfiguration>
+    <!--全局属性-->
+    <properties>
+        <property name="packageName" value="com.little.g.demo" />
+        <property name="author" value="lengligang" />
+    </properties>
+    <!--文件生成配置-->
+    <generateFile packagePath="/com/little/g/demo/service" templateName="ServiceImpl.tpl" fileName="OrderServiceImpl.java">
+        <property name="entityName" value="Order" />
+    </generateFile>
+
+
+
+
+</generatorConfiguration>
