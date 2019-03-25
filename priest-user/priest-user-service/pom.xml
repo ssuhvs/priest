@@ -131,7 +131,7 @@
                 <groupId>com.little.g</groupId>
                 <artifactId>generator-maven-plugin</artifactId>
                 <configuration>
-                    <packagePath>/com/little/g/demo</packagePath>
+                    <packagePath>/com/little/g/user</packagePath>
                     <configurationFile>${project.basedir}/src/main/conf/GenerateConfig.xml</configurationFile>
                 </configuration>
             </plugin>
