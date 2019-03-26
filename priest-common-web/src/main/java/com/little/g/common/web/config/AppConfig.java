@@ -1,6 +1,7 @@
 package com.little.g.common.web.config;
 
 
+import com.little.g.common.web.exception.GlobalExceptionHandler;
 import com.little.g.common.web.utils.ReloadableResourceBundleMessageSource;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.servlet.error.ErrorAttributes;
@@ -10,6 +11,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.context.annotation.ImportResource;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
+import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -28,6 +30,11 @@ public class AppConfig {
     @Value("${spring.messages.basename}")
     private String baseName;
 
+
+    @Bean
+    GlobalExceptionHandler exceptionHandler(){
+        return new GlobalExceptionHandler();
+    }
 
     @Bean
     public ErrorAttributes errorAttributes() {

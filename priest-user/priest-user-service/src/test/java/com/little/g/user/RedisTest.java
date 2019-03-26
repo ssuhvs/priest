@@ -3,6 +3,7 @@ package com.little.g.user;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -21,11 +22,14 @@ public class RedisTest {
     @Resource
     private ValueOperations<String, String> valueOperations;
 
+    private RedisTemplate redisTemplate;
+
     @Test
     public void testRedisTemplate(){
-        valueOperations.set("test","xxxx");
+        valueOperations.set("test","xxxx",1000);
         String r=valueOperations.get("test");
         Assert.assertEquals(r,"xxxx");
+
     }
 
 }

@@ -10,6 +10,5 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
  */
 @Configuration
 @Import(AppConfig.class)
-@ControllerAdvice(basePackages = {"com.little.g.common.web.exception"})
 public class ApplicationConfig {
 }

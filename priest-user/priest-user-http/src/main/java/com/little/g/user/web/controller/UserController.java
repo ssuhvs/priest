@@ -7,6 +7,7 @@ import com.little.g.user.api.SmsService;
 import com.little.g.user.web.common.UserConstants;
 import com.little.g.user.web.form.MobileSendParams;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import javax.validation.Valid;
@@ -15,7 +16,7 @@ import javax.validation.Valid;
  * Created by lengligang on 2019/3/22.
  *
  */
-
+@RestController
 @RequestMapping("/user")
 public class UserController {
 
@@ -30,7 +31,7 @@ public class UserController {
         Integer interVersion = mobileSendParams.getLoginVersion();
         if (interVersion == null || interVersion != UserConstants.smsVersion) {
             result.setC(ResultJson.INVALID_PARAM);
-            result.setM("{sms.version.invalid}");
+            result.setM("msg.sms.version.invalid");
             return result;
         }
 
@@ -48,7 +49,7 @@ public class UserController {
         if ((!Strings.isNullOrEmpty(originalCode) && !storeCode.equals(originalCode))
                 && (!Strings.isNullOrEmpty(originalCode) && !originalCode.equals(orStoreCode))) {
             result.setC(ResultJson.INVALID_PARAM);
-            result.setM("{sms.version.invalid}");
+            result.setM("msg.sms.version.invalid");
             return result;
         }
 
