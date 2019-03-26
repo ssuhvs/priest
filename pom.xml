@@ -13,10 +13,12 @@
     <modules>
         <module>dubbo-extend</module>
         <module>priest-demo</module>
+        <module>priest-user</module>
         <module>priest-common</module>
         <module>priest-common-web</module>
         <module>priest-generator</module>
         <module>plugin-test</module>
+
     </modules>
 
 
