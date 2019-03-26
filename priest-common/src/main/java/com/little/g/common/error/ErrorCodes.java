@@ -23,7 +23,7 @@ public abstract class ErrorCodes {
     }
 
 
-    public static void  addCode2Map(Integer code,String msg){
+    public  static void  addCode2Map(Integer code,String msg){
         if(code == null || code <start || code > end){
             throw new Error("error code invalid code:"+code);
         }

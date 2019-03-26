@@ -46,12 +46,12 @@ public class UserController {
         Long ct = mobileSendParams.getCt();
         String storeCode = Coder.generatorCode(countryCode + mobile, deviceId, ct);
         String orStoreCode = Coder.generatorCode(mobile, deviceId, ct);
-        if ((!Strings.isNullOrEmpty(originalCode) && !storeCode.equals(originalCode))
-                && (!Strings.isNullOrEmpty(originalCode) && !originalCode.equals(orStoreCode))) {
-            result.setC(ResultJson.INVALID_PARAM);
-            result.setM("msg.sms.version.invalid");
-            return result;
-        }
+//        if ((!Strings.isNullOrEmpty(originalCode) && !storeCode.equals(originalCode))
+//                && (!Strings.isNullOrEmpty(originalCode) && !originalCode.equals(orStoreCode))) {
+//            result.setC(ResultJson.INVALID_PARAM);
+//            result.setM("msg.sms.version.invalid");
+//            return result;
+//        }
 
         return smsService.sendSms(countryCode, mobile, deviceId, smsType, interType);
     }

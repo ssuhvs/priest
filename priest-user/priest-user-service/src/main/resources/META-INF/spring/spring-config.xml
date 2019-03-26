@@ -14,4 +14,10 @@
     <context:component-scan base-package="com.little.g.common.cache" />
 
 
+    <bean  id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+        <property name="basename" value="i18n/messages" />
+        <property name="cacheSeconds" value="3600" />
+    </bean>
+
+
 </beans>
