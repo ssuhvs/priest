@@ -1,6 +1,7 @@
-package com.little.g.common.web.inceptor;
+package com.little.g.common.web.aspects;
 
 import com.little.g.common.ResultJson;
+import com.little.g.common.web.interceptor.HeaderParamsHolder;
 import org.apache.commons.lang3.StringUtils;
 import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.Aspect;
@@ -8,8 +9,8 @@ import org.aspectj.lang.annotation.Pointcut;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
 import org.springframework.context.NoSuchMessageException;
-import org.springframework.context.support.AbstractMessageSource;
 
 import java.util.Locale;
 
@@ -26,7 +27,7 @@ public class ResultCodeI18NAspect {
         change @Resource to @Autowired,declare exclusive one message source
      */
     @Autowired
-    private AbstractMessageSource messageSource;
+    private MessageSource messageSource;
 
     @Pointcut("@annotation(org.springframework.web.bind.annotation.RequestMapping)")
     private void pointcut() {
@@ -37,8 +38,11 @@ public class ResultCodeI18NAspect {
         if (result == null) {
             return;
         }
-        if (result.getC() != 0) {
-            result.setM(getI18NResultMsg(result.getC(), Locale.CHINA));
+        if(!StringUtils.isEmpty(result.getM())){
+            if(result.getM().startsWith("msg.")){
+                result.setM(getI18NResultMsg(result.getM(), HeaderParamsHolder.getHeader().getLocale()));
+            }
+
         }
     }
 
@@ -58,9 +62,9 @@ public class ResultCodeI18NAspect {
         return messageSource.getMessage(code + "", null, getLocale(language, country));
     }
 
-    private String getI18NResultMsg(Integer code, Locale locale) {
+    private String getI18NResultMsg(String code, Locale locale) {
         try {
-            return messageSource.getMessage(code + "", null, locale);
+            return messageSource.getMessage(code, null, locale);
         } catch (NoSuchMessageException e) {
             logger.warn("result json does not include the code({}): message,plz fix", code);
             return "";

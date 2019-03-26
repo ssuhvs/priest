@@ -8,5 +8,5 @@
     <dubbo:application name="com.little.g.demo" logger="slf4j"/>
     <dubbo:protocol name="dubbo"/>
     <dubbo:registry address="${zookeeper.url}"/>
-
+    <dubbo:service interface="com.little.g.user.api.SmsService" ref="smsService" />
 </beans>

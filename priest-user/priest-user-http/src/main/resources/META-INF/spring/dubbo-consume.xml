@@ -10,4 +10,5 @@
     <dubbo:protocol name="dubbo"/>
     <dubbo:registry address="${zookeeper.url}"/>
 
+    <dubbo:reference interface="com.little.g.user.api.SmsService" id="smsService" />
 </beans>
