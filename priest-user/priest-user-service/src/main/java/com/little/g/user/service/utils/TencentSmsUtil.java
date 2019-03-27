@@ -17,9 +17,9 @@ import org.slf4j.LoggerFactory;
 public class TencentSmsUtil {
     private static  final Logger log = LoggerFactory.getLogger(TencentSmsUtil.class);
     private static int appid=1400178231;
-    private static String appkey="3629394d9c68978225d41104dc2d8737";
+    private static String appkey="xxxxxx";
     private   static int templateId =262634;
-    private  static String smsSign="popo泡泡";
+    private  static String smsSign="xxxx";
 
     static PoolingHTTPClient httpclient = new PoolingHTTPClient(10);
 

@@ -86,7 +86,7 @@ public class SmsServiceImpl implements SmsService {
         Long sendTime;
         if(CollectionUtils.isEmpty(cacheMap) || (smsType == SmsSendType.SMSCODE.getValue() && (!cacheMap.containsKey("sendTime") || !NumberUtils.isDigits(cacheMap.get("sendTime"))))
                 || (smsType == SmsSendType.VOICECODE.getValue() && (!cacheMap.containsKey("sendVoiceTime") || !NumberUtils.isDigits(cacheMap.get("sendVoiceTime"))))){
-            sendTime=System.currentTimeMillis();
+            sendTime=0l;
         }else {
 
             if (SmsSendType.VOICECODE.getValue() == smsType) {
