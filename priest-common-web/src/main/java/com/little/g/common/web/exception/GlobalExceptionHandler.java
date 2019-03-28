@@ -2,6 +2,8 @@ package com.little.g.common.web.exception;
 
 import com.little.g.common.ResultJson;
 import com.little.g.common.exception.ServiceDataException;
+import com.little.g.common.web.interceptor.HeaderParamsHolder;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.dubbo.rpc.RpcException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -57,7 +59,15 @@ public class GlobalExceptionHandler {
         }else if(e instanceof ServiceDataException) {
             ServiceDataException service= (ServiceDataException) e;
             r.setC(service.getCode());
-            r.setM(service.getMessage());
+
+            if(!StringUtils.isEmpty(r.getM())){
+                if(r.getM().startsWith("msg.")){
+                    r.setM(messageSource.getMessage(r.getM(),null,HeaderParamsHolder.getHeader().getLocale()));
+                }
+
+            }else {
+                r.setM(service.getMessage());
+            }
             log.error("Request ServiceDataException url:{},e",req.getRequestURI(),e.getMessage());
         }else {
             log.error("Request exception url:{},e",req.getRequestURI(),e);

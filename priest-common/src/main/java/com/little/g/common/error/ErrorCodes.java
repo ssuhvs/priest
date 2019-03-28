@@ -6,7 +6,7 @@ import java.util.Map;
 /**
  * Created by lengligang on 2019/3/12.
  */
-public abstract class ErrorCodes {
+public  abstract class ErrorCodes {
 
     protected static Integer start;
     protected static Integer end;
@@ -21,6 +21,8 @@ public abstract class ErrorCodes {
         this.start = border.getStart();
         this.end = border.getEnd();
     }
+
+    protected abstract void addCodes();
 
 
     public  static void  addCode2Map(Integer code,String msg){
