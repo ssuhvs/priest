@@ -60,9 +60,9 @@ public class GlobalExceptionHandler {
             ServiceDataException service= (ServiceDataException) e;
             r.setC(service.getCode());
 
-            if(!StringUtils.isEmpty(r.getM())){
-                if(r.getM().startsWith("msg.")){
-                    r.setM(messageSource.getMessage(r.getM(),null,HeaderParamsHolder.getHeader().getLocale()));
+            if(!StringUtils.isEmpty(service.getMessage())){
+                if(service.getMessage().startsWith("msg.")){
+                    r.setM(messageSource.getMessage(service.getMessage(),null,HeaderParamsHolder.getHeader().getLocale()));
                 }
 
             }else {
