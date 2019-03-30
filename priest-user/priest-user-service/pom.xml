@@ -112,6 +112,11 @@
             <artifactId>priest-user-dao</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>com.little.g</groupId>
+            <artifactId>priest-user-token</artifactId>
+        </dependency>
+
     </dependencies>
 
     <build>

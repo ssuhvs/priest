@@ -12,10 +12,10 @@ import com.little.g.common.enums.TokenVersion;
 import com.little.g.common.exception.ServiceDataException;
 import com.little.g.common.utils.Base62Util;
 import com.little.g.user.dto.TokenCache;
-import com.little.g.common.web.token.TokenCommonUtil;
-import com.little.g.common.web.token.TokenVersionConfig;
-import com.little.g.common.web.token.TokenVersionFactory;
 import com.little.g.user.api.TokenService;
+import com.little.g.user.token.TokenCommonUtil;
+import com.little.g.user.token.TokenVersionConfig;
+import com.little.g.user.token.TokenVersionFactory;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -72,11 +72,13 @@ public class TokenVerifyInterceptor  extends HandlerInterceptorAdapter {
         }
         String localKey = String.format("%s_%s",token,deviceId);
 
-        cache.get(localKey);
+        TokenCache tokenCache=cache.get(localKey);
+        if(tokenCache != null && tokenCache.isLogin()){
+            return true;
+        }
 
 
-
-        return  false;
+        throw new ServiceDataException(CommonErrorCodes.NOT_LOGIN,"msg.user.not.login");
     }
 
 

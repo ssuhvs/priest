@@ -128,6 +128,13 @@
             </dependency>
 
             <!--本系统依赖管理 start-->
+
+            <dependency>
+                <groupId>com.little.g</groupId>
+                <artifactId>priest-user-token</artifactId>
+                <version>0.0.1-SNAPSHOT</version>
+            </dependency>
+
             <dependency>
                 <groupId>com.little.g</groupId>
                 <artifactId>priest-common</artifactId>
