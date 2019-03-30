@@ -1,6 +1,7 @@
 package com.little.g.user.web.form;
 
 
+import com.little.g.common.enums.DeviceTypeEnum;
 import com.little.g.common.validate.annatations.DeviceId;
 import com.little.g.common.validate.annatations.DeviceType;
 
@@ -19,7 +20,7 @@ public class BaseDeviceParams extends BaseParams {
     protected String deviceId;  //设备id
 //    @NotNull(message = "deviceType not allowed null")
     @DeviceType
-    protected Integer deviceType;//用户的设备类型
+    protected Byte deviceType= DeviceTypeEnum.MOBILE.getValue();//用户的设备类型
 
     public String getDeviceId() {
         return deviceId;
@@ -29,11 +30,11 @@ public class BaseDeviceParams extends BaseParams {
         this.deviceId = deviceId;
     }
 
-    public Integer getDeviceType() {
+    public Byte getDeviceType() {
         return deviceType;
     }
 
-    public void setDeviceType(Integer deviceType) {
+    public void setDeviceType(Byte deviceType) {
         this.deviceType = deviceType;
     }
 }

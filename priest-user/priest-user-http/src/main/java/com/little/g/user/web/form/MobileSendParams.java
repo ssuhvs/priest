@@ -23,7 +23,7 @@ public class MobileSendParams extends BaseMobileParams {
     @SmsType
     private Integer smsType = SmsSendType.SMSCODE.getValue();//验证码类型 1：短信验证码 2：语音验证码
     @SmsInterType
-    private Integer interfaceType;//发短信的接口类型  1：注册登录接口的发短信 2：修改手机号的发短信，俩接口区别在于后者需要手机号不能存在
+    private Byte interfaceType;//发短信的接口类型  1：注册登录接口的发短信 2：修改手机号的发短信，俩接口区别在于后者需要手机号不能存在
     @NotNull
     private Long ct;//时间戳  todo 后续一定要传的
     private Integer loginVersion;//登录版本号
@@ -60,11 +60,11 @@ public class MobileSendParams extends BaseMobileParams {
         this.smsType = smsType;
     }
 
-    public Integer getInterfaceType() {
+    public Byte getInterfaceType() {
         return interfaceType;
     }
 
-    public void setInterfaceType(Integer interfaceType) {
+    public void setInterfaceType(Byte interfaceType) {
         this.interfaceType = interfaceType;
     }
 

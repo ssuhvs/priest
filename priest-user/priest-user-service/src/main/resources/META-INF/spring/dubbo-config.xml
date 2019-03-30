@@ -6,7 +6,9 @@
 	   http://dubbo.apache.org/schema/dubbo  http://dubbo.apache.org/schema/dubbo/dubbo.xsd">
 
     <dubbo:application name="com.little.g.demo" logger="slf4j"/>
-    <dubbo:protocol name="dubbo"/>
+    <dubbo:protocol name="dubbo" />
     <dubbo:registry address="${zookeeper.url}"/>
     <dubbo:service interface="com.little.g.user.api.SmsService" ref="smsService" />
+    <dubbo:service interface="com.little.g.user.api.UserService" ref="userService" />
+    <dubbo:service interface="com.little.g.user.api.TokenService" ref="tokenService" />
 </beans>

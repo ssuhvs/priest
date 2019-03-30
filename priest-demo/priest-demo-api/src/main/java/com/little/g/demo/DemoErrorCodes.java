@@ -10,11 +10,13 @@ public class DemoErrorCodes extends ErrorCodes{
 
     public static final Integer INVALID_PARAM = 20000;
 
-    static {
-        addCode2Map(INVALID_PARAM,"param invalid");
-    }
 
     public DemoErrorCodes() {
         super(ErrorCodeDiv.DEMO);
+    }
+
+    @Override
+    protected void addCodes() {
+        addCode2Map(INVALID_PARAM,"param invalid");
     }
 }

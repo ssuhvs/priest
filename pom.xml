@@ -49,6 +49,7 @@
                 <priest.dubbo.zk.url>zookeeper://127.0.0.1:2181</priest.dubbo.zk.url>
                 <priest.redis.nodes>127.0.0.1:6379</priest.redis.nodes>
                 <priest.redis.password>123456</priest.redis.password>
+                <priest.online>false</priest.online>
             </properties>
         </profile>
 
@@ -127,6 +128,13 @@
             </dependency>
 
             <!--本系统依赖管理 start-->
+
+            <dependency>
+                <groupId>com.little.g</groupId>
+                <artifactId>priest-user-token</artifactId>
+                <version>0.0.1-SNAPSHOT</version>
+            </dependency>
+
             <dependency>
                 <groupId>com.little.g</groupId>
                 <artifactId>priest-common</artifactId>
@@ -169,6 +177,13 @@
                 <version>0.0.1-SNAPSHOT</version>
             </dependency>
             <!--本系统依赖管理 end-->
+
+
+            <dependency>
+                <groupId>com.github.qcloudsms</groupId>
+                <artifactId>qcloudsms</artifactId>
+                <version>1.0.5</version>
+            </dependency>
 
 
             <dependency>
@@ -258,6 +273,12 @@
                 <groupId>com.google.guava</groupId>
                 <artifactId>guava</artifactId>
                 <version>20.0</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.jodd</groupId>
+                <artifactId>jodd-props</artifactId>
+                <version>3.6.1</version>
             </dependency>
 
             <dependency>

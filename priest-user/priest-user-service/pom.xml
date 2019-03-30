@@ -46,6 +46,12 @@
 
     <dependencies>
 
+
+        <dependency>
+            <groupId>com.github.qcloudsms</groupId>
+            <artifactId>qcloudsms</artifactId>
+        </dependency>
+
         <dependency>
             <groupId>org.mybatis.spring.boot</groupId>
             <artifactId>mybatis-spring-boot-starter</artifactId>
@@ -104,6 +110,11 @@
         <dependency>
             <groupId>com.little.g</groupId>
             <artifactId>priest-user-dao</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.little.g</groupId>
+            <artifactId>priest-user-token</artifactId>
         </dependency>
 
     </dependencies>

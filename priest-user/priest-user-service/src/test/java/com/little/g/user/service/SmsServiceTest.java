@@ -14,6 +14,6 @@ public class SmsServiceTest extends BaseTest {
     private SmsService smsService;
     @Test
     public void testSendSms(){
-        smsService.sendSms("86","15201008961","A15201008961", 1,1);
+        smsService.sendSms("86","15201008961","A15201008961", 1,(byte)1);
     }
 }

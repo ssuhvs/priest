@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.little.g.user.mapper.UserDeviceTokenMapper">
+  <resultMap id="BaseResultMap" type="com.little.g.user.model.UserDeviceToken">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="uid" jdbcType="BIGINT" property="uid" />
+    <result column="device_id" jdbcType="VARCHAR" property="deviceId" />
+    <result column="device_type" jdbcType="TINYINT" property="deviceType" />
+    <result column="os" jdbcType="VARCHAR" property="os" />
+    <result column="access_token" jdbcType="VARCHAR" property="accessToken" />
+    <result column="access_expires_in" jdbcType="BIGINT" property="accessExpiresIn" />
+    <result column="refresh_token" jdbcType="VARCHAR" property="refreshToken" />
+    <result column="refresh_expires_in" jdbcType="BIGINT" property="refreshExpiresIn" />
+    <result column="create_time" jdbcType="BIGINT" property="createTime" />
+    <result column="update_time" jdbcType="BIGINT" property="updateTime" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, `uid`, device_id, device_type, os, access_token, access_expires_in, refresh_token, 
+    refresh_expires_in, create_time, update_time
+  </sql>
+  <select id="selectByExample" parameterType="com.little.g.user.model.UserDeviceTokenExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from user_device_token
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from user_device_token
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from user_device_token
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.little.g.user.model.UserDeviceTokenExample">
+    delete from user_device_token
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.little.g.user.model.UserDeviceToken">
+    insert into user_device_token (id, `uid`, device_id, 
+      device_type, os, access_token, 
+      access_expires_in, refresh_token, refresh_expires_in, 
+      create_time, update_time)
+    values (#{id,jdbcType=BIGINT}, #{uid,jdbcType=BIGINT}, #{deviceId,jdbcType=VARCHAR}, 
+      #{deviceType,jdbcType=TINYINT}, #{os,jdbcType=VARCHAR}, #{accessToken,jdbcType=VARCHAR}, 
+      #{accessExpiresIn,jdbcType=BIGINT}, #{refreshToken,jdbcType=VARCHAR}, #{refreshExpiresIn,jdbcType=BIGINT}, 
+      #{createTime,jdbcType=BIGINT}, #{updateTime,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.little.g.user.model.UserDeviceToken">
+    insert into user_device_token
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="uid != null">
+        `uid`,
+      </if>
+      <if test="deviceId != null">
+        device_id,
+      </if>
+      <if test="deviceType != null">
+        device_type,
+      </if>
+      <if test="os != null">
+        os,
+      </if>
+      <if test="accessToken != null">
+        access_token,
+      </if>
+      <if test="accessExpiresIn != null">
+        access_expires_in,
+      </if>
+      <if test="refreshToken != null">
+        refresh_token,
+      </if>
+      <if test="refreshExpiresIn != null">
+        refresh_expires_in,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="uid != null">
+        #{uid,jdbcType=BIGINT},
+      </if>
+      <if test="deviceId != null">
+        #{deviceId,jdbcType=VARCHAR},
+      </if>
+      <if test="deviceType != null">
+        #{deviceType,jdbcType=TINYINT},
+      </if>
+      <if test="os != null">
+        #{os,jdbcType=VARCHAR},
+      </if>
+      <if test="accessToken != null">
+        #{accessToken,jdbcType=VARCHAR},
+      </if>
+      <if test="accessExpiresIn != null">
+        #{accessExpiresIn,jdbcType=BIGINT},
+      </if>
+      <if test="refreshToken != null">
+        #{refreshToken,jdbcType=VARCHAR},
+      </if>
+      <if test="refreshExpiresIn != null">
+        #{refreshExpiresIn,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=BIGINT},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.little.g.user.model.UserDeviceTokenExample" resultType="java.lang.Long">
+    select count(*) from user_device_token
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update user_device_token
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.uid != null">
+        `uid` = #{record.uid,jdbcType=BIGINT},
+      </if>
+      <if test="record.deviceId != null">
+        device_id = #{record.deviceId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.deviceType != null">
+        device_type = #{record.deviceType,jdbcType=TINYINT},
+      </if>
+      <if test="record.os != null">
+        os = #{record.os,jdbcType=VARCHAR},
+      </if>
+      <if test="record.accessToken != null">
+        access_token = #{record.accessToken,jdbcType=VARCHAR},
+      </if>
+      <if test="record.accessExpiresIn != null">
+        access_expires_in = #{record.accessExpiresIn,jdbcType=BIGINT},
+      </if>
+      <if test="record.refreshToken != null">
+        refresh_token = #{record.refreshToken,jdbcType=VARCHAR},
+      </if>
+      <if test="record.refreshExpiresIn != null">
+        refresh_expires_in = #{record.refreshExpiresIn,jdbcType=BIGINT},
+      </if>
+      <if test="record.createTime != null">
+        create_time = #{record.createTime,jdbcType=BIGINT},
+      </if>
+      <if test="record.updateTime != null">
+        update_time = #{record.updateTime,jdbcType=BIGINT},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update user_device_token
+    set id = #{record.id,jdbcType=BIGINT},
+      `uid` = #{record.uid,jdbcType=BIGINT},
+      device_id = #{record.deviceId,jdbcType=VARCHAR},
+      device_type = #{record.deviceType,jdbcType=TINYINT},
+      os = #{record.os,jdbcType=VARCHAR},
+      access_token = #{record.accessToken,jdbcType=VARCHAR},
+      access_expires_in = #{record.accessExpiresIn,jdbcType=BIGINT},
+      refresh_token = #{record.refreshToken,jdbcType=VARCHAR},
+      refresh_expires_in = #{record.refreshExpiresIn,jdbcType=BIGINT},
+      create_time = #{record.createTime,jdbcType=BIGINT},
+      update_time = #{record.updateTime,jdbcType=BIGINT}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.little.g.user.model.UserDeviceToken">
+    update user_device_token
+    <set>
+      <if test="uid != null">
+        `uid` = #{uid,jdbcType=BIGINT},
+      </if>
+      <if test="deviceId != null">
+        device_id = #{deviceId,jdbcType=VARCHAR},
+      </if>
+      <if test="deviceType != null">
+        device_type = #{deviceType,jdbcType=TINYINT},
+      </if>
+      <if test="os != null">
+        os = #{os,jdbcType=VARCHAR},
+      </if>
+      <if test="accessToken != null">
+        access_token = #{accessToken,jdbcType=VARCHAR},
+      </if>
+      <if test="accessExpiresIn != null">
+        access_expires_in = #{accessExpiresIn,jdbcType=BIGINT},
+      </if>
+      <if test="refreshToken != null">
+        refresh_token = #{refreshToken,jdbcType=VARCHAR},
+      </if>
+      <if test="refreshExpiresIn != null">
+        refresh_expires_in = #{refreshExpiresIn,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=BIGINT},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.little.g.user.model.UserDeviceToken">
+    update user_device_token
+    set `uid` = #{uid,jdbcType=BIGINT},
+      device_id = #{deviceId,jdbcType=VARCHAR},
+      device_type = #{deviceType,jdbcType=TINYINT},
+      os = #{os,jdbcType=VARCHAR},
+      access_token = #{accessToken,jdbcType=VARCHAR},
+      access_expires_in = #{accessExpiresIn,jdbcType=BIGINT},
+      refresh_token = #{refreshToken,jdbcType=VARCHAR},
+      refresh_expires_in = #{refreshExpiresIn,jdbcType=BIGINT},
+      create_time = #{createTime,jdbcType=BIGINT},
+      update_time = #{updateTime,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

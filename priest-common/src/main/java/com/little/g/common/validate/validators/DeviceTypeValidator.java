@@ -12,14 +12,14 @@ import javax.validation.ConstraintValidatorContext;
  * Date: 15/5/29
  * Time: 下午8:23
  */
-public class DeviceTypeValidator implements ConstraintValidator<DeviceType, Integer> {
+public class DeviceTypeValidator implements ConstraintValidator<DeviceType, Byte> {
     @Override
     public void initialize(DeviceType deviceType) {
 
     }
 
     @Override
-    public boolean isValid(Integer deviceType, ConstraintValidatorContext constraintValidatorContext) {
+    public boolean isValid(Byte deviceType, ConstraintValidatorContext constraintValidatorContext) {
         if (deviceType == null) {
             return true;
         }

@@ -16,7 +16,7 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
  * Date: 14-11-18
  * Time: 上午10:58
  */
-@Target({METHOD, FIELD, ANNOTATION_TYPE})
+@Target({PARAMETER,METHOD, FIELD, ANNOTATION_TYPE})
 @Retention(RUNTIME)
 @Constraint(validatedBy = DeviceIdValidator.class)
 @Documented

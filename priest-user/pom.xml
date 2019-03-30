@@ -17,6 +17,7 @@
         <module>priest-user-api</module>
         <module>priest-user-service</module>
         <module>priest-user-dao</module>
+        <module>priest-user-token</module>
     </modules>
 
     <dependencyManagement>

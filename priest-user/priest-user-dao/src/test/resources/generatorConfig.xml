@@ -65,10 +65,17 @@
                    enableDeleteByPrimaryKey="true"  >
                 <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
             </table>
+
+            <table tableName="user">
+            </table>
         -->
 
-        <table tableName="user">
+        <table tableName="user_device_token" >
         </table>
+
+
+
+
 
     </context>
 </generatorConfiguration>
