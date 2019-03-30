@@ -28,5 +28,5 @@ public interface UserService {
      * @param deviceType
      * @return
      */
-    ResultJson joinin(@NotEmpty String mobile, @NotBlank @Size(min = 4, max = 6) String smscode,@NotBlank @DeviceId String deviceId,@DeviceType Integer deviceType);
+    ResultJson joinin(@NotEmpty String mobile, @NotBlank @Size(min = 4, max = 6) String smscode,@NotBlank @DeviceId String deviceId,@DeviceType Byte deviceType,@Size(max = 30) String os);
 }

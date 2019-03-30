@@ -10,5 +10,6 @@
     <dubbo:protocol name="dubbo"/>
     <dubbo:registry address="${zookeeper.url}"/>
 
-    <dubbo:reference interface="com.little.g.user.api.SmsService" id="smsService" />
+    <dubbo:reference interface="com.little.g.user.api.SmsService" id="smsService" timeout="2000" retries="0" />
+    <dubbo:reference interface="com.little.g.user.api.UserService" id="userService" timeout="2000" retries="0" />
 </beans>

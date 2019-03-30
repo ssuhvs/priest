@@ -8,18 +8,18 @@ package com.little.g.common.enums;
  */
 public enum SmsInterType {
 
-    REG_OR_LOGIN(1),//注册登录接口的发短信
-    UPDATE_MOBILE(2),//修改手机号的发短信
-    MOBILE_CHECK(5);
+    REG_OR_LOGIN((byte)1),//注册登录接口的发短信
+    UPDATE_MOBILE((byte)2),//修改手机号的发短信
+    MOBILE_CHECK((byte)5);
 
 
-    public int value;
+    public Byte value;
 
-    SmsInterType(int value) {
+    SmsInterType(Byte value) {
         this.value = value;
     }
 
-    public int getValue() {
+    public Byte getValue() {
         return value;
     }
 }

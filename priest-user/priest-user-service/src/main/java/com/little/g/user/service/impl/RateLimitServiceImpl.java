@@ -1,10 +1,13 @@
 package com.little.g.user.service.impl;
 
 import com.little.g.user.api.RateLimitService;
+import com.little.g.user.service.common.Constants;
+import com.little.g.user.service.common.RedisConstants;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 
 import javax.annotation.Resource;
 import java.util.concurrent.TimeUnit;
@@ -16,7 +19,7 @@ import java.util.concurrent.TimeUnit;
 public class RateLimitServiceImpl implements RateLimitService {
 
     @Resource
-    private RedisTemplate<String,String> redisTemplate;
+    private RedisTemplate redisTemplate;
 
     @Override
     public boolean upLimit(String key, long max, long seconds) {
@@ -44,5 +47,10 @@ public class RateLimitServiceImpl implements RateLimitService {
         }
 
         return false;
+    }
+
+    public Integer getCurrent(String key){
+        ValueOperations <String,Integer> valueOperations=redisTemplate.opsForValue();
+        return valueOperations.get(key);
     }
 }

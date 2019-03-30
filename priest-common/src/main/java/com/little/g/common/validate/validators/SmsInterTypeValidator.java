@@ -10,14 +10,14 @@ import javax.validation.ConstraintValidatorContext;
  * Date: 15/5/29
  * Time: 下午8:16
  */
-public class SmsInterTypeValidator implements ConstraintValidator<SmsInterType, Integer> {
+public class SmsInterTypeValidator implements ConstraintValidator<SmsInterType, Byte> {
     @Override
     public void initialize(SmsInterType smsInterType) {
 
     }
 
     @Override
-    public boolean isValid(Integer smsInterType, ConstraintValidatorContext constraintValidatorContext) {
+    public boolean isValid(Byte smsInterType, ConstraintValidatorContext constraintValidatorContext) {
         if (smsInterType == null) {
             return true;
         }

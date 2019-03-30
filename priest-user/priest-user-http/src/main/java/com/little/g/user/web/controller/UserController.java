@@ -1,6 +1,5 @@
 package com.little.g.user.web.controller;
 
-import com.google.common.base.Strings;
 import com.little.g.common.ResultJson;
 import com.little.g.common.encrypt.Coder;
 import com.little.g.user.api.SmsService;
@@ -44,23 +43,23 @@ public class UserController {
         String mobile=mobileSendParams.getMobile();
         String deviceId=mobileSendParams.getDeviceId();
         Integer smsType=mobileSendParams.getSmsType();
-        Integer interType=mobileSendParams.getInterfaceType();
+        Byte interType=mobileSendParams.getInterfaceType();
 
         String originalCode = mobileSendParams.getCode();
         Long ct = mobileSendParams.getCt();
         String storeCode = Coder.generatorCode(mobile, deviceId, ct);
-        if (!Strings.isNullOrEmpty(originalCode) && !storeCode.equals(originalCode)) {
-            result.setC(ResultJson.INVALID_PARAM);
-            result.setM("msg.sms.version.invalid");
-            return result;
-        }
+//        if (!Strings.isNullOrEmpty(originalCode) && !storeCode.equals(originalCode)) {
+//            result.setC(ResultJson.INVALID_PARAM);
+//            result.setM("msg.sms.version.invalid");
+//            return result;
+//        }
 
         return smsService.sendSms(countryCode, mobile, deviceId, smsType, interType);
     }
 
     @RequestMapping("/joinin")
     public ResultJson joinin(@Valid JoininParams params){
-        return userService.joinin(params.getMobile(), params.getSmscode() ,params.getDeviceId(), params.getDeviceType());
+        return userService.joinin(params.getMobile(), params.getSmscode() ,params.getDeviceId(), params.getDeviceType(),null);
     }
 
 

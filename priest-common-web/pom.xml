@@ -47,6 +47,11 @@
             <groupId>org.jodd</groupId>
             <artifactId>jodd-props</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>com.little.g</groupId>
+            <artifactId>priest-user-api</artifactId>
+        </dependency>
     </dependencies>
 
 </project>

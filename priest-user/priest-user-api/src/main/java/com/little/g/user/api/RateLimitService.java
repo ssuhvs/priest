@@ -12,4 +12,11 @@ public interface RateLimitService {
      * @return 是否达到上限
      */
     boolean upLimit(String key, long max, long seconds);
+
+    /**
+     * 获取当前次数
+     * @param key
+     * @return
+     */
+    Integer getCurrent(String key);
 }

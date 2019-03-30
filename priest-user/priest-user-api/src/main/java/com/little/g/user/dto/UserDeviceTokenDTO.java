@@ -3,6 +3,16 @@ package com.little.g.user.dto;
 import java.io.Serializable;
 
 public class UserDeviceTokenDTO implements Serializable {
+
+    public UserDeviceTokenDTO() {
+    }
+
+    public UserDeviceTokenDTO(Long uid, String deviceId, String accessToken) {
+        this.uid = uid;
+        this.deviceId = deviceId;
+        this.accessToken = accessToken;
+    }
+
     private Long id;
 
     private Long uid;
