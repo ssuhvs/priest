@@ -97,7 +97,7 @@ public class HeaderInterceptor extends HandlerInterceptorAdapter {
         if (Strings.isNullOrEmpty(deviceType)) {
             deviceType = String.valueOf(DeviceTypeEnum.MOBILE.getValue());
         }
-        HeaderParamsHolder.getHeader().setDeviceType(Integer.valueOf(deviceType));
+        HeaderParamsHolder.getHeader().setDeviceType(Byte.valueOf(deviceType));
         HeaderParamsHolder.getHeader().setRequestURI(uri);
         HeaderParamsHolder.getHeader().setDeviceId(deviceIdHeader);
         HeaderParamsHolder.getHeader().setOs(osHeader);

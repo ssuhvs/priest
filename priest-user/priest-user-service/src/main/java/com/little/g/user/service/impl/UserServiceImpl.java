@@ -14,6 +14,7 @@ import com.little.g.user.mapper.UserMapper;
 import com.little.g.user.mapper.UserMapperExt;
 import com.little.g.user.model.User;
 import com.little.g.user.model.UserExample;
+import com.little.g.user.params.UserUpdateParam;
 import org.springframework.beans.BeanUtils;
 import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Service;
@@ -21,6 +22,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
 
 import javax.annotation.Resource;
+import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
@@ -86,6 +88,30 @@ public class UserServiceImpl implements UserService {
 
         r.setData(dto);
         return r;
+    }
+
+
+    @Override
+    public UserDTO getUserById(Long uid) {
+        if(uid == null) return  null;
+        User user=userMapper.selectByPrimaryKey(uid);
+        if(user == null)return null;
+
+        UserDTO dto=new UserDTO();
+        BeanUtils.copyProperties(user,dto);
+        return dto;
+    }
+
+    @Override
+    public boolean update(@Valid UserUpdateParam param) {
+
+        if(param.getUid() == null || param.getUid()<=0) return false;
+
+        User user=new User();
+        BeanUtils.copyProperties(param,user);
+        user.setUpdateTime(System.currentTimeMillis());
+
+        return userMapper.updateByPrimaryKeySelective(user)>0;
     }
 
     public Long addUser(UserDTO userDTO){
