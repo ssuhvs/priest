@@ -1,0 +1,22 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /
+
+spring:
+  messages:
+    basename: classpath*:i18n/messages
+
+  thymeleaf:
+    prefix: classpath:/templates/
+    cache: false
+    excluded-view-names: /admin/*
+
+  freemarker:
+    template-loader-path: classpath:/ftls/
+    suffix: .ftl
+    view-names: /admin/*
+
+zookeeper:
+    url: ${priest.dubbo.zk.url}
+
