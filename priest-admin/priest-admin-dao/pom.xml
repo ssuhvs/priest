@@ -80,6 +80,11 @@
             <artifactId>spring-aspects</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>com.little.g</groupId>
+            <artifactId>priest-admin-common</artifactId>
+        </dependency>
+
 
     </dependencies>
 

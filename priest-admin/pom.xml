@@ -17,6 +17,7 @@
         <module>priest-admin-api</module>
         <module>priest-admin-service</module>
         <module>priest-admin-dao</module>
+        <module>priest-admin-common</module>
     </modules>
 
     <dependencyManagement>

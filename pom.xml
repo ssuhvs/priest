@@ -134,6 +134,12 @@
 
             <dependency>
                 <groupId>com.little.g</groupId>
+                <artifactId>priest-admin-common</artifactId>
+                <version>0.0.1-SNAPSHOT</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.little.g</groupId>
                 <artifactId>priest-admin-api</artifactId>
                 <version>0.0.1-SNAPSHOT</version>
             </dependency>
@@ -362,6 +368,12 @@
                 <groupId>com.googlecode.libphonenumber</groupId>
                 <artifactId>libphonenumber</artifactId>
                 <version>7.0.6</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>RELEASE</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
