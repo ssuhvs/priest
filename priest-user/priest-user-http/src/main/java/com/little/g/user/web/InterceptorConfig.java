@@ -16,11 +16,11 @@ public class InterceptorConfig implements WebMvcConfigurer {
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(headerInterceptor()).addPathPatterns("/**");
         registry.addInterceptor(tokenVerifyInterceptor())
                 .addPathPatterns("/**")
                 .excludePathPatterns("/user/sendsms")
                 .excludePathPatterns("/user/joinin");
+        registry.addInterceptor(headerInterceptor()).addPathPatterns("/**");
     }
     @Bean
     public HeaderInterceptor headerInterceptor(){

@@ -28,7 +28,7 @@ public class HeaderParamsHolder {
                     return header;
                 }
                 header=new HeaderParams();
-                context.set(new HeaderParams());
+                context.set(header);
             }
         }
         return header;

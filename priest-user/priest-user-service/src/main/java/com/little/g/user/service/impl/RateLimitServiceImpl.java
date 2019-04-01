@@ -51,6 +51,7 @@ public class RateLimitServiceImpl implements RateLimitService {
 
     public Integer getCurrent(String key){
         ValueOperations <String,Integer> valueOperations=redisTemplate.opsForValue();
-        return valueOperations.get(key);
+        Integer count=valueOperations.get(key);
+        return count==null?0:count;
     }
 }

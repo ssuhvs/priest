@@ -23,7 +23,7 @@ public class HeaderParams {
     /**
      * 设备类型
      */
-    private Integer deviceType;
+    private Byte deviceType;
     /**
      * 设备操作系统
      */
@@ -92,11 +92,11 @@ public class HeaderParams {
         this.deviceId = deviceId;
     }
 
-    public Integer getDeviceType() {
+    public Byte getDeviceType() {
         return deviceType;
     }
 
-    public void setDeviceType(Integer deviceType) {
+    public void setDeviceType(Byte deviceType) {
         this.deviceType = deviceType;
     }
 

@@ -74,6 +74,7 @@ public class TokenVerifyInterceptor  extends HandlerInterceptorAdapter {
 
         TokenCache tokenCache=cache.get(localKey);
         if(tokenCache != null && tokenCache.isLogin()){
+            HeaderParamsHolder.getHeader().setUid(tokenCache.getUid());
             return true;
         }
 
