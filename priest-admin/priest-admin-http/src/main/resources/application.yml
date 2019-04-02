@@ -15,7 +15,7 @@ spring:
   freemarker:
     template-loader-path: classpath:/ftls/
     suffix: .ftl
-    view-names: /admin/*
+    view-names: /test/*
 
 
 
