@@ -3,7 +3,7 @@ package com.little.g.admin.model;
 
 import com.little.g.admin.common.annotation.Column;
 import com.little.g.admin.common.annotation.Table;
-import com.little.g.admin.common.model.BaseEntity;
+import com.little.g.admin.common.BaseEntity;
 
 /**
  * 操作行为日志 一个操作行为可能会影响多张数据表.

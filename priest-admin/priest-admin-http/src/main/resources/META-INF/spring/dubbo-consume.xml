@@ -10,6 +10,12 @@
     <dubbo:protocol name="dubbo"/>
     <dubbo:registry address="${zookeeper.url}"/>
 
+    <dubbo:reference interface="com.little.g.admin.service.AdminUserService" id="adminUserService" />
+    <dubbo:reference interface="com.little.g.admin.service.LoggerActionService" id="loggerActionService" />
+    <dubbo:reference interface="com.little.g.admin.service.LoggerContentService" id="loggerContentService" />
+    <dubbo:reference interface="com.little.g.admin.service.LoggerService" id="loggerService" />
+    <dubbo:reference interface="com.little.g.admin.service.SysMenuService" id="sysMenuService" />
+    <dubbo:reference interface="com.little.g.admin.service.SysRoleService" id="sysRoleService" />
 
 
 </beans>

@@ -5,7 +5,7 @@
 package com.little.g.admin.model;
 
 
-import com.little.g.admin.common.model.BaseEntity;
+import com.little.g.admin.common.BaseEntity;
 
 /**
  * 后台管理用户信息表
