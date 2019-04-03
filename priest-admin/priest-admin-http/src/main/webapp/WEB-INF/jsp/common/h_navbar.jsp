@@ -37,7 +37,7 @@
                         <li class="divider"></li>
                     </ul>
                 </div>
-                <div class="logo-element">popo泡泡
+                <div class="logo-element">小G科技
                 </div>
             </li>
 

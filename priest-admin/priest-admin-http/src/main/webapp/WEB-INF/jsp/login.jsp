@@ -5,7 +5,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>popo泡泡</title>
+    <title>小G科技</title>
     <link href="/h_layout/css/bootstrap.min.css" rel="stylesheet">
     <link href="/h_layout/css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
     <link href="/h_layout/css/animate.css" rel="stylesheet">
@@ -54,7 +54,7 @@
 
     <div class="signup-footer">
 
-        <center>  &copy; 2018 All Rights Reserved. 北京数字家圆科技有限公司</center>
+        <center>  &copy; 2018 All Rights Reserved. 小G科技有限公司</center>
 
     </div>
 </div>

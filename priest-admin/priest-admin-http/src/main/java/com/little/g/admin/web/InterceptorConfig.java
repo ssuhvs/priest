@@ -23,6 +23,8 @@ public class InterceptorConfig implements WebMvcConfigurer {
                 .excludePathPatterns("/js/**")
                 .excludePathPatterns("/css/**")
                 .excludePathPatterns("/layui/**")
+                .excludePathPatterns("/layer/**")
+                .excludePathPatterns("/startbootstrap/**")
                 .excludePathPatterns("/admin/login")
                 .excludePathPatterns("/admin/login1")
                 ;
