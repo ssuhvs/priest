@@ -11,7 +11,7 @@
     <artifactId>priest-admin-api</artifactId>
     <packaging>jar</packaging>
 
-    <name>priest-demo-api</name>
+    <name>priest-admin-api</name>
     <url>http://maven.apache.org</url>
 
     <properties>

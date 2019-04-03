@@ -4,19 +4,18 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
- * Created by lengligang on 2019/4/1.
+ * Created by lengligang on 2019/4/3.
  */
 @Controller
 public class IndexController {
 
     @RequestMapping("/index")
     public String index(){
-        return "/jsp/index";
+        return "redirect:/admin/index";
     }
 
-
-    @RequestMapping("/admin/index")
-    public String adminIndex(){
-        return "/admin/index";
+    @RequestMapping("/404")
+    public String notFound(){
+        return "/jsp/404";
     }
 }

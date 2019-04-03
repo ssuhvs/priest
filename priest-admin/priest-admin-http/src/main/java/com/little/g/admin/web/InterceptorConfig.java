@@ -19,6 +19,7 @@ public class InterceptorConfig implements WebMvcConfigurer {
                 .excludePathPatterns("/h_layout/**")
                 .excludePathPatterns("/jsp/**")
                 .excludePathPatterns("/error")
+                .excludePathPatterns("/404")
                 .excludePathPatterns("/images/**")
                 .excludePathPatterns("/js/**")
                 .excludePathPatterns("/css/**")

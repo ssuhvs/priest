@@ -16,6 +16,7 @@
     <dubbo:reference interface="com.little.g.admin.service.LoggerService" id="loggerService" />
     <dubbo:reference interface="com.little.g.admin.service.SysMenuService" id="sysMenuService" />
     <dubbo:reference interface="com.little.g.admin.service.SysRoleService" id="sysRoleService" />
+    <dubbo:reference interface="com.little.g.admin.service.BookService" id="bookService" />
 
 
 </beans>
