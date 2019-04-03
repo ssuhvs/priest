@@ -8,6 +8,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.ImportResource;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
+import org.springframework.web.servlet.ViewResolver;
+import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 /**
  * Created by lengligang on 2019/3/18.
@@ -39,4 +41,16 @@ public class ApplicationConfig {
     public MessageSourceUtil messageSourceUtil(){
         return new MessageSourceUtil();
     }
+
+
+    @Bean
+    public ViewResolver jspViewResolver() {
+        InternalResourceViewResolver resolver = new InternalResourceViewResolver();
+        resolver.setPrefix("/WEB-INF");
+        resolver.setSuffix(".jsp");
+        resolver.setViewNames("/jsp/**");
+        resolver.setOrder(0);
+        return resolver;
+    }
+
 }

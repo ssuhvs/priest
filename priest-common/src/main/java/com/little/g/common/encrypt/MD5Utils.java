@@ -8,7 +8,7 @@ import org.apache.commons.codec.digest.DigestUtils;
  * AUTHOR:wangzhen
  */
 public class MD5Utils {
-    private static final String SALT = "6&+eoP9[Bg2>m8k8EQc6N{";
+    private static final String SALT = "littleg.salt";
 
     public static String encode(String raw) {
         return DigestUtils.md5Hex(raw + SALT);
@@ -24,9 +24,9 @@ public class MD5Utils {
 
     public static void main(String[] args) {
 
-        String encrypt = MD5Utils.encode("qinjian");
+        String encrypt = MD5Utils.encode("littleg");
         System.out.println(encrypt);
 
-        System.out.println(check("qinjian",encrypt));
+        System.out.println(check("little",encrypt));
     }
 }

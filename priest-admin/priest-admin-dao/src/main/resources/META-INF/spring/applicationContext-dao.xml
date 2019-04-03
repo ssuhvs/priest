@@ -73,7 +73,7 @@
     </bean>
 
     <!-- scan for mappers and let them be autowired -->
-    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+    <bean class="tk.mybatis.spring.mapper.MapperScannerConfigurer">
         <!--扫描Mapper类并使它们自动装载-->
         <property name="basePackage" value="com.little.g.**.mapper" />
     </bean>

@@ -5,12 +5,17 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
 	   http://dubbo.apache.org/schema/dubbo  http://dubbo.apache.org/schema/dubbo/dubbo.xsd">
 
-    <dubbo:application name="com.little.g.demo" logger="slf4j"/>
+    <dubbo:application name="com.little.g.admin" logger="slf4j"/>
     <dubbo:protocol name="dubbo"/>
     <dubbo:registry address="${zookeeper.url}"/>
 
 
-    <dubbo:service interface="com.little.g.demo.api.UserService" ref="userService"/>
+    <dubbo:service interface="com.little.g.admin.service.AdminUserService" ref="adminUserService" />
+    <dubbo:service interface="com.little.g.admin.service.LoggerActionService" ref="loggerActionService" />
+    <dubbo:service interface="com.little.g.admin.service.LoggerContentService" ref="loggerContentService" />
+    <dubbo:service interface="com.little.g.admin.service.LoggerService" ref="loggerService" />
+    <dubbo:service interface="com.little.g.admin.service.SysMenuService" ref="sysMenuService" />
+    <dubbo:service interface="com.little.g.admin.service.SysRoleService" ref="sysRoleService" />
 
 
 </beans>

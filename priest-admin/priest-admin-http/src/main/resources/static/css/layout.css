@@ -1,0 +1,82 @@
+@charset "UTF-8";
+/* CSS Document */
+*:not(input){
+    margin: 0;
+    padding:0;
+    -webkit-user-select:none;
+    -webkit-tap-highlight-color:rgba(0,0,0,0);
+    -webkit-touch-callout:none;
+    -webkit-text-size-adjust:none;
+}
+
+textarea { -webkit-user-select:auto;}
+
+input:focus,select:focus,textarea:focus,button:focus{
+    outline: none;
+}
+
+/*reset*/
+body,p,form,input,button,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6{margin:0;padding:0;list-style:none;}
+em, i, cite{font-style:normal;}
+a, ins{text-decoration:none;}
+a{color:#666; cursor:pointer;}
+img{border:none; max-width:100%;}
+img,input{vertical-align:middle;}
+select{background:none;}
+button, select, input{font-size:14px;}
+table{border-collapse:collapse;}
+h1, h2, h3, h4, h5, h6{font-size:100%; font-weight:normal;}
+body{-webkit-text-size-adjust:none; min-width:320px; color:#666; background-color:#ffffff; font:normal 14px/18px 'microsoft yahei',arial;}
+.clear:after{display:block;content:".";height:0;visibility:hidden;clear:both;font-size:0;line-height:0;}
+
+html,body { background:#eee; font-size:14px;}
+
+.pic_show {}
+.pic_show img{ width:100%;}
+
+.ower { background:#fff; margin:0px 0px 20px;}
+.ower h4{ height:60px; line-height:60px; font-size:16px; padding:0px 20px;}
+.ower h4 a{ color:#efbd00;}
+.ower h4 a img{ border-radius:0; margin:-3px 0px 0px 0px;}
+.ower h4 img{ border-radius:22px; margin:0px 10px 0px 0px;}
+.ower h4 span{ float:right; font-size:14px;}
+.ower h4 span b{ color:#efbd00; margin:0px 5px 0px 0px;}
+.ower dd{ padding:0px 20px 10px; color:#999; line-height:24px;}
+
+.detail_tab { display:table; width:100%; background:#f6f6f6; font-size:18px;}
+.detail_tab a{ display:table-cell; width:33%; height:60px; line-height:60px; text-align:center;}
+.detail_tab a.tab_on{ background:#efbd00; color:#fff;}
+
+.detail_float_warp { width:100%; height:60px; background:#000; opacity:0.7; z-index:90; position:fixed; bottom:0; left:0;}
+
+.detail_float_box { width:100%; height:60px; position:fixed; z-index:91; bottom:0px; left:0;}
+
+.detail_float_table { margin:10px;}
+.detail_float_table a{}
+
+.btn_orange { display:block; text-align:center; height:40px; line-height:40px; border-radius:4px; background:#efbd00; color:#fff;}
+
+.detail_box { padding:20px; font-size:16px; background:#fff;}
+
+.detail_info_box {}
+
+.detail_info { font-size:16px;}
+.detail_info p{ margin:0px 0px 10px 0px; line-height:30px;}
+.detail_info p img{ width:100%;}
+
+.product_info { font-size:16px;}
+.product_info p{ margin:0px 0px 10px 0px; line-height:30px;}
+
+.conform_movie { border-top:1px dotted #ccc; font-size:16px;}
+.conform_movie h4{ height:50px; line-height:50px; font-weight:bold;}
+.conform_movie dl{ display:table; width:100%;}
+.conform_movie dl dd{ display:table-cell; width:33%;}
+.conform_movie dl dd a{ display:block; margin:0px 10px 0px 0px;}
+.conform_movie dl dd a img{ width:100%;}
+.conform_movie dl dd p{ height:40px; line-height:40px; text-align:center;}
+
+.conform_files { font-size:16px;}
+.conform_files dl{}
+.conform_files dl a{ display:block; border-bottom:1px dotted #ccc; background:url(../images/ico-right-arrow-writer.png) no-repeat right 25px;}
+.conform_files dl dt{ height:30px; padding:20px 0px 0px 0px;}
+.conform_files dl dd{ height:20px; padding:0px 0px 10px 0px; color:#999; font-size:14px;}

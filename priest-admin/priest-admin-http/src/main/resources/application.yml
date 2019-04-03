@@ -10,12 +10,14 @@ spring:
   thymeleaf:
     prefix: classpath:/templates/
     cache: false
-    excluded-view-names: /admin/*
+    excluded-view-names: [/admin/*,/jsp/*]
 
   freemarker:
     template-loader-path: classpath:/ftls/
     suffix: .ftl
-    view-names: /admin/*
+    view-names: /test/*
+
+
 
 zookeeper:
     url: ${priest.dubbo.zk.url}

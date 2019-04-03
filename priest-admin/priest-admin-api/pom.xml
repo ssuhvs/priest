@@ -22,7 +22,7 @@
 
         <dependency>
             <groupId>com.little.g</groupId>
-            <artifactId>priest-common</artifactId>
+            <artifactId>priest-admin-common</artifactId>
         </dependency>
 
     </dependencies>

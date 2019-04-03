@@ -1,0 +1,89 @@
+/*
+ * Copyright (c) 2013 Odd Hill
+ * http://oddhill.se
+ */
+
+/* Select button */
+div.searchSelectButton {
+  border-radius: 5px;
+  position: relative;
+  font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
+  font-size: 12px;
+  z-index: 21;
+}
+
+/* Transparent layer */
+div.searchSelectLayer {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 20;
+  background: #FFFFFF;
+  filter: alpha(opacity=0);
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Dropdown */
+div.searchSelectDrop {
+  background-color: #FFFFFF;
+  border: 1px solid #9B9B9B;
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 300px;
+  overflow: hidden;
+  display: none;
+  cursor: default;
+  z-index: 22;
+  margin-top: 3px;
+}
+
+/* Option */
+div.searchSelectOption {
+  cursor: pointer;
+}
+
+/* Option hover */
+div.searchSelectOption:hover {
+  color: #FFFFFF;
+  background-color: #006ACF;
+}
+
+/* Selected option */
+div.searchSelectOptionSelected {
+  color: #000000;
+  background-color: #D5D5D5;
+}
+
+/* Input field */
+input.searchSelectButtonText {
+  margin: 0;
+  padding: 0 8% 0 2%;
+  height: 100%;
+  width: 90%;
+  border: none;
+  border-radius: 5px;
+  background-color: transparent;
+}
+
+/* Text */
+p.searchSelectOptionText,
+p.searchSelectEmpty {
+  margin: 0;
+  padding: 0 0 0 5px;
+  position: relative;
+  line-height: 19px;
+}
+
+/* Empty text */
+div.searchSelectEmpty {
+  display: none;
+}
+
+/* Scrollbar */
+div.slimScrollBar {
+  cursor: pointer;
+}
