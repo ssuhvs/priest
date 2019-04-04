@@ -1,64 +1,88 @@
-package ${packageName}.web;
+package ${packageName};
 
-import com.little.g.common.ResultJson;
-import com.little.g.common.dto.ListResultDTO;
-import com.little.g.common.params.TimeQueryParam;
-import ${packageName}.api.${entityName}Service;
-import ${packageName}.dto.${entityName}DTO;
+import com.little.g.admin.common.annotation.ModuleManage;
+import com.little.g.admin.common.annotation.ModuleOperation;
+import com.little.g.admin.common.enums.ModuleType;
+import com.little.g.admin.common.enums.OperationType;
+import com.little.g.admin.common.page.Page;
+import ${basePackage}.dto.BookDTO;
+import ${basePackage}.service.${entityName}Service;
+import com.little.g.admin.web.common.AdminConstants;
+import com.little.g.common.params.PageQueryParam;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import javax.validation.Valid;
 
-/**
-* Created by ${author} on 2019/3/12.
-*/
-@RequestMapping("/${entityName?uncap_first}")
-@RestController
+
+@Controller
+@RequestMapping(value = "/book")
+@ModuleManage(ModuleType.${module})
 public class ${entityName}Controller {
+    private static final Logger logger = LoggerFactory.getLogger(BookController.class);
+
     @Resource
-    private ${entityName}Service ${entityName?uncap_first}Service;
+    private ${entityName}Service bookService;
 
-    @RequestMapping(value = "/add",method = RequestMethod.POST)
-    public ResultJson add(@Valid ${entityName}DTO params){
-        ResultJson r=new ResultJson();
+    @RequestMapping(value = "/list", method = {RequestMethod.GET, RequestMethod.POST})
+    public String list(@Valid PageQueryParam param,
+                       Model view) {
 
-        if(${entityName?uncap_first}Service.add(params)){
-            return r;
-        }
-        r.setC(ResultJson.SYSTEM_UNKNOWN_EXCEPTION);
-        return r;
+        Page
+                <BookDTO> page = bookService.pageList(param);
+
+        //放入page对象。
+        view.addAttribute("page", page);
+
+        return "/jsp/book/book-list";
     }
 
-    @RequestMapping(value = "/del",method = RequestMethod.GET)
-    public ResultJson del(@RequestParam Integer id){
-        ResultJson r=new ResultJson();
-        if(${entityName?uncap_first}Service.delete(id)){
-            return r;
+    @RequestMapping(value = "/edit", method = {RequestMethod.PUT, RequestMethod.GET})
+    public String edit(Integer id, Model view) {
+
+
+        if (id != null && id > 0) {
+            BookDTO book = bookService.get(id);
+            view.addAttribute("book", book);
         }
-        r.setC(ResultJson.SYSTEM_UNKNOWN_EXCEPTION);
-        return r;
+
+        return "/jsp/book/book-edit";
     }
 
-    @RequestMapping(value = "/update",method = RequestMethod.POST)
-    public ResultJson update(@Valid ${entityName}DTO params){
-        ResultJson r=new ResultJson();
-        if(${entityName?uncap_first}Service.update(params)){
-            return r;
+    @RequestMapping(value = "/save", method = {RequestMethod.POST})
+    @ResponseBody
+    @ModuleOperation(value = OperationType.ADD, description = "添加/修改书本")
+    public String save(BookDTO book,
+                       Model view) {
+        if (book != null) {
+            boolean r;
+            if (book.getId() != null && book.getId() > 0) {
+                r = bookService.update(book);
+            } else {
+                r = bookService.add(book);
+            }
+            if (r) {
+                return String.format(AdminConstants.WEB_IFRAME_SCRIPT, "保存成功！");
+            }
         }
-        r.setC(ResultJson.SYSTEM_UNKNOWN_EXCEPTION);
-        return r;
+        return String.format(AdminConstants.WEB_IFRAME_SCRIPT, "保存失败！");
     }
 
-
-    @RequestMapping(value = "/list",method = RequestMethod.GET)
-    public ResultJson list(@Valid TimeQueryParam params){
-        ResultJson r=new ResultJson();
-        ListResultDTO<${entityName}DTO> list= ${entityName?uncap_first}Service.list(params);
-        r.setData(list);
-        return r;
+    @RequestMapping(value = "/delete", method = {RequestMethod.DELETE, RequestMethod.POST})
+    @ResponseBody
+    @ModuleOperation(value = OperationType.DELETE, description = "删除角色")
+    public String delete(@RequestParam Integer id,
+                         Model view) {
+        if (bookService.delete(id)) {
+            return String.format(AdminConstants.WEB_IFRAME_SCRIPT, "删除成功！");
+        }
+        return String.format(AdminConstants.WEB_IFRAME_SCRIPT, "删除失败！");
     }
 }

@@ -26,7 +26,7 @@
                                 <label class="layui-form-label">书名</label>
                                 <div class="layui-input-block">
                                     <input type="text" name="name" value="${book.name}"
-                                           placeholder="" autocomplete="off"
+                                           placeholder="" required="required" autocomplete="off"
                                            class="layui-input">
                                 </div>
                             </div>
@@ -35,7 +35,7 @@
                                 <label class="layui-form-label">价格</label>
                                 <div class="layui-input-block">
                                     <input type="text" name="price" value="${book.price}"
-                                           placeholder="" autocomplete="off"
+                                           placeholder=""  autocomplete="off"
                                            class="layui-input">
                                 </div>
                             </div>

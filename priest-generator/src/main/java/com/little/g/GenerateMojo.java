@@ -60,7 +60,8 @@ public class GenerateMojo
     @Parameter(alias = "overwrite")
     private boolean overwrite;
 
-
+    @Parameter(defaultValue = "/src/main/webapp/WEB-INF/jsp")
+    private String webSource;
 
     @Parameter(defaultValue = "/com/little/g/test")
     private String packagePath;
@@ -130,6 +131,12 @@ public class GenerateMojo
                     conf.setPackagePath(packagePath);
                 }
 
+
+                Node webPathNode=attributes.getNamedItem("webPath");
+                if(webPathNode != null && StringUtils.isNotEmpty(webPathNode.getNodeValue())){
+                    conf.setWebPath(webPathNode.getNodeValue());
+                }
+
                 Node templateNameNode=attributes.getNamedItem("templateName");
                 if(templateNameNode != null && StringUtils.isNotEmpty(templateNameNode.getNodeValue())){
                     conf.setTemplateName(templateNameNode.getNodeValue());
@@ -155,6 +162,8 @@ public class GenerateMojo
                     }
                     conf.setDataMap(dataMap);
                 }
+
+
                 generateConfs.add(conf);
             }
 
@@ -166,7 +175,12 @@ public class GenerateMojo
         }
 
         for(GenerateConf generateConf:generateConfs){
-            String codePath=source.getPath()+generateConf.getPackagePath();
+            String codePath;
+            if(StringUtils.isNotEmpty(generateConf.getWebPath())){
+                codePath = baseDir + webSource+ generateConf.getWebPath();
+            }else {
+                codePath = source.getPath() + generateConf.getPackagePath();
+            }
             File codePathFile=new File(codePath);
             if(!codePathFile.exists()){
                 codePathFile.mkdirs();
@@ -218,12 +232,63 @@ public class GenerateMojo
         Map<String,Object> dataMap=new HashMap<String, Object>();
         for(int j=0;j<dataNodes.getLength();j++){
             Node property = dataNodes.item(j);
-            if(!"property".equals(property.getNodeName())){
+            if(!"property".equals(property.getNodeName()) && !"list".equals(property.getNodeName())){
                 continue;
             }
-            NamedNodeMap dataAttributs=property.getAttributes();
-            dataMap.put(dataAttributs.getNamedItem("name").getNodeValue(),dataAttributs.getNamedItem("value").getNodeValue());
+            if("list".equals(property.getNodeName())){
+                String name=property.getAttributes().getNamedItem("name").getNodeValue();
+
+                NodeList attributesNodes=property.getChildNodes();
+                if(attributesNodes!=null && attributesNodes.getLength()>0){
+                    List<Attribute> list=new ArrayList<Attribute>();
+
+                    for(int x=0;x<attributesNodes.getLength();x++){
+                        Node attribute=attributesNodes.item(x);
+                        if(!"attribute".equals(attribute.getNodeName())){
+                            continue;
+                        }
+                        NamedNodeMap attributeMap=attribute.getAttributes();
+                        if(attributeMap != null){
+                            Attribute attributeValue=new Attribute();
+                            String display=attributeMap.getNamedItem("display")==null? null: attributeMap.getNamedItem("display").getNodeValue();
+                            if(StringUtils.isNotEmpty(display)) {
+                                attributeValue.setDisplay(Boolean.valueOf(display));
+                            }
+                            String attName=attributeMap.getNamedItem("name")==null? null: attributeMap.getNamedItem("name").getNodeValue();
+                            if(StringUtils.isEmpty(attName)){
+                                throw new RuntimeException("attribute name can not be empty!");
+                            }
+                            attributeValue.setName(attName);
+
+                            String comment=attributeMap.getNamedItem("comment")==null? null: attributeMap.getNamedItem("comment").getNodeValue();
+                            if(StringUtils.isEmpty(comment)){
+                                comment=attName;
+                            }
+                            attributeValue.setComment(comment);
+
+                            String required=attributeMap.getNamedItem("required")==null? null: attributeMap.getNamedItem("required").getNodeValue();
+                            if(StringUtils.isNotEmpty(required)) {
+                                attributeValue.setRequired(Boolean.valueOf(required));
+                            }
+
+                            String value=attributeMap.getNamedItem("value")==null? null: attributeMap.getNamedItem("value").getNodeValue();
+                            if(StringUtils.isNotEmpty(required)) {
+                                attributeValue.setValue(value);
+                            }
+
+                            list.add(attributeValue);
+                        }
+                    }
+                    dataMap.put(name,list);
+                }
+
+            }else {
+                NamedNodeMap dataAttributs = property.getAttributes();
+                dataMap.put(dataAttributs.getNamedItem("name").getNodeValue(), dataAttributs.getNamedItem("value").getNodeValue());
+            }
         }
         return dataMap;
     }
+
+
 }

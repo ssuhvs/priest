@@ -24,7 +24,7 @@ import javax.validation.Valid;
 
 @Controller
 @RequestMapping(value = "/book")
-@ModuleManage(ModuleType.ROLE)
+@ModuleManage(ModuleType.BOOK)
 public class BookController {
     private static final Logger logger = LoggerFactory.getLogger(BookController.class);
 

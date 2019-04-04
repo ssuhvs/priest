@@ -3,14 +3,27 @@
         <!ELEMENT generatorConfiguration (properties,generateFile+) >
         <!ELEMENT properties (property*) >
         <!ELEMENT property  EMPTY>
-        <!ELEMENT generateFile (property)>
+        <!ELEMENT attribute  EMPTY>
+        <!ELEMENT list  (attribute+)>
+        <!ELEMENT generateFile (property*,list*)>
         <!ATTLIST property
         name    CDATA #REQUIRED
         value   CDATA #REQUIRED >
         <!ATTLIST generateFile
         packagePath    CDATA #IMPLIED
+        webPath    CDATA #IMPLIED
         templateName   CDATA #REQUIRED
         fileName   CDATA #REQUIRED>
+        <!ATTLIST list
+                name    CDATA #REQUIRED >
+
+        <!ATTLIST attribute
+                name    CDATA #REQUIRED
+                value    CDATA #IMPLIED
+                required CDATA #IMPLIED
+                comment CDATA #IMPLIED
+                display CDATA #IMPLIED
+                >
 ]>
 
 <generatorConfiguration>
@@ -20,9 +33,20 @@
         <property name="author" value="lengligang" />
     </properties>
     <!--全局属性-->
-    <generateFile packagePath="/com/little/g/demo/web" templateName="Controller.tpl" fileName="OrderController.java">
-        <property name="entityName" value="Order" />
+    <generateFile packagePath="/com/little/g/admin/web/controllers/test" templateName="Controller.tpl" fileName="BookController.java">
+        <property name="packageName" value="com.little.g.admin.web.controllers.test" />
+        <property name="basePackage" value="com.little.g.admin" />
+        <property name="entityName" value="Book" />
+        <property name="module" value="BOOK" />
     </generateFile>
+
+    <!--<generateFile webPath="/book" templateName="Controller.tpl" fileName="BookController.jsp">-->
+        <!--<property name="entityName" value="Book" />-->
+        <!--<list name="attributes">-->
+            <!--<attribute name="name" required="false" comment="名字" />-->
+        <!--</list>-->
+    <!--</generateFile>-->
+
 
 
 

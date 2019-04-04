@@ -3,14 +3,28 @@
         <!ELEMENT generatorConfiguration (properties,generateFile+) >
         <!ELEMENT properties (property*) >
         <!ELEMENT property  EMPTY>
-        <!ELEMENT generateFile (property*)>
+        <!ELEMENT attribute  EMPTY>
+        <!ELEMENT list  (attribute+)>
+        <!ELEMENT generateFile (property*,list*)>
         <!ATTLIST property
                 name    CDATA #REQUIRED
                 value   CDATA #REQUIRED >
         <!ATTLIST generateFile
                 packagePath    CDATA #IMPLIED
+                webPath    CDATA #IMPLIED
                 templateName   CDATA #REQUIRED
-                fileName   CDATA #REQUIRED>]>
+                fileName   CDATA #REQUIRED>
+        <!ATTLIST list
+                name    CDATA #REQUIRED >
+
+        <!ATTLIST attribute
+                name    CDATA #REQUIRED
+                value    CDATA #IMPLIED
+                required CDATA #IMPLIED
+                comment CDATA #IMPLIED
+                display CDATA #IMPLIED
+                >
+        ]>
 
 <generatorConfiguration>
     <!--全局属性-->
@@ -24,6 +38,14 @@
         <property name="tablecomment" value="这是测试" />
         <property name="classObjectName" value="哈哈" />
         <property name="className" value="className" />
+    </generateFile>
+
+
+    <generateFile webPath="/book" templateName="Service.tpl" fileName="Test.jsp">
+        <property name="entityName" value="Book" />
+        <list name="attributes">
+            <attribute name="entityName"  required="true" comment="描述"  />
+        </list>
     </generateFile>
 
 </generatorConfiguration>

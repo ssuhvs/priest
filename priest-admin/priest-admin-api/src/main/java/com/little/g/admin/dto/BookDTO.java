@@ -54,4 +54,17 @@ public class BookDTO implements Serializable {
     public void setCreateTime(Long createTime) {
         this.createTime = createTime;
     }
+
+
+    @Override
+    public String toString() {
+        final StringBuffer sb = new StringBuffer("BookDTO{");
+        sb.append("id=").append(id);
+        sb.append(", name='").append(name).append('\'');
+        sb.append(", price=").append(price);
+        sb.append(", author='").append(author).append('\'');
+        sb.append(", createTime=").append(createTime);
+        sb.append('}');
+        return sb.toString();
+    }
 }
