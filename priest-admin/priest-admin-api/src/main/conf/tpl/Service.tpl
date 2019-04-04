@@ -1,7 +1,9 @@
-package ${packageName}.api;
+package ${packageName}.service;
 
+import com.little.g.admin.common.page.Page;
 import com.little.g.common.dto.ListResultDTO;
 import com.little.g.common.params.TimeQueryParam;
+import com.little.g.common.params.PageQueryParam;
 import ${packageName}.dto.${entityName}DTO;
 
 import javax.validation.Valid;
@@ -45,5 +47,12 @@ boolean delete(@NotBlank Integer id);
 * @return
 */
 ListResultDTO<${entityName}DTO> list(@NotBlank TimeQueryParam param);
+
+/**
+* 分页查询逻辑
+* @param param
+* @return
+*/
+Page<${entityName}DTO> pageList(@NotBlank PageQueryParam param);
 
 }

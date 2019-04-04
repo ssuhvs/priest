@@ -22,23 +22,38 @@
                         <form method="POST" class="layui-form layui-form-pane" role="form" action="/book/save">
                             <input type="hidden" name="id" value="${book.id}"/>
 
-                            <div class="layui-form-item">
-                                <label class="layui-form-label">书名</label>
-                                <div class="layui-input-block">
-                                    <input type="text" name="name" value="${book.name}"
-                                           placeholder="" required="required" autocomplete="off"
-                                           class="layui-input">
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">书名</label>
+                                    <div class="layui-input-block">
+                                        <input type="text" name="name" value="${book.name}"
+                                               placeholder="" required='required'  autocomplete="off"
+                                               class="layui-input">
+                                    </div>
                                 </div>
-                            </div>
-
-                            <div class="layui-form-item">
-                                <label class="layui-form-label">价格</label>
-                                <div class="layui-input-block">
-                                    <input type="text" name="price" value="${book.price}"
-                                           placeholder=""  autocomplete="off"
-                                           class="layui-input">
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">价格</label>
+                                    <div class="layui-input-block">
+                                        <input type="text" name="price" value="${book.price}"
+                                               placeholder=""   autocomplete="off"
+                                               class="layui-input">
+                                    </div>
                                 </div>
-                            </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">作者</label>
+                                    <div class="layui-input-block">
+                                        <input type="text" name="author" value="${book.author}"
+                                               placeholder=""   autocomplete="off"
+                                               class="layui-input">
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">出版商</label>
+                                    <div class="layui-input-block">
+                                        <input type="text" name="publisher" value="${book.publisher}"
+                                               placeholder=""   autocomplete="off"
+                                               class="layui-input">
+                                    </div>
+                                </div>
 
                             <center>
                             <div class="layui-form-item">

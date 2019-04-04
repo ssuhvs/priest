@@ -38,14 +38,32 @@
         <property name="basePackage" value="com.little.g.admin" />
         <property name="entityName" value="Book" />
         <property name="module" value="BOOK" />
+        <property name="uri" value="/book" />
     </generateFile>
 
-    <!--<generateFile webPath="/book" templateName="Controller.tpl" fileName="BookController.jsp">-->
-        <!--<property name="entityName" value="Book" />-->
-        <!--<list name="attributes">-->
-            <!--<attribute name="name" required="false" comment="名字" />-->
-        <!--</list>-->
-    <!--</generateFile>-->
+    <generateFile webPath="/book" templateName="list.tpl" fileName="book-list.jsp">
+        <property name="uri" value="/book" />
+        <property name="module" value="图书" />
+        <list name="attributes">
+            <attribute name="name" required="true" comment="书名" />
+            <attribute name="price" required="false" comment="价格" />
+            <attribute name="author" required="false" comment="作者" />
+            <attribute name="publisher" required="false" comment="出版商" />
+        </list>
+    </generateFile>
+
+
+    <generateFile webPath="/book" templateName="edit.tpl" fileName="book-edit.jsp">
+        <property name="uri" value="/book" />
+        <property name="paramName" value="book" />
+        <property name="module" value="图书" />
+        <list name="attributes">
+            <attribute name="name" required="true" comment="书名" />
+            <attribute name="price" required="false" comment="价格" />
+            <attribute name="author" required="false" comment="作者" />
+            <attribute name="publisher" required="false" comment="出版商" />
+        </list>
+    </generateFile>
 
 
 

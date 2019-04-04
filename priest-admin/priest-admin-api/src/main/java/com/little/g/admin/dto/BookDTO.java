@@ -11,6 +11,8 @@ public class BookDTO implements Serializable {
 
     private String author;
 
+    private String publisher;
+
     private Long createTime;
 
     private static final long serialVersionUID = 1L;
@@ -47,6 +49,14 @@ public class BookDTO implements Serializable {
         this.author = author == null ? null : author.trim();
     }
 
+    public String getPublisher() {
+        return publisher;
+    }
+
+    public void setPublisher(String publisher) {
+        this.publisher = publisher == null ? null : publisher.trim();
+    }
+
     public Long getCreateTime() {
         return createTime;
     }
@@ -63,6 +73,7 @@ public class BookDTO implements Serializable {
         sb.append(", name='").append(name).append('\'');
         sb.append(", price=").append(price);
         sb.append(", author='").append(author).append('\'');
+        sb.append(", publisher='").append(publisher).append('\'');
         sb.append(", createTime=").append(createTime);
         sb.append('}');
         return sb.toString();

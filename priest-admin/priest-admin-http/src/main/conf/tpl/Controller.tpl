@@ -23,25 +23,24 @@ import javax.validation.Valid;
 
 
 @Controller
-@RequestMapping(value = "/book")
+@RequestMapping(value = "${uri}")
 @ModuleManage(ModuleType.${module})
 public class ${entityName}Controller {
-    private static final Logger logger = LoggerFactory.getLogger(BookController.class);
+    private static final Logger logger = LoggerFactory.getLogger(${entityName}Controller.class);
 
     @Resource
-    private ${entityName}Service bookService;
+    private ${entityName}Service ${entityName?uncap_first}Service;
 
     @RequestMapping(value = "/list", method = {RequestMethod.GET, RequestMethod.POST})
     public String list(@Valid PageQueryParam param,
                        Model view) {
 
-        Page
-                <BookDTO> page = bookService.pageList(param);
+        Page<${entityName}DTO> page = bookService.pageList(param);
 
         //放入page对象。
         view.addAttribute("page", page);
 
-        return "/jsp/book/book-list";
+        return "/jsp/${entityName?uncap_first}/${entityName?uncap_first}-list";
     }
 
     @RequestMapping(value = "/edit", method = {RequestMethod.PUT, RequestMethod.GET})
@@ -49,24 +48,24 @@ public class ${entityName}Controller {
 
 
         if (id != null && id > 0) {
-            BookDTO book = bookService.get(id);
-            view.addAttribute("book", book);
+            ${entityName}DTO ${entityName?uncap_first} = ${entityName?uncap_first}Service.get(id);
+            view.addAttribute("${entityName?uncap_first}", ${entityName?uncap_first});
         }
 
-        return "/jsp/book/book-edit";
+        return "/jsp/${entityName?uncap_first}/${entityName?uncap_first}-edit";
     }
 
     @RequestMapping(value = "/save", method = {RequestMethod.POST})
     @ResponseBody
     @ModuleOperation(value = OperationType.ADD, description = "添加/修改书本")
-    public String save(BookDTO book,
+    public String save(${entityName}DTO ${entityName?uncap_first},
                        Model view) {
-        if (book != null) {
+        if (${entityName?uncap_first} != null) {
             boolean r;
-            if (book.getId() != null && book.getId() > 0) {
-                r = bookService.update(book);
+            if (${entityName?uncap_first}.getId() != null && ${entityName?uncap_first}.getId() > 0) {
+                r = ${entityName?uncap_first}Service.update(${entityName?uncap_first});
             } else {
-                r = bookService.add(book);
+                r = ${entityName?uncap_first}Service.add(${entityName?uncap_first});
             }
             if (r) {
                 return String.format(AdminConstants.WEB_IFRAME_SCRIPT, "保存成功！");
@@ -78,9 +77,8 @@ public class ${entityName}Controller {
     @RequestMapping(value = "/delete", method = {RequestMethod.DELETE, RequestMethod.POST})
     @ResponseBody
     @ModuleOperation(value = OperationType.DELETE, description = "删除角色")
-    public String delete(@RequestParam Integer id,
-                         Model view) {
-        if (bookService.delete(id)) {
+    public String delete(@RequestParam Integer id,Model view) {
+        if (${entityName?uncap_first}Service.delete(id)) {
             return String.format(AdminConstants.WEB_IFRAME_SCRIPT, "删除成功！");
         }
         return String.format(AdminConstants.WEB_IFRAME_SCRIPT, "删除失败！");

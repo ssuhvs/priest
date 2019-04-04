@@ -11,6 +11,8 @@ public class Book implements Serializable {
 
     private String author;
 
+    private String publisher;
+
     private Long createTime;
 
     private static final long serialVersionUID = 1L;
@@ -45,6 +47,14 @@ public class Book implements Serializable {
 
     public void setAuthor(String author) {
         this.author = author == null ? null : author.trim();
+    }
+
+    public String getPublisher() {
+        return publisher;
+    }
+
+    public void setPublisher(String publisher) {
+        this.publisher = publisher == null ? null : publisher.trim();
     }
 
     public Long getCreateTime() {

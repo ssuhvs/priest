@@ -43,7 +43,7 @@ public class BookController {
         return "/jsp/book/book-list";
     }
 
-    @RequestMapping(value = "/edit", method = {RequestMethod.PUT,RequestMethod.GET})
+    @RequestMapping(value = "/edit", method = {RequestMethod.PUT, RequestMethod.GET})
     public String edit(Integer id, Model view) {
 
 
@@ -74,11 +74,10 @@ public class BookController {
         return String.format(AdminConstants.WEB_IFRAME_SCRIPT, "保存失败！");
     }
 
-    @RequestMapping(value = "/delete", method = {RequestMethod.DELETE,RequestMethod.POST})
+    @RequestMapping(value = "/delete", method = {RequestMethod.DELETE, RequestMethod.POST})
     @ResponseBody
     @ModuleOperation(value = OperationType.DELETE, description = "删除角色")
-    public String delete(@RequestParam Integer id,
-                         Model view) {
+    public String delete(@RequestParam Integer id,Model view) {
         if (bookService.delete(id)) {
             return String.format(AdminConstants.WEB_IFRAME_SCRIPT, "删除成功！");
         }

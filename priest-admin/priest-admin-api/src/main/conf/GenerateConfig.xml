@@ -19,7 +19,7 @@
         <property name="author" value="lengligang" />
     </properties>
     <!--全局属性-->
-    <generateFile packagePath="/com/little/g/admin/api" templateName="Service.tpl" fileName="BookService.java">
+    <generateFile packagePath="/com/little/g/admin/service" templateName="Service.tpl" fileName="BookService.java">
         <property name="entityName" value="Book" />
     </generateFile>
 

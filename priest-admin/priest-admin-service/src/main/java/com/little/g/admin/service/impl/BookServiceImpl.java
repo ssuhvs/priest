@@ -1,8 +1,8 @@
 package com.little.g.admin.service.impl;
 
 import com.little.g.admin.common.page.Page;
-import com.little.g.common.dto.ListResultDTO;
 import com.little.g.common.params.PageQueryParam;
+import com.little.g.common.dto.ListResultDTO;
 import com.little.g.common.params.TimeQueryParam;
 import com.little.g.admin.service.BookService;
 import com.little.g.admin.dto.BookDTO;
@@ -15,9 +15,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
 import javax.annotation.Resource;
-import javax.validation.constraints.NotBlank;
 import java.util.List;
 import java.util.stream.Collectors;
+import javax.validation.constraints.NotBlank;
 
 /**
 * Created by lengligang on 2019/3/9.
@@ -79,7 +79,6 @@ public class BookServiceImpl implements BookService {
             return result;
     }
 
-
     @Override
     public Page<BookDTO> pageList(@NotBlank PageQueryParam param) {
         Page<BookDTO> page=new Page();
@@ -99,10 +98,11 @@ public class BookServiceImpl implements BookService {
             return page;
         }
         page.setResult(list.stream().map(book -> {
-            BookDTO dto=new BookDTO();
-            BeanUtils.copyProperties(book,dto);
+        BookDTO dto=new BookDTO();
+        BeanUtils.copyProperties(book,dto);
             return dto;
         }).collect(Collectors.toList()));
         return page;
     }
+
 }

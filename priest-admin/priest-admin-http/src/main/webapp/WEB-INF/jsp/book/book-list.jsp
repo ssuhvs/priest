@@ -45,8 +45,10 @@
                 <thead>
                 <tr>
                     <th>编号</th>
-                        <th>书名</th>
-                        <th>价格</th>
+                            <th>书名</th>
+                            <th>价格</th>
+                            <th>作者</th>
+                            <th>出版商</th>
                     <th>操作</th>
                 </tr>
                 </thead>
@@ -56,8 +58,10 @@
                     <c:forEach var="entity" items="${page.result}" varStatus="status">
                         <tr class="active">
                             <td class="h6">${entity.id}</td>
-                                <td class="h6">${entity.name}</td>
-                                <td class="h6">${entity.price}</td>
+                                    <td class="h6">${entity.name}</td>
+                                    <td class="h6">${entity.price}</td>
+                                    <td class="h6">${entity.author}</td>
+                                    <td class="h6">${entity.publisher}</td>
                             <td class="h6">
                                 <button type="button" onclick="openEditWindow(this)" value="${entity.id}"
                                         class="btn btn-xs btn-info">

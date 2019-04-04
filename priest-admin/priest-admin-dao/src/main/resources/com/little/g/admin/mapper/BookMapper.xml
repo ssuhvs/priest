@@ -6,6 +6,7 @@
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="price" jdbcType="INTEGER" property="price" />
     <result column="author" jdbcType="VARCHAR" property="author" />
+    <result column="publisher" jdbcType="VARCHAR" property="publisher" />
     <result column="create_time" jdbcType="BIGINT" property="createTime" />
   </resultMap>
   <sql id="Example_Where_Clause">
@@ -67,7 +68,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, `name`, price, author, create_time
+    id, `name`, price, author, publisher, create_time
   </sql>
   <select id="selectByExample" parameterType="com.little.g.admin.model.BookExample" resultMap="BaseResultMap">
     select
@@ -101,9 +102,9 @@
   </delete>
   <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.little.g.admin.model.Book" useGeneratedKeys="true">
     insert into book (`name`, price, author, 
-      create_time)
+      publisher, create_time)
     values (#{name,jdbcType=VARCHAR}, #{price,jdbcType=INTEGER}, #{author,jdbcType=VARCHAR}, 
-      #{createTime,jdbcType=BIGINT})
+      #{publisher,jdbcType=VARCHAR}, #{createTime,jdbcType=BIGINT})
   </insert>
   <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.little.g.admin.model.Book" useGeneratedKeys="true">
     insert into book
@@ -116,6 +117,9 @@
       </if>
       <if test="author != null">
         author,
+      </if>
+      <if test="publisher != null">
+        publisher,
       </if>
       <if test="createTime != null">
         create_time,
@@ -130,6 +134,9 @@
       </if>
       <if test="author != null">
         #{author,jdbcType=VARCHAR},
+      </if>
+      <if test="publisher != null">
+        #{publisher,jdbcType=VARCHAR},
       </if>
       <if test="createTime != null">
         #{createTime,jdbcType=BIGINT},
@@ -157,6 +164,9 @@
       <if test="record.author != null">
         author = #{record.author,jdbcType=VARCHAR},
       </if>
+      <if test="record.publisher != null">
+        publisher = #{record.publisher,jdbcType=VARCHAR},
+      </if>
       <if test="record.createTime != null">
         create_time = #{record.createTime,jdbcType=BIGINT},
       </if>
@@ -171,6 +181,7 @@
       `name` = #{record.name,jdbcType=VARCHAR},
       price = #{record.price,jdbcType=INTEGER},
       author = #{record.author,jdbcType=VARCHAR},
+      publisher = #{record.publisher,jdbcType=VARCHAR},
       create_time = #{record.createTime,jdbcType=BIGINT}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -188,6 +199,9 @@
       <if test="author != null">
         author = #{author,jdbcType=VARCHAR},
       </if>
+      <if test="publisher != null">
+        publisher = #{publisher,jdbcType=VARCHAR},
+      </if>
       <if test="createTime != null">
         create_time = #{createTime,jdbcType=BIGINT},
       </if>
@@ -199,6 +213,7 @@
     set `name` = #{name,jdbcType=VARCHAR},
       price = #{price,jdbcType=INTEGER},
       author = #{author,jdbcType=VARCHAR},
+      publisher = #{publisher,jdbcType=VARCHAR},
       create_time = #{createTime,jdbcType=BIGINT}
     where id = #{id,jdbcType=INTEGER}
   </update>
