@@ -1,12 +1,15 @@
-package ${packageName}.service;
+package ${packageName}.service.impl;
 
+import com.little.g.admin.common.page.Page;
+import com.little.g.common.params.PageQueryParam;
 import com.little.g.common.dto.ListResultDTO;
 import com.little.g.common.params.TimeQueryParam;
-import ${packageName}.api.${entityName}Service;
+import ${packageName}.service.${entityName}Service;
 import ${packageName}.dto.${entityName}DTO;
 import ${packageName}.mapper.${entityName}Mapper;
 import ${packageName}.model.${entityName};
 import ${packageName}.model.${entityName}Example;
+import org.apache.ibatis.session.RowBounds;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
@@ -14,6 +17,7 @@ import org.springframework.util.CollectionUtils;
 import javax.annotation.Resource;
 import java.util.List;
 import java.util.stream.Collectors;
+import javax.validation.constraints.NotBlank;
 
 /**
 * Created by ${author} on 2019/3/9.
@@ -73,6 +77,32 @@ public class ${entityName}ServiceImpl implements ${entityName}Service {
             }).collect(Collectors.toList()));
 
             return result;
+    }
+
+    @Override
+    public Page<${entityName}DTO> pageList(@NotBlank PageQueryParam param) {
+        Page<${entityName}DTO> page=new Page();
+        ${entityName}Example example=new ${entityName}Example();
+        Number total=${entityName?uncap_first}Mapper.countByExample(example);
+        page.setCurrentPage(param.getPage());
+        page.setPageSize(param.getLimit());
+        page.setTotalCount(total.intValue());
+        if(total!=null && total.intValue()<=0){
+            return page;
         }
+        example.setOrderByClause("id desc");
+
+        RowBounds rowBounds=new RowBounds((param.getPage()-1)*param.getLimit(),param.getLimit());
+        List<${entityName}> list=${entityName?uncap_first}Mapper.selectByExampleWithRowbounds(example,rowBounds);
+        if(CollectionUtils.isEmpty(list)){
+            return page;
+        }
+        page.setResult(list.stream().map(${entityName?uncap_first} -> {
+        ${entityName}DTO dto=new ${entityName}DTO();
+        BeanUtils.copyProperties(${entityName?uncap_first},dto);
+            return dto;
+        }).collect(Collectors.toList()));
+        return page;
+    }
 
 }

@@ -1,38 +1,38 @@
-package ${packageName}.service;
+package com.little.g.admin.service;
 
 import com.little.g.admin.common.page.Page;
 import com.little.g.common.dto.ListResultDTO;
 import com.little.g.common.params.TimeQueryParam;
 import com.little.g.common.params.PageQueryParam;
-import ${packageName}.dto.${entityName}DTO;
+import com.little.g.admin.dto.BookDTO;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 
 /**
-* Created by ${author} on 2019/3/9.
+* Created by lengligang on 2019/3/9.
 */
-public interface ${entityName}Service {
+public interface BookService {
 /**
 * 添加
 * @param entity
 * @return
 */
-boolean add(@Valid ${entityName}DTO entity);
+boolean add(@Valid BookDTO entity);
 
 /**
 * 根据id获取
 * @param id
 * @return
 */
-${entityName}DTO get(@NotBlank Integer id);
+BookDTO get(@NotBlank Integer id);
 
 /**
 * 更新
 * @param entity
 * @return
 */
-boolean update(@Valid ${entityName}DTO entity);
+boolean update(@Valid BookDTO entity);
 
 /**
 * 删除
@@ -46,13 +46,13 @@ boolean delete(@NotBlank Integer id);
 * @param param
 * @return
 */
-ListResultDTO<${entityName}DTO> list(@NotBlank TimeQueryParam param);
+ListResultDTO<BookDTO> list(@NotBlank TimeQueryParam param);
 
 /**
 * 分页查询逻辑
 * @param param
 * @return
 */
-Page<${entityName}DTO> pageList(@NotBlank PageQueryParam param);
+Page<BookDTO> pageList(@NotBlank PageQueryParam param);
 
 }

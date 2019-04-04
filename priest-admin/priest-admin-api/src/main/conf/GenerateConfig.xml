@@ -15,12 +15,12 @@
 <generatorConfiguration>
     <!--全局属性-->
     <properties>
-        <property name="packageName" value="com.little.g.demo" />
+        <property name="packageName" value="com.little.g.admin" />
         <property name="author" value="lengligang" />
     </properties>
     <!--全局属性-->
-    <generateFile packagePath="/com/little/g/demo/api" templateName="Service.tpl" fileName="OrderService.java">
-        <property name="entityName" value="Order" />
+    <generateFile packagePath="/com/little/g/admin/service" templateName="Service.tpl" fileName="BookService.java">
+        <property name="entityName" value="Book" />
     </generateFile>
 
 

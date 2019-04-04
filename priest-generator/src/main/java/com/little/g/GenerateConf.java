@@ -10,6 +10,8 @@ public class GenerateConf implements Serializable {
 
     private String packagePath;
 
+    private String webPath;
+
     private String templateName;
 
     private String fileName;
@@ -41,6 +43,14 @@ public class GenerateConf implements Serializable {
         this.fileName = fileName;
     }
 
+    public String getWebPath() {
+        return webPath;
+    }
+
+    public void setWebPath(String webPath) {
+        this.webPath = webPath;
+    }
+
     public Map<String, Object> getDataMap() {
         return dataMap;
     }
@@ -53,6 +63,7 @@ public class GenerateConf implements Serializable {
     public String toString() {
         final StringBuffer sb = new StringBuffer("GenerateConf{");
         sb.append("packagePath='").append(packagePath).append('\'');
+        sb.append(", webPath='").append(webPath).append('\'');
         sb.append(", templateName='").append(templateName).append('\'');
         sb.append(", fileName='").append(fileName).append('\'');
         sb.append(", dataMap=").append(dataMap);

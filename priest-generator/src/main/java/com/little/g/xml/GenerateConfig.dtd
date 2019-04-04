@@ -3,11 +3,24 @@
 <!ELEMENT generatorConfiguration (properties,generateFile+) >
 <!ELEMENT properties (property*) >
 <!ELEMENT property  EMPTY>
-<!ELEMENT generateFile (property*)>
+<!ELEMENT attribute  EMPTY>
+<!ELEMENT list  (attribute+)>
+<!ELEMENT generateFile (property*,list*)>
 <!ATTLIST property
         name    CDATA #REQUIRED
         value   CDATA #REQUIRED >
 <!ATTLIST generateFile
         packagePath    CDATA #IMPLIED
+        webPath    CDATA #IMPLIED
         templateName   CDATA #REQUIRED
         fileName   CDATA #REQUIRED>
+<!ATTLIST list
+        name    CDATA #REQUIRED >
+
+<!ATTLIST attribute
+        name    CDATA #REQUIRED
+        value    CDATA #IMPLIED
+        required CDATA #IMPLIED
+        comment CDATA #IMPLIED
+        display CDATA #IMPLIED
+        >

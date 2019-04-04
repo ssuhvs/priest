@@ -229,4 +229,10 @@ public class AdminUserController extends BaseController {
         adminUserService.saveAdminUser(adminUser);
         return String.format(AdminConstants.WEB_IFRAME_SCRIPT, "修改状态成功！");
     }
+
+
+    @RequestMapping(value = "/indexContent", method = RequestMethod.GET)
+    public String indexContent(){
+        return "/jsp/common/content";
+    }
 }

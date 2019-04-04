@@ -29,6 +29,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
         if (object == null) {
 //            throw new ServiceDataException(ErrorCode.ERR_ADMIN_USER_NOT_SIGN_ERROR);
             response.sendRedirect("/admin/login");
+            return false;
         } else {
             List<String> menuUrlMap = (List<String>) SessionUtils.getSessionValue(request, SESSION_USER_MENU_MAP_KEY);
             if (menuUrlMap != null) {

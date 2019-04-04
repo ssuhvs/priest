@@ -7,6 +7,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
  * */
 @JsonFormat(shape = JsonFormat.Shape.OBJECT)
 public enum ModuleType implements EnumBase<String>{
+	BOOK("book", "图书管理"),
 	MENU("menu", "资源管理"),
 	ROLE("role", "角色管理"),
 	WITHDRAW("withdraw", "提现管理"),

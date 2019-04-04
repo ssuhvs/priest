@@ -3,14 +3,27 @@
         <!ELEMENT generatorConfiguration (properties,generateFile+) >
         <!ELEMENT properties (property*) >
         <!ELEMENT property  EMPTY>
-        <!ELEMENT generateFile (property)>
+        <!ELEMENT attribute  EMPTY>
+        <!ELEMENT list  (attribute+)>
+        <!ELEMENT generateFile (property*,list*)>
         <!ATTLIST property
         name    CDATA #REQUIRED
         value   CDATA #REQUIRED >
         <!ATTLIST generateFile
         packagePath    CDATA #IMPLIED
+        webPath    CDATA #IMPLIED
         templateName   CDATA #REQUIRED
         fileName   CDATA #REQUIRED>
+        <!ATTLIST list
+                name    CDATA #REQUIRED >
+
+        <!ATTLIST attribute
+                name    CDATA #REQUIRED
+                value    CDATA #IMPLIED
+                required CDATA #IMPLIED
+                comment CDATA #IMPLIED
+                display CDATA #IMPLIED
+                >
 ]>
 
 <generatorConfiguration>
@@ -20,9 +33,38 @@
         <property name="author" value="lengligang" />
     </properties>
     <!--全局属性-->
-    <generateFile packagePath="/com/little/g/demo/web" templateName="Controller.tpl" fileName="OrderController.java">
-        <property name="entityName" value="Order" />
+    <generateFile packagePath="/com/little/g/admin/web/controllers/test" templateName="Controller.tpl" fileName="BookController.java">
+        <property name="packageName" value="com.little.g.admin.web.controllers.test" />
+        <property name="basePackage" value="com.little.g.admin" />
+        <property name="entityName" value="Book" />
+        <property name="module" value="BOOK" />
+        <property name="uri" value="/book" />
     </generateFile>
+
+    <generateFile webPath="/book" templateName="list.tpl" fileName="book-list.jsp">
+        <property name="uri" value="/book" />
+        <property name="module" value="图书" />
+        <list name="attributes">
+            <attribute name="name" required="true" comment="书名" />
+            <attribute name="price" required="false" comment="价格" />
+            <attribute name="author" required="false" comment="作者" />
+            <attribute name="publisher" required="false" comment="出版商" />
+        </list>
+    </generateFile>
+
+
+    <generateFile webPath="/book" templateName="edit.tpl" fileName="book-edit.jsp">
+        <property name="uri" value="/book" />
+        <property name="paramName" value="book" />
+        <property name="module" value="图书" />
+        <list name="attributes">
+            <attribute name="name" required="true" comment="书名" />
+            <attribute name="price" required="false" comment="价格" />
+            <attribute name="author" required="false" comment="作者" />
+            <attribute name="publisher" required="false" comment="出版商" />
+        </list>
+    </generateFile>
+
 
 
 
