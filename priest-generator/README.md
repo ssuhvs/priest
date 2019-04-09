@@ -17,6 +17,7 @@
                         <tplPath>/tpl</tplPath>   //模板存放路径 非必填 默认位于src/main/conf/tpl 目录下
                         <configurationFile>${project.basedir}/src/main/conf/GenerateConfig.xml</configurationFile>  //生成配置所在目录
                         <overwrite>false</overwrite>
+                        <webSource>/src/main/webapp/WEB-INF/jsp</webSource> //生成web页面保存路径 相对于项目根目录的相对路径
                     </configuration>
          </plugin>
     
@@ -146,6 +147,46 @@
             <generateFile packagePath="/com/little/g/demo/service" templateName="ServiceImpl.tpl" fileName="OrderServiceImpl.java">
                 <property name="entityName" value="Order" />
             </generateFile>
+            
+           
+           
+           
+            <!-- web 页面生成配置 -->
+            <!--
+               webPath: 相对于 web 存放跟路径（webSource 配置:默认值为 /src/main/webapp/WEB-INF/jsp ）的文件存放位置
+               templateName: 生成文件所依赖的模板文件名  
+               fileName: 最终生成文件名
+               property: 模板替换的属性名和值
+               list: 以list 形式传入freemarker属性列表
+               attribute 属性
+                   name: 属性名
+                   comment: 描述，管理后台页面显示用
+                   required: 是否必填项，页面显示用
+             
+            -->
+            <generateFile webPath="/book" templateName="list.tpl" fileName="book-list.jsp">
+                    <property name="uri" value="/book" />
+                    <property name="module" value="图书" />
+                    <list name="attributes">
+                        <attribute name="name" required="true" comment="书名" />
+                        <attribute name="price" required="false" comment="价格" />
+                        <attribute name="author" required="false" comment="作者" />
+                        <attribute name="publisher" required="false" comment="出版商" />
+                    </list>
+              </generateFile>
+              
+              
+              generateFile webPath="/book" templateName="edit.tpl" fileName="book-edit.jsp">
+                      <property name="uri" value="/book" />
+                      <property name="paramName" value="book" />
+                      <property name="module" value="图书" />
+                      <list name="attributes">
+                          <attribute name="name" required="true" comment="书名" />
+                          <attribute name="price" required="false" comment="价格" />
+                          <attribute name="author" required="false" comment="作者" />
+                          <attribute name="publisher" required="false" comment="出版商" />
+                      </list>
+              </generateFile>
         
         </generatorConfiguration>
 
