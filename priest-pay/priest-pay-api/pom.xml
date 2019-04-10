@@ -1,0 +1,43 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <groupId>com.little.g</groupId>
+        <artifactId>priest-pay</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.little.g</groupId>
+    <artifactId>priest-pay-api</artifactId>
+    <packaging>jar</packaging>
+
+    <name>priest-pay-api</name>
+    <url>http://maven.apache.org</url>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <dependencies>
+
+        <dependency>
+            <groupId>com.little.g</groupId>
+            <artifactId>priest-common</artifactId>
+        </dependency>
+
+    </dependencies>
+
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>com.little.g</groupId>
+                <artifactId>generator-maven-plugin</artifactId>
+                <configuration>
+                    <packagePath>/com/little/g/pay</packagePath>
+                    <configurationFile>${project.basedir}/src/main/conf/GenerateConfig.xml</configurationFile>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
