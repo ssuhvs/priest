@@ -42,19 +42,19 @@
             <property name="forceBigDecimals" value="false" />
         </javaTypeResolver>
 
-        <javaModelGenerator targetPackage="com.little.g.demo.model"
+        <javaModelGenerator targetPackage="com.little.g.pay.model"
                             targetProject="${project.basedir}/src/main/java">
             <property name="enableSubPackages" value="true" />
             <property name="trimStrings" value="true" />
         </javaModelGenerator>
 
-        <sqlMapGenerator targetPackage="com.little.g.demo.mapper"
+        <sqlMapGenerator targetPackage="com.little.g.pay.mapper"
                          targetProject="${project.basedir}/src/main/resources">
             <property name="enableSubPackages" value="true" />
         </sqlMapGenerator>
 
         <javaClientGenerator type="XMLMAPPER"
-                             targetPackage="com.little.g.demo.mapper" targetProject="${project.basedir}/src/main/java">
+                             targetPackage="com.little.g.pay.mapper" targetProject="${project.basedir}/src/main/java">
             <property name="enableSubPackages" value="true" />
         </javaClientGenerator>
         <!-- table example
@@ -67,8 +67,10 @@
             </table>
         -->
 
-        <table tableName="user">
-            <generatedKey column="id"  sqlStatement="JDBC"/>
+        <table tableName="user_account">
+        </table>
+
+        <table tableName="transaction_record">
         </table>
 
     </context>

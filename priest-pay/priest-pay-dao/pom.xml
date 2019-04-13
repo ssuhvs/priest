@@ -28,7 +28,7 @@
             <properties>
                 <!-- 数据库 -->
                 <priest.jdbc.driver>com.mysql.jdbc.Driver</priest.jdbc.driver>
-                <priest.jdbc.url>jdbc:mysql://192.168.2.101:3306/little_g?useUnicode=true&amp;characterEncoding=UTF-8&amp;autoReconnect=true</priest.jdbc.url>
+                <priest.jdbc.url>jdbc:mysql://192.168.2.101:3306/little-pay?useUnicode=true&amp;characterEncoding=UTF-8&amp;autoReconnect=true</priest.jdbc.url>
                 <priest.jdbc.username>priest</priest.jdbc.username>
                 <priest.jdbc.password>priest</priest.jdbc.password>
             </properties>
@@ -44,7 +44,7 @@
             <properties>
                 <!-- 数据库 -->
                 <priest.jdbc.driver>com.mysql.jdbc.Driver</priest.jdbc.driver>
-                <priest.jdbc.url>jdbc:mysql://192.168.2.101:3306/little_g?useUnicode=true&amp;characterEncoding=UTF-8&amp;autoReconnect=true</priest.jdbc.url>
+                <priest.jdbc.url>jdbc:mysql://192.168.2.101:3306/little-pay?useUnicode=true&amp;characterEncoding=UTF-8&amp;autoReconnect=true</priest.jdbc.url>
                 <priest.jdbc.username>priest</priest.jdbc.username>
                 <priest.jdbc.password>priest</priest.jdbc.password>
             </properties>

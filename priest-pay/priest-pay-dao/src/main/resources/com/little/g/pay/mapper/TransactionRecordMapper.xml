@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.little.g.pay.mapper.TransactionRecordMapper">
+  <resultMap id="BaseResultMap" type="com.little.g.pay.model.TransactionRecord">
+    <id column="tran_num" jdbcType="VARCHAR" property="tranNum" />
+    <result column="account_id" jdbcType="VARCHAR" property="accountId" />
+    <result column="opposite" jdbcType="VARCHAR" property="opposite" />
+    <result column="trade_num" jdbcType="VARCHAR" property="tradeNum" />
+    <result column="money" jdbcType="BIGINT" property="money" />
+    <result column="type" jdbcType="TINYINT" property="type" />
+    <result column="btype" jdbcType="TINYINT" property="btype" />
+    <result column="comment" jdbcType="VARCHAR" property="comment" />
+    <result column="create_time" jdbcType="BIGINT" property="createTime" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    tran_num, account_id, opposite, trade_num, money, `type`, btype, `comment`, create_time
+  </sql>
+  <select id="selectByExample" parameterType="com.little.g.pay.model.TransactionRecordExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from transaction_record
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from transaction_record
+    where tran_num = #{tranNum,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from transaction_record
+    where tran_num = #{tranNum,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.little.g.pay.model.TransactionRecordExample">
+    delete from transaction_record
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.little.g.pay.model.TransactionRecord">
+    insert into transaction_record (tran_num, account_id, opposite, 
+      trade_num, money, `type`, 
+      btype, `comment`, create_time
+      )
+    values (#{tranNum,jdbcType=VARCHAR}, #{accountId,jdbcType=VARCHAR}, #{opposite,jdbcType=VARCHAR}, 
+      #{tradeNum,jdbcType=VARCHAR}, #{money,jdbcType=BIGINT}, #{type,jdbcType=TINYINT}, 
+      #{btype,jdbcType=TINYINT}, #{comment,jdbcType=VARCHAR}, #{createTime,jdbcType=BIGINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.little.g.pay.model.TransactionRecord">
+    insert into transaction_record
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="tranNum != null">
+        tran_num,
+      </if>
+      <if test="accountId != null">
+        account_id,
+      </if>
+      <if test="opposite != null">
+        opposite,
+      </if>
+      <if test="tradeNum != null">
+        trade_num,
+      </if>
+      <if test="money != null">
+        money,
+      </if>
+      <if test="type != null">
+        `type`,
+      </if>
+      <if test="btype != null">
+        btype,
+      </if>
+      <if test="comment != null">
+        `comment`,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="tranNum != null">
+        #{tranNum,jdbcType=VARCHAR},
+      </if>
+      <if test="accountId != null">
+        #{accountId,jdbcType=VARCHAR},
+      </if>
+      <if test="opposite != null">
+        #{opposite,jdbcType=VARCHAR},
+      </if>
+      <if test="tradeNum != null">
+        #{tradeNum,jdbcType=VARCHAR},
+      </if>
+      <if test="money != null">
+        #{money,jdbcType=BIGINT},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=TINYINT},
+      </if>
+      <if test="btype != null">
+        #{btype,jdbcType=TINYINT},
+      </if>
+      <if test="comment != null">
+        #{comment,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.little.g.pay.model.TransactionRecordExample" resultType="java.lang.Long">
+    select count(*) from transaction_record
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update transaction_record
+    <set>
+      <if test="record.tranNum != null">
+        tran_num = #{record.tranNum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.accountId != null">
+        account_id = #{record.accountId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.opposite != null">
+        opposite = #{record.opposite,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tradeNum != null">
+        trade_num = #{record.tradeNum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.money != null">
+        money = #{record.money,jdbcType=BIGINT},
+      </if>
+      <if test="record.type != null">
+        `type` = #{record.type,jdbcType=TINYINT},
+      </if>
+      <if test="record.btype != null">
+        btype = #{record.btype,jdbcType=TINYINT},
+      </if>
+      <if test="record.comment != null">
+        `comment` = #{record.comment,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createTime != null">
+        create_time = #{record.createTime,jdbcType=BIGINT},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update transaction_record
+    set tran_num = #{record.tranNum,jdbcType=VARCHAR},
+      account_id = #{record.accountId,jdbcType=VARCHAR},
+      opposite = #{record.opposite,jdbcType=VARCHAR},
+      trade_num = #{record.tradeNum,jdbcType=VARCHAR},
+      money = #{record.money,jdbcType=BIGINT},
+      `type` = #{record.type,jdbcType=TINYINT},
+      btype = #{record.btype,jdbcType=TINYINT},
+      `comment` = #{record.comment,jdbcType=VARCHAR},
+      create_time = #{record.createTime,jdbcType=BIGINT}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.little.g.pay.model.TransactionRecord">
+    update transaction_record
+    <set>
+      <if test="accountId != null">
+        account_id = #{accountId,jdbcType=VARCHAR},
+      </if>
+      <if test="opposite != null">
+        opposite = #{opposite,jdbcType=VARCHAR},
+      </if>
+      <if test="tradeNum != null">
+        trade_num = #{tradeNum,jdbcType=VARCHAR},
+      </if>
+      <if test="money != null">
+        money = #{money,jdbcType=BIGINT},
+      </if>
+      <if test="type != null">
+        `type` = #{type,jdbcType=TINYINT},
+      </if>
+      <if test="btype != null">
+        btype = #{btype,jdbcType=TINYINT},
+      </if>
+      <if test="comment != null">
+        `comment` = #{comment,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=BIGINT},
+      </if>
+    </set>
+    where tran_num = #{tranNum,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.little.g.pay.model.TransactionRecord">
+    update transaction_record
+    set account_id = #{accountId,jdbcType=VARCHAR},
+      opposite = #{opposite,jdbcType=VARCHAR},
+      trade_num = #{tradeNum,jdbcType=VARCHAR},
+      money = #{money,jdbcType=BIGINT},
+      `type` = #{type,jdbcType=TINYINT},
+      btype = #{btype,jdbcType=TINYINT},
+      `comment` = #{comment,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=BIGINT}
+    where tran_num = #{tranNum,jdbcType=VARCHAR}
+  </update>
+</mapper>
