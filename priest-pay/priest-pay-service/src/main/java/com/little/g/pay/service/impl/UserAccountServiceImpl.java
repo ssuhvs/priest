@@ -1,4 +1,4 @@
-package com.little.g.pay;
+package com.little.g.pay.service.impl;
 
 import com.little.g.common.exception.ServiceDataException;
 import com.little.g.pay.api.UserAccountService;
