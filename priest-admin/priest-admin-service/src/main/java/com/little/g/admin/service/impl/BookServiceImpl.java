@@ -1,6 +1,6 @@
 package com.little.g.admin.service.impl;
 
-import com.little.g.admin.common.page.Page;
+import com.little.g.common.dto.Page;
 import com.little.g.common.params.PageQueryParam;
 import com.little.g.common.dto.ListResultDTO;
 import com.little.g.common.params.TimeQueryParam;

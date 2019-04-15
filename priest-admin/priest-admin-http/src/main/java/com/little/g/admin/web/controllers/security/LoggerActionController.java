@@ -1,6 +1,6 @@
 package com.little.g.admin.web.controllers.security;
 
-import com.little.g.admin.common.page.Page;
+import com.little.g.common.dto.Page;
 import com.little.g.admin.dto.LoggerActionDTO;
 import com.little.g.admin.service.LoggerActionService;
 import org.slf4j.Logger;

@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.little.g.pay.mapper.FrozenRecordMapper">
-  <resultMap id="BaseResultMap" type="com.little.g.pay.model.FrozenRecord">
-    <id column="trade_num" jdbcType="VARCHAR" property="tradeNum" />
+<mapper namespace="com.little.g.pay.mapper.BalanceCheckpointMapper">
+  <resultMap id="BaseResultMap" type="com.little.g.pay.model.BalanceCheckpoint">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="uid" jdbcType="BIGINT" property="uid" />
     <result column="account_id" jdbcType="VARCHAR" property="accountId" />
-    <result column="amount" jdbcType="BIGINT" property="amount" />
     <result column="balance" jdbcType="BIGINT" property="balance" />
-    <result column="create_time" jdbcType="BIGINT" property="createTime" />
+    <result column="frozen" jdbcType="BIGINT" property="frozen" />
+    <result column="max_id" jdbcType="BIGINT" property="maxId" />
     <result column="update_time" jdbcType="BIGINT" property="updateTime" />
   </resultMap>
   <sql id="Example_Where_Clause">
@@ -68,15 +69,15 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    trade_num, account_id, amount, balance, create_time, update_time
+    id, `uid`, account_id, balance, frozen, max_id, update_time
   </sql>
-  <select id="selectByExample" parameterType="com.little.g.pay.model.FrozenRecordExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.little.g.pay.model.BalanceCheckpointExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from frozen_record
+    from balance_checkpoint
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -84,96 +85,105 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from frozen_record
-    where trade_num = #{tradeNum,jdbcType=VARCHAR}
+    from balance_checkpoint
+    where id = #{id,jdbcType=BIGINT}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
-    delete from frozen_record
-    where trade_num = #{tradeNum,jdbcType=VARCHAR}
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from balance_checkpoint
+    where id = #{id,jdbcType=BIGINT}
   </delete>
-  <delete id="deleteByExample" parameterType="com.little.g.pay.model.FrozenRecordExample">
-    delete from frozen_record
+  <delete id="deleteByExample" parameterType="com.little.g.pay.model.BalanceCheckpointExample">
+    delete from balance_checkpoint
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.little.g.pay.model.FrozenRecord">
-    insert into frozen_record (trade_num, account_id, amount, 
-      balance, create_time, update_time
-      )
-    values (#{tradeNum,jdbcType=VARCHAR}, #{accountId,jdbcType=VARCHAR}, #{amount,jdbcType=BIGINT}, 
-      #{balance,jdbcType=BIGINT}, #{createTime,jdbcType=BIGINT}, #{updateTime,jdbcType=BIGINT}
-      )
+  <insert id="insert" parameterType="com.little.g.pay.model.BalanceCheckpoint">
+    insert into balance_checkpoint (id, `uid`, account_id, 
+      balance, frozen, max_id, 
+      update_time)
+    values (#{id,jdbcType=BIGINT}, #{uid,jdbcType=BIGINT}, #{accountId,jdbcType=VARCHAR}, 
+      #{balance,jdbcType=BIGINT}, #{frozen,jdbcType=BIGINT}, #{maxId,jdbcType=BIGINT}, 
+      #{updateTime,jdbcType=BIGINT})
   </insert>
-  <insert id="insertSelective" parameterType="com.little.g.pay.model.FrozenRecord">
-    insert into frozen_record
+  <insert id="insertSelective" parameterType="com.little.g.pay.model.BalanceCheckpoint">
+    insert into balance_checkpoint
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="tradeNum != null">
-        trade_num,
+      <if test="id != null">
+        id,
+      </if>
+      <if test="uid != null">
+        `uid`,
       </if>
       <if test="accountId != null">
         account_id,
       </if>
-      <if test="amount != null">
-        amount,
-      </if>
       <if test="balance != null">
         balance,
       </if>
-      <if test="createTime != null">
-        create_time,
+      <if test="frozen != null">
+        frozen,
+      </if>
+      <if test="maxId != null">
+        max_id,
       </if>
       <if test="updateTime != null">
         update_time,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="tradeNum != null">
-        #{tradeNum,jdbcType=VARCHAR},
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="uid != null">
+        #{uid,jdbcType=BIGINT},
       </if>
       <if test="accountId != null">
         #{accountId,jdbcType=VARCHAR},
       </if>
-      <if test="amount != null">
-        #{amount,jdbcType=BIGINT},
-      </if>
       <if test="balance != null">
         #{balance,jdbcType=BIGINT},
       </if>
-      <if test="createTime != null">
-        #{createTime,jdbcType=BIGINT},
+      <if test="frozen != null">
+        #{frozen,jdbcType=BIGINT},
+      </if>
+      <if test="maxId != null">
+        #{maxId,jdbcType=BIGINT},
       </if>
       <if test="updateTime != null">
         #{updateTime,jdbcType=BIGINT},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.little.g.pay.model.FrozenRecordExample" resultType="java.lang.Long">
-    select count(*) from frozen_record
+  <select id="countByExample" parameterType="com.little.g.pay.model.BalanceCheckpointExample" resultType="java.lang.Long">
+    select count(*) from balance_checkpoint
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update frozen_record
+    update balance_checkpoint
     <set>
-      <if test="record.tradeNum != null">
-        trade_num = #{record.tradeNum,jdbcType=VARCHAR},
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.uid != null">
+        `uid` = #{record.uid,jdbcType=BIGINT},
       </if>
       <if test="record.accountId != null">
         account_id = #{record.accountId,jdbcType=VARCHAR},
       </if>
-      <if test="record.amount != null">
-        amount = #{record.amount,jdbcType=BIGINT},
-      </if>
       <if test="record.balance != null">
         balance = #{record.balance,jdbcType=BIGINT},
       </if>
-      <if test="record.createTime != null">
-        create_time = #{record.createTime,jdbcType=BIGINT},
+      <if test="record.frozen != null">
+        frozen = #{record.frozen,jdbcType=BIGINT},
+      </if>
+      <if test="record.maxId != null">
+        max_id = #{record.maxId,jdbcType=BIGINT},
       </if>
       <if test="record.updateTime != null">
         update_time = #{record.updateTime,jdbcType=BIGINT},
@@ -184,54 +194,59 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update frozen_record
-    set trade_num = #{record.tradeNum,jdbcType=VARCHAR},
+    update balance_checkpoint
+    set id = #{record.id,jdbcType=BIGINT},
+      `uid` = #{record.uid,jdbcType=BIGINT},
       account_id = #{record.accountId,jdbcType=VARCHAR},
-      amount = #{record.amount,jdbcType=BIGINT},
       balance = #{record.balance,jdbcType=BIGINT},
-      create_time = #{record.createTime,jdbcType=BIGINT},
+      frozen = #{record.frozen,jdbcType=BIGINT},
+      max_id = #{record.maxId,jdbcType=BIGINT},
       update_time = #{record.updateTime,jdbcType=BIGINT}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.little.g.pay.model.FrozenRecord">
-    update frozen_record
+  <update id="updateByPrimaryKeySelective" parameterType="com.little.g.pay.model.BalanceCheckpoint">
+    update balance_checkpoint
     <set>
+      <if test="uid != null">
+        `uid` = #{uid,jdbcType=BIGINT},
+      </if>
       <if test="accountId != null">
         account_id = #{accountId,jdbcType=VARCHAR},
-      </if>
-      <if test="amount != null">
-        amount = #{amount,jdbcType=BIGINT},
       </if>
       <if test="balance != null">
         balance = #{balance,jdbcType=BIGINT},
       </if>
-      <if test="createTime != null">
-        create_time = #{createTime,jdbcType=BIGINT},
+      <if test="frozen != null">
+        frozen = #{frozen,jdbcType=BIGINT},
+      </if>
+      <if test="maxId != null">
+        max_id = #{maxId,jdbcType=BIGINT},
       </if>
       <if test="updateTime != null">
         update_time = #{updateTime,jdbcType=BIGINT},
       </if>
     </set>
-    where trade_num = #{tradeNum,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.little.g.pay.model.FrozenRecord">
-    update frozen_record
-    set account_id = #{accountId,jdbcType=VARCHAR},
-      amount = #{amount,jdbcType=BIGINT},
+  <update id="updateByPrimaryKey" parameterType="com.little.g.pay.model.BalanceCheckpoint">
+    update balance_checkpoint
+    set `uid` = #{uid,jdbcType=BIGINT},
+      account_id = #{accountId,jdbcType=VARCHAR},
       balance = #{balance,jdbcType=BIGINT},
-      create_time = #{createTime,jdbcType=BIGINT},
+      frozen = #{frozen,jdbcType=BIGINT},
+      max_id = #{maxId,jdbcType=BIGINT},
       update_time = #{updateTime,jdbcType=BIGINT}
-    where trade_num = #{tradeNum,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
   </update>
-  <select id="selectByExampleWithRowbounds" parameterType="com.little.g.pay.model.FrozenRecordExample" resultMap="BaseResultMap">
+  <select id="selectByExampleWithRowbounds" parameterType="com.little.g.pay.model.BalanceCheckpointExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from frozen_record
+    from balance_checkpoint
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>

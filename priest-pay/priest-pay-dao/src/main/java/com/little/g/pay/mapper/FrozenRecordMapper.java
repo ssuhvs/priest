@@ -4,6 +4,7 @@ import com.little.g.pay.model.FrozenRecord;
 import com.little.g.pay.model.FrozenRecordExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.session.RowBounds;
 
 public interface FrozenRecordMapper {
     long countByExample(FrozenRecordExample example);
@@ -15,6 +16,8 @@ public interface FrozenRecordMapper {
     int insert(FrozenRecord record);
 
     int insertSelective(FrozenRecord record);
+
+    List<FrozenRecord> selectByExampleWithRowbounds(FrozenRecordExample example, RowBounds rowBounds);
 
     List<FrozenRecord> selectByExample(FrozenRecordExample example);
 

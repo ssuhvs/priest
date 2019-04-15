@@ -1,11 +1,11 @@
 package com.little.g.pay.api;
 
+import com.little.g.common.dto.Page;
 import com.little.g.pay.dto.Account;
 import com.little.g.pay.dto.FrozenRecordDTO;
 import com.little.g.pay.dto.TransactionRecordDTO;
 import com.little.g.pay.dto.UserAccountDTO;
 import com.little.g.pay.enums.BusinessType;
-import org.springframework.data.domain.Page;
 
 import java.util.List;
 

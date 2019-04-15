@@ -1,5 +1,5 @@
 
-package com.little.g.admin.common.page;
+package com.little.g.common.dto;
 
 import java.io.Serializable;
 import java.util.List;
@@ -12,7 +12,7 @@ public class Page<T> implements Serializable {
 	private final static int INIT_SIZE = 20;
     private static final long serialVersionUID = 5784595885066034295L;
     private int pageSize = INIT_SIZE;
-	private int totalCount;
+	private long totalCount;
 	private int currentPage;
 	private List<T> data;
 
@@ -98,7 +98,7 @@ public class Page<T> implements Serializable {
 	 * 取得总页数
 	 * @return
 	 */
-	public int getPageCount() {
+	public long getPageCount() {
 		if (totalCount % pageSize == 0) {
 			return totalCount / pageSize;
 		} else {
@@ -110,7 +110,7 @@ public class Page<T> implements Serializable {
 	 * 取总记录数.
 	 * @return
 	 */
-	public int getTotalCount() {
+	public long getTotalCount() {
 		return this.totalCount;
 	}
 
@@ -169,7 +169,7 @@ public class Page<T> implements Serializable {
 	 * 设置总记录条数
 	 * @param totalCount
 	 */
-	public void setTotalCount(int totalCount) {
+	public void setTotalCount(long totalCount) {
 		this.totalCount = totalCount;
 	}
 	//==============扩展字段===============//

@@ -2,7 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.little.g.pay.mapper.TransactionRecordMapper">
   <resultMap id="BaseResultMap" type="com.little.g.pay.model.TransactionRecord">
-    <id column="tran_num" jdbcType="VARCHAR" property="tranNum" />
+    <result column="id" jdbcType="BIGINT" property="id" />
+    <result column="tran_num" jdbcType="VARCHAR" property="tranNum" />
     <result column="account_id" jdbcType="VARCHAR" property="accountId" />
     <result column="opposite" jdbcType="VARCHAR" property="opposite" />
     <result column="trade_num" jdbcType="VARCHAR" property="tradeNum" />
@@ -71,7 +72,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    tran_num, account_id, opposite, trade_num, money, `type`, btype, `comment`, create_time
+    id, tran_num, account_id, opposite, trade_num, money, `type`, btype, `comment`, create_time
   </sql>
   <select id="selectByExample" parameterType="com.little.g.pay.model.TransactionRecordExample" resultMap="BaseResultMap">
     select
@@ -87,16 +88,6 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from transaction_record
-    where tran_num = #{tranNum,jdbcType=VARCHAR}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
-    delete from transaction_record
-    where tran_num = #{tranNum,jdbcType=VARCHAR}
-  </delete>
   <delete id="deleteByExample" parameterType="com.little.g.pay.model.TransactionRecordExample">
     delete from transaction_record
     <if test="_parameter != null">
@@ -104,18 +95,21 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.little.g.pay.model.TransactionRecord">
-    insert into transaction_record (tran_num, account_id, opposite, 
-      trade_num, money, `type`, 
-      btype, `comment`, create_time
-      )
-    values (#{tranNum,jdbcType=VARCHAR}, #{accountId,jdbcType=VARCHAR}, #{opposite,jdbcType=VARCHAR}, 
-      #{tradeNum,jdbcType=VARCHAR}, #{money,jdbcType=BIGINT}, #{type,jdbcType=TINYINT}, 
-      #{btype,jdbcType=TINYINT}, #{comment,jdbcType=VARCHAR}, #{createTime,jdbcType=BIGINT}
-      )
+    insert into transaction_record (id, tran_num, account_id, 
+      opposite, trade_num, money, 
+      `type`, btype, `comment`, 
+      create_time)
+    values (#{id,jdbcType=BIGINT}, #{tranNum,jdbcType=VARCHAR}, #{accountId,jdbcType=VARCHAR}, 
+      #{opposite,jdbcType=VARCHAR}, #{tradeNum,jdbcType=VARCHAR}, #{money,jdbcType=BIGINT}, 
+      #{type,jdbcType=TINYINT}, #{btype,jdbcType=TINYINT}, #{comment,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=BIGINT})
   </insert>
   <insert id="insertSelective" parameterType="com.little.g.pay.model.TransactionRecord">
     insert into transaction_record
     <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
       <if test="tranNum != null">
         tran_num,
       </if>
@@ -145,6 +139,9 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
       <if test="tranNum != null">
         #{tranNum,jdbcType=VARCHAR},
       </if>
@@ -183,6 +180,9 @@
   <update id="updateByExampleSelective" parameterType="map">
     update transaction_record
     <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
       <if test="record.tranNum != null">
         tran_num = #{record.tranNum,jdbcType=VARCHAR},
       </if>
@@ -217,7 +217,8 @@
   </update>
   <update id="updateByExample" parameterType="map">
     update transaction_record
-    set tran_num = #{record.tranNum,jdbcType=VARCHAR},
+    set id = #{record.id,jdbcType=BIGINT},
+      tran_num = #{record.tranNum,jdbcType=VARCHAR},
       account_id = #{record.accountId,jdbcType=VARCHAR},
       opposite = #{record.opposite,jdbcType=VARCHAR},
       trade_num = #{record.tradeNum,jdbcType=VARCHAR},
@@ -230,46 +231,18 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.little.g.pay.model.TransactionRecord">
-    update transaction_record
-    <set>
-      <if test="accountId != null">
-        account_id = #{accountId,jdbcType=VARCHAR},
-      </if>
-      <if test="opposite != null">
-        opposite = #{opposite,jdbcType=VARCHAR},
-      </if>
-      <if test="tradeNum != null">
-        trade_num = #{tradeNum,jdbcType=VARCHAR},
-      </if>
-      <if test="money != null">
-        money = #{money,jdbcType=BIGINT},
-      </if>
-      <if test="type != null">
-        `type` = #{type,jdbcType=TINYINT},
-      </if>
-      <if test="btype != null">
-        btype = #{btype,jdbcType=TINYINT},
-      </if>
-      <if test="comment != null">
-        `comment` = #{comment,jdbcType=VARCHAR},
-      </if>
-      <if test="createTime != null">
-        create_time = #{createTime,jdbcType=BIGINT},
-      </if>
-    </set>
-    where tran_num = #{tranNum,jdbcType=VARCHAR}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.little.g.pay.model.TransactionRecord">
-    update transaction_record
-    set account_id = #{accountId,jdbcType=VARCHAR},
-      opposite = #{opposite,jdbcType=VARCHAR},
-      trade_num = #{tradeNum,jdbcType=VARCHAR},
-      money = #{money,jdbcType=BIGINT},
-      `type` = #{type,jdbcType=TINYINT},
-      btype = #{btype,jdbcType=TINYINT},
-      `comment` = #{comment,jdbcType=VARCHAR},
-      create_time = #{createTime,jdbcType=BIGINT}
-    where tran_num = #{tranNum,jdbcType=VARCHAR}
-  </update>
+  <select id="selectByExampleWithRowbounds" parameterType="com.little.g.pay.model.TransactionRecordExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from transaction_record
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
 </mapper>

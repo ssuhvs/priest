@@ -4,7 +4,7 @@ import com.little.g.admin.common.annotation.ModuleManage;
 import com.little.g.admin.common.annotation.ModuleOperation;
 import com.little.g.admin.common.enums.ModuleType;
 import com.little.g.admin.common.enums.OperationType;
-import com.little.g.admin.common.page.Page;
+import com.little.g.common.dto.Page;
 import com.little.g.admin.dto.SysMenuDTO;
 import com.little.g.admin.dto.SysRoleDTO;
 import com.little.g.admin.service.SysMenuService;

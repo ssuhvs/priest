@@ -7,6 +7,7 @@ import java.util.Objects;
  */
 public enum BusinessType {
     RECHARGE((byte)1,"充值"), //充值
+    STRIKE_BALANCE((byte)16, "冲帐"),
     ;
 
     BusinessType(Byte value, String desc){

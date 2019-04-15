@@ -2,7 +2,7 @@ package com.little.g.admin.service;
 
 
 
-import com.little.g.admin.common.page.Page;
+import com.little.g.common.dto.Page;
 import com.little.g.admin.dto.SysMenuDTO;
 
 import java.util.List;

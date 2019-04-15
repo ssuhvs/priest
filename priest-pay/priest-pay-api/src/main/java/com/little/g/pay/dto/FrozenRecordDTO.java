@@ -3,6 +3,7 @@ package com.little.g.pay.dto;
 import java.io.Serializable;
 
 public class FrozenRecordDTO implements Serializable {
+    private Long uid;
     private String tradeNum;
 
     private String accountId;
@@ -63,5 +64,13 @@ public class FrozenRecordDTO implements Serializable {
 
     public void setUpdateTime(Long updateTime) {
         this.updateTime = updateTime;
+    }
+
+    public Long getUid() {
+        return uid;
+    }
+
+    public void setUid(Long uid) {
+        this.uid = uid;
     }
 }
