@@ -103,6 +103,11 @@
 
         <dependency>
             <groupId>com.little.g</groupId>
+            <artifactId>priest-user-api</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.little.g</groupId>
             <artifactId>priest-pay-dao</artifactId>
         </dependency>
 

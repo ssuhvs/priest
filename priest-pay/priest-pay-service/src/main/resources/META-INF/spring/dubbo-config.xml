@@ -10,7 +10,7 @@
     <dubbo:registry address="${zookeeper.url}"/>
 
 
-    <dubbo:service interface="com.little.g.demo.api.UserService" ref="userService"/>
+    <dubbo:service interface="com.little.g.pay.api.UserAccountService" ref="userAccountService"/>
 
 
 </beans>

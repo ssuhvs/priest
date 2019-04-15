@@ -2,7 +2,7 @@ package com.little.g.admin.service.impl;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.little.g.admin.common.page.Page;
+import com.little.g.common.dto.Page;
 import com.little.g.admin.dto.LoggerDTO;
 import com.little.g.admin.mapper.LoggerMapper;
 import com.little.g.admin.model.Logger;
